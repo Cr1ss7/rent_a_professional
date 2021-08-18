@@ -14,6 +14,7 @@ class Curriculo{
 			$this->id = $id; 
 			$this->nombre = $name;
 			$this->ext = $ext;
+			$this->id = $id;
 		}else{
 			throw new Exception("Error. Coloque el curriculum");
 		}
@@ -23,11 +24,12 @@ class Curriculo{
 	public function docProfesional(){
 		$modelo = new Conexion();
 		$conexion = $modelo->get_conexion();
-		$sql = "insert into curri (direccion,nombre,extension) values (:direccion, :nombre,:extension)";
+		$sql = "insert into curri (direccion,nombre,extension, idProfesional) values (:direccion, :nombre,:extension, :idProfesional)";
 		$stm = $conexion->prepare($sql);
 		$stm->bindParam(":direccion", $this->route);
 		$stm->bindParam(":nombre",$this->nombre);
 		$stm->bindParam(":extension",$this->ext);
+		$stm->bindParam(":idProfesional",$this->id);
 		if(!$stm){
 			return "Error al subir el archivo";
 		}else{
