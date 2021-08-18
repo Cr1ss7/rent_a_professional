@@ -8,6 +8,7 @@ class Administrador{
 
 	private $id;
 
+		//Verificacion de valores
 		public function veriAdm($nombre, $apellido, $correo, $pass, $pass2, $fechaNac){
 			if(strlen($nombre)>0 && strlen($apellido)>0 && strlen($correo)>0 && strlen($pass)>0 && strlen($pass2)>0 && strlen($fechaNac)){	
 				if($pass == $pass2){
@@ -28,7 +29,7 @@ class Administrador{
 		public function nuevoAdm(){
 			$modelo = new Conexion();
 			$conexion = $modelo->get_conexion();
-			$sql = "insert into administrador (nombre, apellido, contrasena, correo, fechaNac) values (:nombre, :apellido, :correo, md5(:contrasena), :fechaNac)";
+			$sql = "insert into administrador (nombre, apellido, correo, contrasena, fechaNac) values (:nombre, :apellido, :correo, md5(:contrasena), :fechaNac)";
 			$stm = $conexion->prepare($sql);
 			$stm->bindParam(":nombre", $this->nombre);
 			$stm->bindParam(":apellido", $this->apellido);
@@ -39,6 +40,7 @@ class Administrador{
 				throw new Exception("Error. No se pudo ejecutar el comando");	
 			}else{
 				$stm->execute();
+				return 'registro exitoso';
 			}
 		}
 		
@@ -83,6 +85,7 @@ class Administrador{
 			}
 		}	
 
+		//Metodo para modificar los datos
 		public function modificarAdm($nombre,$apellido,$correo){
 			$conexion = new Conexion();
 			$dbh = $conexion->get_conexion();
@@ -120,8 +123,5 @@ class Administrador{
 			return $this->fechaNac;
 		}
 	}
-
-?>
-}
 
 ?>

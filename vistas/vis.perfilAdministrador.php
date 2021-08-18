@@ -15,6 +15,7 @@
 	$adm = new Administrador();
 	$userSession = new userSession();
 
+	//verifica si la sesion esta iniciada
 	if(isset($_SESSION['admin'])){
 		$adm->setAdm($userSession->getCurrentAdm());	
 	}else{
@@ -25,7 +26,7 @@
 <body>
     <div class="containerKing">
         <div class="header">
-		<h3 class="nombreUsuario"><?php $adm->getNombre() . $adm->getApellido()?></h3>
+		<h3 class="nombreUsuario"><?php echo $adm->getNombre() ." " . $adm->getApellido()?></h3>
             <a class="endSesion" href="../controlador/cerrarSesion.php">Cerrar Sesión</a>    
         </div>
         <nav class="navigationBar">
@@ -40,7 +41,7 @@
                 <div class="subContainer">
                     <div class="contProfile">
                         <div class="contProfTit">
-                            <h2>Administrador</h2>
+						<h2>Administrador</h2>
                         </div>
                         <div class="contenidoProfile">
                             <div class="contFormProfile">
@@ -59,19 +60,19 @@
                     </div>
                     <div class="contName">
                         <h4>Nombre:</h4>
-						<h3><?php $adm->getNombre()?></h3>
+						<h3><?php echo $adm->getNombre()?></h3>
                     </div>
                     <div class="contLastN">
                         <h4>Apellido:</h4>
-						<h3><?php $adm->getApellido()?></h3>
+						<h3><?php echo $adm->getApellido()?></h3>
                     </div>
                     <div class="contEmail">
                         <h4>Correo Electrónico:</h4>
-						<h3><?php $adm->getCorreo()?></h3>
+						<h3><?php echo $adm->getCorreo()?></h3>
                     </div>
                     <div class="contDate">
                         <h4>Fecha de Nacimiento:</h4>
-						<h3><?php $adm->getFechaNac();?></h3>
+						<h3><?php echo $adm->getFechaNac();?></h3>
                     </div>
                 </div>          
             </div>
