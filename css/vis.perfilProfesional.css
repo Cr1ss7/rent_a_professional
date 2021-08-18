@@ -1,0 +1,310 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'M PLUS 1p', sans-serif;
+}
+body{
+   background-image: url("img/fondo2.jpg"); 
+   background-repeat: no-repeat;
+   background-size: cover;
+   width: 100%;
+   background-position: center;
+   max-width: 100%;
+   min-height: 100vh;
+   position: relative;
+}
+/*Botón y nombre de Usuario*/
+.header{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0px 100px;
+}
+/*Nombre de Usuario*/
+.nombreUsuario{
+    margin-right: auto;
+    text-align: left;
+    color: white;
+    background-color: transparent;
+    font-weight: lighter;
+    font-size: 23px;
+    padding: 15px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+/*Boton de cerrar sesion*/
+.endSesion{
+    height: 50px;
+    width: 150px;
+    margin-top: 6px;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    color: white;
+    font-size: 20px;
+    border-color: white;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+/*Barra de navegacion*/
+/*Fondo y medidas de la barra de navegación*/
+.navigationBar{
+    height: auto;
+    width: auto;
+    background-color: #fcfcfc;
+    height: 50px;
+    margin: 0px 100px;
+    padding: 0px 10px 0px;
+    border-radius: 3px;
+}
+/*Configuración responsive general de todos los botones de la barra de navegación*/
+.navButtons{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    width: auto;
+    margin: auto;
+}
+/*Eliminación de las apariencias de "link"*/
+.links{
+    text-decoration: none;
+}
+/*Boton activo en la barra de navegación*/
+.buttonActive{
+    color: black;
+    margin: 10px 25px;
+    height: 37px;
+    font-size: 18px;
+    font-weight: bold;
+    width: max-content;
+    color: #f8881f;
+    border-bottom: 3px solid #f8881f;
+    transition: .2s;
+    cursor: pointer;
+}
+/*Efecto de hover(cambio de color en los botones no activos)*/
+.buttons:hover{
+    color: #f8881f;
+    border-bottom: 3px solid #f8881f;
+    transition: .2s;
+}
+/*Conficugracion del botón activo*/
+.buttons{
+    color: black;
+    margin: 10px 25px;
+    height: 37px;
+    font-size: 18px;
+    font-weight: bold;
+    width: max-content;
+}
+
+/*Contenedor Principal (almacena los demas contenedores)*/
+.container{
+    margin: 0px 100px;
+    padding: 20px 0px;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+/*Contenedor con foto de perfil*/
+.container2{
+    display: inline-block;
+    width: 35%;
+    height: auto;
+    margin-right: auto;
+    justify-content: flex-start;
+    align-items: center;
+}
+.subContainer{
+    border: 1px solid #fcfcfc;
+    width: auto;
+    height: 50%;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: White;
+    font-weight: lighter;
+    padding: 20px;
+}
+.contProfile{
+    display: inline-block;
+    width: 100%;
+}
+.contProfTit{
+    width: 100%;
+}
+.contProfTit h2{
+    font-weight: lighter;
+    padding: 0 5px 10px 0;
+    border-bottom: 1px solid #fcfcfc;
+}
+/*Calificacion de profesional*/
+.calification{
+    margin: 20px 0;
+    width: auto;
+    height: 33%;
+    border: 1px solid #fcfcfc;
+    border-radius: 3px;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+}
+.rate{
+    font-weight: lighter;
+    padding: 0 5px 10px 0;
+    border-bottom: 1px solid #fcfcfc;
+}
+.rate h2{
+    color: #fcfcfc;
+    font-weight: lighter;
+}
+.rating{
+    position: relative;
+    display: flex;
+    margin:40px 0px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.rating input{
+    display: none;
+}
+.rating label{
+    position: relative;
+    width: 0px;
+    height: 128px;
+    cursor: pointer;
+    transition: 0.5s;
+    filter: grayscale(1);
+    text-align: center;
+    opacity: 0;
+}
+.rating label{
+    width: 160px;
+    opacity: 0.2;
+}
+.rating input + label{
+    filter: grayscale(1);
+    opacity: 1;
+    width: 160px;
+}
+.rating input:checked + label{
+    filter: grayscale(0);
+    opacity: 1;
+    width: 160px;
+}
+.rating label h4{
+    color: #fff;
+    font-size: 15px;
+    padding-top: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(-50px) scale(0);
+    transition: 0.5s;
+}
+.rating input:hover + label h4,.rating input:checked + label h4{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+/*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
+.contInfo{
+    margin-left: 20px;
+    padding: 20px;
+    width: 65%;
+    height: 100%;
+    border: 1px solid #fcfcfc;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: white;
+    font-weight: lighter;
+    padding: 20px;
+}
+.contInfoTitulo h2{
+    font-weight: lighter;
+    padding: 0 5px 10px 0;
+}
+.contInfoTitulo{
+    display: flex;
+    width: auto;
+    border-bottom: 1px solid #fcfcfc;
+    justify-content: space-between;
+}
+.edit{
+    padding: 0 5px 10px 0;
+    background-color: transparent;
+    border: none;
+    color: darkblue;
+    font-weight: bold;
+    outline: none;
+}
+.contName h4{
+    color: darkblue;
+    font-weight: lighter;
+    font-size: 20px;
+}
+.contLastN h4{
+    color: darkblue;
+    font-weight: lighter;
+    font-size: 20px;
+}
+.contEmail h4{
+    color: darkblue;
+    font-weight: lighter;
+    font-size: 20px;
+}
+.contDate h4{
+    color: darkblue;
+    font-weight: lighter;
+    font-size: 20px;
+}
+.aboutMe h4{
+    color: darkblue;
+    font-weight: lighter;
+    font-size: 20px;
+}
+.contName h3{
+    color: black;
+    font-weight: bold;
+}
+.contLastN h3{
+    color: black;
+    font-weight: bold;
+}
+.contEmail h3{
+    color: black;
+    font-weight: bold;
+}
+.contDate h3{
+    color: black;
+    font-weight: bold;
+}
+.contName{
+    padding: 10px;
+}
+.contLastN{
+    padding: 10px;
+}
+.contEmail{
+    padding: 10px;
+}
+.contDate{
+    padding: 10px;
+}
+.aboutMe{
+    padding: 10px;
+}
+.aboutMe input{
+    margin-top: 10px;
+    width: 95%;
+    height: 115px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #fcfcfc;
+    background-color: rgba(255,255,255,0.2);
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 20px;
+}

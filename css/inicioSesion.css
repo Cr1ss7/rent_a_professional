@@ -1,0 +1,133 @@
+*{
+    box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
+    font-family: 'M PLUS 1p', sans-serif;
+}
+
+body{
+    background-image: url("img/fondo2.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    background-position: center;
+}
+
+section{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 100%;
+	min-height: 100vh;
+    
+}
+
+.flex-caja{
+    display: flex;
+    height: 545px;
+	width: 31%;
+	min-width: 250px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #fcfcfc;
+	margin: 10px;
+    box-shadow: 1px 7px 25px rgba(0,0,0,0.6);
+    border: 1px solid #fcfcfc;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: white;
+    font-weight: lighter;
+    
+
+}
+
+.flex-caja div{
+    width: 80%;
+    height: 14%;
+    margin: 15px;
+}
+
+/*caja 1*/
+.flex-caja .flex1{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+	align-items: center;
+	height: 35%;
+}
+
+img{
+    height: 100%;
+}
+
+/*caja 2*/
+.flex-caja .flex2{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flex-caja .flex2 input{
+    width: 95%;
+    height: 30%;
+    font-size: 150%;
+	background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    cursor: pointer;
+    border-bottom:1px solid white;
+	outline: none;
+    color: white;
+}
+.flex-caja .flex2 input::placeholder{
+    color: white;
+}
+
+/*caja 3*/
+.flex-caja .flex3{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+	height: auto;
+    justify-content: space-evenly;
+
+}
+.flex-caja .flex3 input{
+	outline: none;
+	border: none;
+	font-size: 1em;
+	padding: 10px;
+    border: 1px solid #fcfcfc;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: white;
+    font-weight: lighter;
+}
+
+.flex-caja .flex3 input:hover{
+	background-color:#aaaa;
+}
+
+/*caja 4*/
+.flex-caja .flex4{
+    margin-top: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+	height: auto;
+    text-indent: 4px;
+    
+}
+.flex-caja .flex4 a{
+    color: #fcfcfc;
+}
