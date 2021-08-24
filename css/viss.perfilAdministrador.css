@@ -1,0 +1,579 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'M PLUS 1p', sans-serif;
+    overflow: hidden;
+}
+body{
+    /*background-image: url("../img/fondo2.jpg");
+	background-repeat: no-repeat;
+   	background-size: cover;*/
+    background-image: linear-gradient(140deg,#B30917, #B30917, #B30917,#DB7D0A,#DB7D0A,#DB7D0A);
+    background-size: 500%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+/*Botón y nombre de Usuario*/
+.header{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0px 100px;
+}
+.header2{
+    display: none;
+}
+/*Nombre de Usuario*/
+.nombreUsuario{
+    margin-right: auto;
+    text-align: left;
+    color: white;
+    background-color: transparent;
+    font-weight: lighter;
+    font-size: 23px;
+    padding: 15px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+/*Boton de cerrar sesion*/
+.endSesion{
+    height: 50px;
+    width: 150px;
+    margin-top: 6px;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    color: white;
+    border: 1px solid white;
+    font-size: 20px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+.endSesion a{
+    color: white;
+    text-decoration: none;
+}
+.endSesion2{
+    display: none;
+}
+/*Barra de navegacion*/
+/*Fondo y medidas de la barra de navegación*/
+.nav-toggle{
+    display: none;
+}
+.navigationBar{
+    height: auto;
+    width: auto;
+    background-color: #fcfcfc;
+    height: 50px;
+    margin: 0px 100px;
+    padding: 0px 10px 0px;
+    border-radius: 3px;
+}
+/*Configuración responsive general de todos los botones de la barra de navegación*/
+.navButtons{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    width: auto;
+    margin: auto;
+}
+/*Eliminación de las apariencias de "link"*/
+.links{
+    text-decoration: none;
+}
+/*Boton activo en la barra de navegación*/
+.buttonActive{
+    color: black;
+    margin: 10px 25px;
+    height: 37px;
+    font-size: 18px;
+    font-weight: bold;
+    width: max-content;
+    color: #f8881f;
+    border-bottom: 3px solid #f8881f;
+    transition: .2s;
+    cursor: pointer;
+}
+/*Efecto de hover(cambio de color en los botones no activos)*/
+.buttons:hover{
+    color: #f8881f;
+    border-bottom: 3px solid #f8881f;
+    transition: .2s;
+}
+/*Conficugracion del botón activo*/
+.buttons{
+    color: black;
+    margin: 10px 25px;
+    height: 37px;
+    font-size: 18px;
+    font-weight: bold;
+    width: max-content;
+}
+/*Contenedor Principal (almacena los demas contenedores)*/
+.container{
+    margin: 0px 100px;
+    padding: 20px 0px;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+/*Contenedor con foto de perfil*/
+.container2{
+    display: inline-block;
+    width: 35%;
+    height: 705px;
+    margin-right: auto;
+    justify-content: flex-start;
+    align-items: center;
+ 
+}
+.subContainer{
+    border: 1px solid #fcfcfc;
+    width: auto;
+    height: 50%;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: White;
+    font-weight: lighter;
+    padding: 20px;
+}
+.contProfile{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.contenidoProfile{
+    margin: 0 auto;
+    margin-top: 30px;
+    width: min-content;
+    justify-content: space-evenly;
+}
+
+.fotoPerfil{
+    width: 180px;
+    height: 180px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 0;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+.submitFoto{
+    position: relative;
+    border: 1px solid white;
+    width: 87px;
+    margin: 0px 50px;
+}
+.contProfTit{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.contProfTit h2{
+    font-weight: lighter;
+    padding: 0 5px 10px 0;
+    border-bottom: 1px solid #fcfcfc;
+}
+.profilePic{
+    width: 150px;
+    height: 150px;
+    border-radius: 5%;
+    border: 4px solid white;
+    color: white;
+    background: transparent;
+    text-align: center;
+    font-size: 20px;
+}
+/*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
+.contInfo{
+    margin-left: 20px;
+    padding: 20px;
+    width: 65%;
+    height: 100%;
+    border: 1px solid #fcfcfc;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: white;
+    font-weight: lighter;
+    padding: 20px;
+}
+.contInfoTitulo h2{
+    font-weight: lighter;
+    padding: 0 5px 10px 0;
+}
+.contInfoTitulo{
+    display: flex;
+    width: auto;
+    border-bottom: 1px solid #fcfcfc;
+    justify-content: space-between;
+}
+.contName h4, .contLastN h4, .contEmail h4, .contDate h4, .aboutMe h4, .curriculum h4{
+    color: #fcfcfc;
+    font-weight: lighter;
+    font-size: 20px;
+}
+.contName h3, .contLastN h3, .contEmail h3, .contDate h3{
+    color: black;
+    font-weight: bold;
+}
+.contName, .contLastN, .contEmail, .contDate, .curriculum{
+    padding: 10px;
+}
+/*Media query's para responsividad*/
+/*Para tablets*/
+@media only screen and (min-width: 981px) and (max-width: 1200px){
+    *{
+        overflow: hidden;
+    }
+    .containerKing{
+        width: 100%;
+        margin: 25% auto;
+    }
+    .header{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0px 20px;
+    }
+    .header2{
+        display: none;
+    }
+    .endSesion2{
+        display: none;
+    }
+    .navigationBar{
+        height: auto;
+        width: auto;
+        background-color: #fcfcfc;
+        height: 50px;
+        margin: 0px 20px;
+        padding: 0px 10px 0px;
+        border-radius: 3px;
+    }
+    .container{
+        margin: 0px 20px;
+        padding: 20px 0px;
+        width: auto;
+        height: auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+}
+@media only screen and (min-width: 701px) and (max-width: 980px){
+    *{
+        overflow: hidden;
+    }
+    .containerKing{
+        width: 100%;
+        margin: 15% auto;
+    }
+    .header{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0px 10px;
+    }
+    .header2{
+        display: none;
+    }
+    .endSesion2{
+        display: none;
+    }
+    .navigationBar{
+        height: auto;
+        width: auto;
+        background-color: #fcfcfc;
+        height: 50px;
+        margin: 0px 10px;
+        padding: 0px 10px 0px;
+        border-radius: 3px;
+    }
+    .container{
+        margin: 0px 10px;
+        padding: 20px 0px;
+        width: auto;
+        height: auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .rating{
+        position: relative;
+        display: flex;
+        margin: 60px 0px;
+        margin-bottom: 20px;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .rating label img{
+        height: 40px; 
+        width: 40px;
+    }
+    .rating label h4{
+        color: #fff;
+        font-size: 10px;
+        padding-top: 10px;
+        font-weight: bold;
+        white-space: nowrap;
+        opacity: 0;
+        transform: translateY(-50px) scale(0);
+        transition: 0.5s;
+    }
+}
+/*Para telefonos*/
+@media only screen and (min-width: 280px) and (max-width: 700px){
+    *{
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .containerKing{
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .header{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0px 10px;
+        display: none;
+    }
+    .header2{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0px 10px;
+    }
+    .nav-toggle{
+        overflow: hidden;
+        display: block;
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+        border: none;
+        background-color: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        padding: 0 20px;
+        line-height: 60px;
+        float: left;
+        color: white;
+        padding-right: 100%;
+        padding-left: 10px;
+    }
+    .navButtons{
+        overflow: hidden;
+        flex-direction: column;
+        margin-top: 48px;
+        background-color: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        align-items: center;
+        position: fixed;
+        left: 100%;
+        top: 0px;
+        width: 100%;
+        padding: 20px 0;
+        height: calc(100% - 0px);
+        transition: left 0.2s;
+        overflow-y: auto;
+    }
+    .buttons{
+        color: #fcfcfc;
+    }
+    .nav-menu_visible {
+        left: 0;
+    }
+    /*Nombre de Usuario*/
+    .nombreUsuario{
+        margin-right: auto;
+        margin-top: 65px;
+        text-align: left;
+        color: white;
+        background-color: transparent;
+        font-weight: lighter;
+        font-size: 18px;
+        padding: 10px;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    /*Boton de cerrar sesion*/
+    .endSesion{
+        height: 50px;
+        width: 150px;
+        margin-top: 60px;
+        margin-bottom: 10px;
+        background-color: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        color: white;
+        font-size: 18px;
+        border-color: white;
+        border-radius: 3px;
+        outline: none;
+        cursor: pointer;
+        display: none;
+    }
+    .endSesion2{
+        height: 50px;
+        width: 100%;
+        margin: 20px auto;
+        margin-bottom: 0;
+        background-color: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        color: white;
+        font-size: 18px;
+        border: 1px solid #fcfcfc;
+        border-radius: 3px;
+        outline: none;
+        cursor: pointer;
+        display: block;
+    }
+    .endSesion2 a{
+        color: white;
+        text-decoration: none;
+        font-weight: lighter;
+    }
+    .navigationBar{
+        height: auto;
+        width: auto;
+        background-color: rgba(255,255,255,0.1);
+        /*backdrop-filter: blur(15px);*/
+        height: 50px;
+        margin: 0px;
+        padding: 0px;
+        border-radius: 3px;
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+        z-index: 1;
+        position: fixed;
+    }
+    .container{
+        margin: 0px 10px;
+        padding: 20px 0px;
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: hidden;
+    }
+    /*Contenedor con foto de perfil*/
+    .container2{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+        margin-right: auto;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .subContainer{
+        border: 1px solid #fcfcfc;
+        width: 87%;
+        height: 50%;
+        background-color: rgba(255,255,255,0.2);
+        backdrop-filter: blur(15px);
+        border-radius: 3px;
+        color: White;
+        font-weight: lighter;
+        padding: 20px;
+    }
+    .contProfile{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .contenidoProfile{
+        margin: 0 auto;
+        width: min-content;
+        justify-content: space-evenly;
+    }
+    .contFormProfile{
+        margin: 0 auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .fotoPerfil{
+        width: 130px;
+        height: 130px;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-top: 0;
+        margin-left: 10px;
+        border-radius: 50%;
+    }
+    .submitFoto{
+        position: relative;
+        border: 1px solid white;
+        width: 86px;
+        margin: 0px auto;
+        margin-top: 10px;
+    }
+    .contProfTit{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .contProfTit h2{
+        font-weight: lighter;
+        padding: 0 5px 10px 0;
+        border-bottom: 1px solid #fcfcfc;
+    }
+    .profilePic{
+        width: 150px;
+        height: 150px;
+        border-radius: 5%;
+        border: 4px solid white;
+        color: white;
+        background: transparent;
+        text-align: center;
+        font-size: 20px;
+    }
+    
+    /*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
+    .contInfo{
+        margin: 0px auto;
+        margin-top: 20px;
+        padding: 20px;
+        width: 87%;
+        height: 100%;
+        border: 1px solid #fcfcfc;
+        background-color: rgba(255,255,255,0.2);
+        backdrop-filter: blur(15px);
+        border-radius: 3px;
+        color: white;
+        font-weight: lighter;
+        padding: 20px;
+    }
+    .contInfoTitulo h2{
+        font-weight: lighter;
+        padding: 0 5px 10px 0;
+    }
+    .contInfoTitulo{
+        display: flex;
+        width: auto;
+        border-bottom: 1px solid #fcfcfc;
+        justify-content: space-between;
+    }
+    .edit{
+        padding: 0 5px 10px 0;
+        background-color: transparent;
+        border: none;
+        color: darkblue;
+        font-weight: bold;
+        outline: none;
+    }
+}
