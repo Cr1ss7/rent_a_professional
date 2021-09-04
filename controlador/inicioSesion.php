@@ -17,8 +17,7 @@
 		include_once '../vistas/vis.perfilProfesional.php';
 	}elseif(isset($_SESSION['cliente'])){
 		$clnt->setCliente($userSession->getCurrentCliente());
-		//include_once '../vistas/vis.perfilProfesional.php';
-		echo "hay sesion de cliente";
+		header('location: ../vistas/vis.perfilCliente.php');
 	}elseif(isset($_SESSION['admin'])){
 		$adm->setAdm($userSession->getCurrentAdm());
 		//echo "hay sesion de adm";
@@ -41,8 +40,7 @@
 		}elseif($clnt->clienteExt($userForm,$passForm)){
 			$userSession->setCurrentCliente($userForm);
 			$clnt->setCliente($userForm);
-			//include '../vistas/vis.perfilProfesional.php';
-			echo "cliente";
+			header('location: ../vistas/vis.perfilCliente.php');
 		//Administrador
 		}elseif($adm->admExt($userForm,$passForm)){
 			$userSession->setCurrentAdm($userForm);

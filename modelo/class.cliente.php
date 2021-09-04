@@ -85,6 +85,32 @@
 			}
 		}	
 
+		public function datosPubli($titulo,$datos,$precio){
+			if(!empty($titulo) && !empty($datos) && !empty($precio)){
+				$this->titulo = $titulo;	
+				$this->datos = $datos;
+				$this->precio = $precio;
+			}else{
+				throw new Exception("Complete todos los campos");
+			}
+		}
+
+		public function nuevaPubli(){
+			$conexion = new Conexion();
+			$dbh = $conexion->get_conexion();
+			$sql = "insert into publicaciones (titulo, descripcion, precio, idcliente) values (:titulo, :descripcion, :precio, :idcliente)";
+			$stmt = $dbh->prepare($sql);
+			$stmt->bindParam(":titulo",$this->titulo); 
+			$stmt->bindParam(":descripcion",$this->datos);
+			$stmt->bindParam(":precio",$this->precio);
+			$stmt->bindParam(":idcliente",$this->id);
+			if(!$stmt){
+				throw new Exception("Error. no se pudo guardar la publicacion");
+			}else{
+				$stmt->execute();
+			}
+		}
+
 		//Todas la funciones get del cliente
 		public function getId(){
 			return $this->id;	

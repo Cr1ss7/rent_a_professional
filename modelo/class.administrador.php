@@ -102,6 +102,56 @@ class Administrador{
 			}
 		}
 
+		//Muestra el listado de los clientes
+		public function listadoCliente(){
+			$conexion = new Conexion();
+			$dbh = $conexion->get_conexion();
+			$sql = "Select * from cliente order by id, apellido";
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute();
+			$listas= $stmt->fetchAll(PDO::FETCH_ASSOC);
+			return $listas;
+		}
+
+		//Muestra el listado de los profesionales
+		public function listadoProfesional(){
+			$conexion = new Conexion();
+			$dbh = $conexion->get_conexion();
+			$sql = "Select * from Profesional order by id, apellido";
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute();
+			$profesionales = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			return $profesionales;
+		}
+
+		//Elimina un usuario
+		public function eliminarCliente($id){
+			$conexion = new Conexion();
+			$dbh = $conexion->get_conexion();	
+        	$sql = "DELETE FROM cliente WHERE id=:id";
+			$stmt = $dbh->prepare($sql);
+			$stmt->bindParam(":id",$id);
+			if(!$stmt){
+				throw new Exception("Error. no se logro eliminar a cliente");
+			}else{
+				$stmt->execute();
+			}
+		}
+	
+		//Elimina un profesional
+		public function eliminarProfesional($id){
+			$conexion = new Conexion();
+			$dbh = $conexion->get_conexion();	
+        	$sql = "DELETE FROM profesional WHERE id=:id";
+			$stmt = $dbh->prepare($sql);
+			$stmt->bindParam(":id",$id);
+			if(!$stmt){
+				throw new Exception("Error. no se logro eliminar a cliente");
+			}else{
+				$stmt->execute();
+			}
+		}
+
 		//Todas kas funciones get del administrador 
 		public function getId(){
 			return $this->id;	
