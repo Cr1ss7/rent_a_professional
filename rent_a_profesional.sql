@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-08-2021 a las 20:48:27
+-- Tiempo de generación: 05-09-2021 a las 05:26:41
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -41,7 +41,8 @@ CREATE TABLE `administrador` (
 --
 
 INSERT INTO `administrador` (`id`, `nombre`, `apellido`, `correo`, `contrasena`, `fechaNac`) VALUES
-(3, 't', 't', 't@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '2021-08-02');
+(3, 't', 't', 't@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '2021-08-02'),
+(8, 'jose', 'pepe', 'uno@gmail.com', 'b59c67bf196a4758191e42f76670ceba', '2021-08-16');
 
 -- --------------------------------------------------------
 
@@ -56,15 +57,6 @@ CREATE TABLE `archivos` (
   `idchat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `archivos`
---
-
-INSERT INTO `archivos` (`id`, `nombre`, `extencion`, `idchat`) VALUES
-(1, 'casa', '.jpg', 4),
-(2, 'Poema amorso', '.pdf', 2),
-(3, 'Agregado del poema romantico', '.pdf', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -76,16 +68,6 @@ CREATE TABLE `chat` (
   `idprofesional` int(11) NOT NULL,
   `idcliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `chat`
---
-
-INSERT INTO `chat` (`id`, `idprofesional`, `idcliente`) VALUES
-(3, 1, 1),
-(2, 1, 2),
-(1, 1, 3),
-(4, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -110,7 +92,8 @@ INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `correo`, `contrasena`, `fech
 (1, 'Ruben', 'Alvarado', 'rubensin@gmail.com', '2222', '0000-00-00'),
 (2, 'Juan', 'salvatore', 'salvado@gmail.com', '4444', '0000-00-00'),
 (3, 'Rion', 'Juanson', 'rayon@gmail.com', '9999', '0000-00-00'),
-(4, 'pepe', 'setch', 'victor@gmail.com', 'b59c67bf196a4758191e42f76670ceba', '2021-08-18');
+(5, 'Cristin', 'Pineda', 'hola@gmail.com', 'e58aea67b01fa747687f038dfde066f6', '2021-08-08'),
+(8, 'Pineda', 'Campos', 'pineda@gmail.com', 'b59c67bf196a4758191e42f76670ceba', '2021-09-15');
 
 -- --------------------------------------------------------
 
@@ -133,7 +116,9 @@ CREATE TABLE `curri` (
 INSERT INTO `curri` (`id`, `direccion`, `nombre`, `extension`, `idProfesional`) VALUES
 (1, '', 'ALICIA RAMIREZ, CURRRICULUM VITAE', '.pdf', 1),
 (2, '', 'Curriculum Vitae', '.pdf', 3),
-(3, '', 'Ornn-Curriculum', '.docx', 2);
+(3, '', 'Ornn-Curriculum', '.docx', 2),
+(4, '../uploads/52', 'CARTA SERVICIO SOCIAL 2020 final.docx', 'docx', 52),
+(5, '../uploads/53', 'Sostenibilidad y globalizacion.pdf', 'pdf', 53);
 
 -- --------------------------------------------------------
 
@@ -148,15 +133,6 @@ CREATE TABLE `mensaje` (
   `idprofesional` int(11) DEFAULT NULL,
   `idcliente` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `mensaje`
---
-
-INSERT INTO `mensaje` (`id`, `mensaje`, `idchat`, `idprofesional`, `idcliente`) VALUES
-(1, 'Hola, cuanto es el precio que estas pagando por ese trabajo?', 4, NULL, NULL),
-(2, 'pues fijate que pago 50$ ', 4, NULL, NULL),
-(3, 'Vale me interesa tomar el trabajo', 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -186,7 +162,9 @@ INSERT INTO `profesional` (`id`, `nombre`, `apellido`, `correo`, `contrasena`, `
 (32, 'Cristian', 'Pineda', 'cristian@a.com', 'e58aea67b01fa747687f038dfde066f6', 'Doctor', '2021-06-30', NULL),
 (49, 'a', 'a', 'a@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'Diseñador', '2021-08-19', NULL),
 (50, 'Victor', 'reyna', 'culero@gmail.com', 'e58aea67b01fa747687f038dfde066f6', 'Desarrollador de Software', '2003-08-23', NULL),
-(51, 'r', 'r', 'r@r.com', 'b59c67bf196a4758191e42f76670ceba', 'Diseñador', '2021-08-03', NULL);
+(51, 'r', 'r', 'r@r.com', 'b59c67bf196a4758191e42f76670ceba', 'Diseñador', '2021-08-03', NULL),
+(52, 'Victor', 'Eduardp', 'reyna@gmail.com', 'e58aea67b01fa747687f038dfde066f6', 'Desarrollador de Software', '2021-08-05', NULL),
+(53, 'pipi', 'popo', 'xs@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'Diseñador', '2021-08-09', NULL);
 
 -- --------------------------------------------------------
 
@@ -198,7 +176,7 @@ CREATE TABLE `publicaciones` (
   `id` int(11) NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `descripcion` varchar(500) NOT NULL,
-  `nomProfesion` varchar(50) NOT NULL,
+  `precio` varchar(10) NOT NULL,
   `idcliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -206,10 +184,8 @@ CREATE TABLE `publicaciones` (
 -- Volcado de datos para la tabla `publicaciones`
 --
 
-INSERT INTO `publicaciones` (`id`, `titulo`, `descripcion`, `nomProfesion`, `idcliente`) VALUES
-(1, 'Pintura Realista', 'Necesito que me pinten una casa de forma realista', 'Pintor', 1),
-(2, 'html para pagína web', 'necesito la ayuda de un maquetador de paginas web, ya que mi proyecto necesita ser maquetado y quiero a un profesional haciendolo', 'Maquetador web', 3),
-(3, 'Un Poema bonito', 'Necesito que me escriban un poema bonito para regalarsela a mi pareja, quiero que aborde la naturaleza.', 'Escritor', 2);
+INSERT INTO `publicaciones` (`id`, `titulo`, `descripcion`, `precio`, `idcliente`) VALUES
+(4, 'pagina web', 'Quiero una pagina web sobre una red social', '500.99', 5);
 
 --
 -- Índices para tablas volcadas
@@ -269,7 +245,6 @@ ALTER TABLE `profesional`
 --
 ALTER TABLE `publicaciones`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `nomProfesion` (`nomProfesion`),
   ADD KEY `idcliente` (`idcliente`);
 
 --
@@ -280,7 +255,7 @@ ALTER TABLE `publicaciones`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `archivos`
@@ -298,13 +273,13 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `curri`
 --
 ALTER TABLE `curri`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `mensaje`
@@ -316,13 +291,13 @@ ALTER TABLE `mensaje`
 -- AUTO_INCREMENT de la tabla `profesional`
 --
 ALTER TABLE `profesional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
