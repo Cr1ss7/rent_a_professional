@@ -1,0 +1,401 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'M PLUS 1p', sans-serif;
+}
+body{
+     background-image: linear-gradient(145deg,#FF0A12,#00F5F9,#FF0A12,#00F5F9);
+    background-size: 500%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+/*Botón y nombre de Usuario*/
+.header{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0px 100px;
+}
+.header2{
+    display: none;
+}
+/*Nombre de Usuario*/
+.nombreUsuario{
+    margin-right: auto;
+    text-align: left;
+    color: white;
+    background-color: transparent;
+    font-weight: lighter;
+    font-size: 23px;
+    padding: 15px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+/*Boton de cerrar sesion*/
+.endSesion{
+    height: 50px;
+    width: 150px;
+    margin-top: 6px;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    color: white;
+    border: 1px solid white;
+    font-size: 20px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+.endSesion a{
+    color: white;
+    text-decoration: none;
+}
+.endSesion2{
+    display: none;
+}
+
+/*Barra de navegacion*/
+/*Fondo y medidas de la barra de navegación*/
+.nav-toggle{
+    display: none;
+}
+.navigationBar{
+    height: auto;
+    width: auto;
+    background-color: #fcfcfc;
+    height: 50px;
+    margin: 0px 100px;
+    padding: 0px 10px 0px;
+    border-radius: 3px;
+}
+/*Configuración responsive general de todos los botones de la barra de navegación*/
+.navButtons{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    width: auto;
+    margin: auto;
+}
+/*Eliminación de las apariencias de "link"*/
+.links{
+    text-decoration: none;
+}
+/*Boton activo en la barra de navegación*/
+.buttonActive{
+    color: black;
+    margin: 10px 25px;
+    height: 37px;
+    font-size: 18px;
+    font-weight: bold;
+    width: max-content;
+    color: #f8881f;
+    border-bottom: 3px solid #f8881f;
+    transition: .2s;
+    cursor: pointer;
+}
+/*Efecto de hover(cambio de color en los botones no activos)*/
+.buttons:hover{
+    color: #f8881f;
+    border-bottom: 3px solid #f8881f;
+    transition: .2s;
+}
+/*Conficugracion del botón activo*/
+.buttons{
+    color: black;
+    margin: 10px 25px;
+    height: 37px;
+    font-size: 18px;
+    font-weight: bold;
+    width: max-content;
+}
+.container{
+    margin: 0px 100px;
+    padding: 20px 0px;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.contenido{
+    margin: 10px 0;
+    width: auto;
+    text-align: center;
+    border: 1px solid #fcfcfc;
+    border-radius: 3px;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+}
+.contenido h3{
+    font-weight: lighter;
+    font-size: 1.5em;
+    color: white;
+}
+.cambios{
+    margin: 20px auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.nuevoCorreo{
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 1.3em;
+    border: 1px solid #fcfcfc;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    font-weight: lighter;
+    outline: none;
+}
+.modificarDatos{
+    width: 100%;
+    margin: 10px 10px;
+    padding: 10px;
+    font-size: 1.3em;
+    border: 1px solid #fcfcfc;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    font-weight: lighter;
+    outline: none;
+}
+::placeholder { color: gray; }
+/*Media query's para responsividad*/
+/*Para tablets*/
+@media only screen and (min-width: 981px) and (max-width: 1200px){
+    *{
+        overflow: hidden;
+    }
+    .containerKing{
+        width: 100%;
+        margin: 25% auto;
+    }
+    .header{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0px 20px;
+    }
+    .header2{
+        display: none;
+    }
+    .endSesion2{
+        display: none;
+    }
+    .navigationBar{
+        height: auto;
+        width: auto;
+        background-color: #fcfcfc;
+        height: 50px;
+        margin: 0px 20px;
+        padding: 0px 10px 0px;
+        border-radius: 3px;
+    }
+    .continerKing{
+        width: 100%;
+        margin: 35% auto;
+    }
+    .container{
+        margin: 0 20px;
+    }
+    .cambios{
+        width: 100%;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+    .cambios input{
+        width: 90%;
+    }
+    .modificarDatos{
+        margin: 10px auto;
+    }
+}
+@media only screen and (min-width: 701px) and (max-width: 980px){
+    *{
+        overflow: hidden;
+    }
+    .containerKing{
+        width: 100%;
+        margin: 15% auto;
+    }
+    .header{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0px 10px;
+    }
+    .header2{
+        display: none;
+    }
+    .endSesion2{
+        display: none;
+    }
+    .navigationBar{
+        height: auto;
+        width: auto;
+        background-color: #fcfcfc;
+        height: 50px;
+        margin: 0px 10px;
+        padding: 0px 10px 0px;
+        border-radius: 3px;
+    }
+    .continerKing{
+        width: 100%;
+        margin: 35% auto;
+    }
+    .container{
+        margin: 0 20px;
+    }
+    .cambios{
+        width: 100%;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+    .cambios input{
+        width: 90%;
+    }
+    .modificarDatos{
+        margin: 10px auto;
+    }
+}        
+/*Para telefonos*/
+@media only screen and (min-width: 280px) and (max-width: 700px){
+    *{
+        overflow-y: scroll;
+    }
+    .header{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0px 10px;
+        display: none;
+    }
+    .header2{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0px 10px;
+    }
+    .nav-toggle{
+        overflow: hidden;
+        display: block;
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+        border: none;
+        background-color: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        padding: 0 20px;
+        line-height: 60px;
+        float: left;
+        color: white;
+        padding-right: 100%;
+        padding-left: 10px;
+    }
+    .navButtons{
+        overflow: hidden;
+        flex-direction: column;
+        margin-top: 48px;
+        background-color: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        align-items: center;
+        position: fixed;
+        left: 100%;
+        top: 0px;
+        width: 100%;
+        padding: 20px 0;
+        height: calc(100% - 0px);
+        transition: left 0.2s;
+        overflow-y: auto;
+    }
+    .nav-menu_visible {
+        left: 0;
+    }
+   /*Nombre de Usuario*/
+   .nombreUsuario{
+    margin-right: auto;
+    margin-top: 65px;
+    text-align: left;
+    color: white;
+    background-color: transparent;
+    font-weight: lighter;
+    font-size: 18px;
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    }
+    /*Boton de cerrar sesion*/
+    .endSesion{
+        height: 50px;
+        width: 150px;
+        margin-top: 60px;
+        margin-bottom: 10px;
+        background-color: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        color: white;
+        font-size: 18px;
+        border-color: white;
+        border-radius: 3px;
+        outline: none;
+        cursor: pointer;
+        display: none;
+    }
+    .endSesion2{
+        height: 50px;
+        width: 100%;
+        margin: 20px auto;
+        margin-bottom: 0;
+        background-color: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        color: white;
+        font-size: 18px;
+        border: 1px solid #fcfcfc;
+        border-radius: 3px;
+        outline: none;
+        cursor: pointer;
+        display: block;
+    }
+    .endSesion2 a{
+        color: white;
+        text-decoration: none;
+        font-weight: lighter;
+    }
+    .navigationBar{
+        height: auto;
+        width: auto;
+        background-color: rgba(255,255,255,0.1);
+        /*backdrop-filter: blur(15px);*/
+        height: 50px;
+        margin: 0px;
+        padding: 0px;
+        border-radius: 3px;
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+        z-index: 1;
+        position: fixed;
+    }
+    .continerKing{
+        width: 100%;
+        margin: 35% auto;
+    }
+    .container{
+        margin: 0 20px;
+    }
+    .cambios{
+        width: 100%;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+    .cambios input{
+        width: 90%;
+    }
+    .modificarDatos{
+        margin: 10px auto;
+    }
+}

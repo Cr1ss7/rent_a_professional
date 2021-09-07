@@ -1,0 +1,121 @@
+*{
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    font-family: 'M PLUS 1p', sans-serif;
+}
+body{
+    background-image: linear-gradient(140deg,#B30917, #B30917, #B30917,#DB7D0A,#DB7D0A,#DB7D0A);
+    background-size: 500%;
+    background-repeat: no-repeat;
+    background-size: cover;
+ margin: 0;
+ padding: 0;
+ width: 100%;
+ min-height: 100vh;
+ max-width: 100%;
+ background-position: center;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.containerRegisPro{
+	background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 1px 7px 15px rgba(0,0,0,0.6);
+    border: 1px solid white;
+	padding: 20px;
+	border-radius: 3px;
+    align-content: center;
+}
+.containerRegisPro .texto{
+    color: white;
+	font-size: 1.2em;
+    font-weight: lighter;
+    text-align: center;
+}
+header{
+	border-bottom: 1px solid white;
+	padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.formPro{
+    margin: auto;
+    height: auto;
+}
+
+/*boton de agregar documento*/
+.input-file {
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border: 1px solid white;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto 0;
+    min-height: 15px;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    width: 480px;
+    margin-top: 30px;
+  }
+  
+  .custom-input-file .input-file {
+   border: 10000px solid transparent;
+   cursor: pointer;
+   font-size: 10000px;
+   margin: 0;
+   opacity: 0;
+   outline: 0 none;
+   padding: 0;
+   position: absolute;
+   right: -1000px;
+   top: -1000px;
+  }
+
+  .enviar{
+    text-decoration: none;
+    padding: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 15px;
+    color: #ffffff;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border: 1px solid white;
+    cursor: pointer;
+  }
+  .enviar:hover{
+    color: white;
+    background-color: cornflowerblue;
+  }
+
+
+
+
+
+
+/*Media query's para responsividad*/
+/*Para tablets*/
+@media only screen and (min-width: 981px) and (max-width: 1500px){
+    .containerRegisPro{
+        width: 50%;
+        padding: 20px;
+    }
+}
+@media only screen and (min-width: 701px) and (max-width: 980px){
+    .containerRegisPro{
+        width: 50%;
+        padding: 5px;
+    }
+}
+/*Para telefonos*/
+@media only screen and (min-width: 280px) and (max-width: 700px){
+    .containerRegisPro{
+        width: 80%;
+        padding: 5px;
+    }
+}

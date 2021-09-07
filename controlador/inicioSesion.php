@@ -14,7 +14,7 @@
 	if(isset($_SESSION['profesional'])){
 		//echo "hay sesion de un profecional";
 		$prof->setProfesional($userSession->getCurrentProfesional());
-		include_once '../vistas/vis.perfilProfesional.php';
+		header("location: ../vistas/vis.perfilProfesional.php");
 	}elseif(isset($_SESSION['cliente'])){
 		$clnt->setCliente($userSession->getCurrentCliente());
 		header('location: ../vistas/vis.perfilCliente.php');

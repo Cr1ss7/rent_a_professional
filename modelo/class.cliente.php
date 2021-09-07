@@ -111,6 +111,53 @@
 			}
 		}
 
+		//Modifica el nombre
+		public function modifyName($nombre,$apellido){
+			$conexion = new Conexion;
+			$dbh = $conexion -> get_conexion();
+			$sql = "Update cliente set nombre = :nombre, apellido = :apellido where id=:id";
+			$stmt= $dbh -> prepare($sql);
+			$stmt -> bindParam(":nombre",$nombre);
+			$stmt -> bindParam(":apellido",$apellido);
+			$stmt->bindParam(":id",$this->id);
+			if(!$stmt){
+				throw new Exception("Error al modificar datos");
+			}else{
+				$stmt -> execute();
+			}
+		}
+
+		//Modificar el correo
+		public function modifyEmail($correo){
+			$conexion = new Conexion;
+			$dbh = $conexion -> get_conexion();
+			$sql = "Update cliente set correo=:correo where id=:id";
+			$stmt= $dbh -> prepare($sql);
+			$stmt -> bindParam(":correo",$correo);
+			$stmt->bindParam(":id",$this->id);
+			if(!$stmt){
+				throw new Exception("Error al modificar datos");
+			}else{
+				$stmt -> execute();
+			}
+		}
+
+		//Modificar la contraseña
+		public function modifyPass($contrasena){
+			$md5pass = md5($contrasena);
+			$conexion = new Conexion;
+			$dbh = $conexion -> get_conexion();
+			$sql = "Update cliente set contrasena=:contrasena where id=:id";
+			$stmt= $dbh -> prepare($sql);
+			$stmt -> bindParam(":contrasena",$md5pass);
+			$stmt->bindParam(":id",$this->id);
+			if(!$stmt){
+				throw new Exception("Error al modificar datos");
+			}else{
+				$stmt -> execute();
+			}
+		}
+
 		//Todas la funciones get del cliente
 		public function getId(){
 			return $this->id;	

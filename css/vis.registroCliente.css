@@ -5,9 +5,11 @@
     font-family: 'M PLUS 1p', sans-serif;
 }
 body{
-    background-image: url("img/fondo2.jpg");
+    /*background-image: url("../img/fondo2.jpg");
 	background-repeat: no-repeat;
-   	background-size: cover;
+   	background-size: cover;*/
+    background-image: linear-gradient(140deg,#B30917, #B30917, #B30917,#DB7D0A,#DB7D0A,#DB7D0A);
+    background-size: 500%;
     margin: 0;
     padding: 0;
     width: 100%;

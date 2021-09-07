@@ -23,7 +23,8 @@
 	$curriculo->setRoute();
 	$mensajeDoc = $curriculo->docProfesional();		
 	move_uploaded_file($_FILES['curriculo']['tmp_name'],$dir.$id.'/'.$name);
-	echo $mensajeDoc;
+	echo "<script>alert('Su curriculum se ha subido correctamente, va a ser redirigido al inicio de sesión');</script>";
+	header("locationL: ../vistas/vis.inicioSesion.php");
 	}catch (Exception $e){
 		$e->getMessage();
 	}

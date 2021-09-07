@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/vis.registroProfesional.css">
+	<link rel="stylesheet" href="../css/vis.registroProfesional.css?v=<?php echo time();?>"/>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
     <title>Rent a Professional - RAP</title>
@@ -31,11 +31,7 @@
             </select></br>
             <input type="submit" name="enviar" value="Registrarse" class="registrarse"></br>
         </form>
-		<p>¿Tienes una cuenta? &nbsp;<a href="vis.inicioSesion.php" class="linked"> Inicia Sesión</a></p>
-		<p class="pa"><?php if(isset($errorLlenado)){
-				echo $errorLlenado; 
-			}?>
-		</p>
+        <a href="vis.inicioSesion.php" class="linked">¿Tienes una cuenta? Inicia Sesión</a>
     </div>
 </body>
 </html>
