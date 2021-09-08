@@ -14,16 +14,16 @@
         <header>
             <h2>Registro</h2>
         </header>
-        <form class="form" method="POST" action="../controlador/insertarCliente.php">
-        <input type="text" placeholder="Nombre" class="nombres" name="nombre" required>
-            <input type="text" placeholder="Apellido" class="apellidos" name="apellido" required>
-            <input type="email" placeholder="Correo Electrónico" class="e-mail" name="mail" required>
-            <input type="password" placeholder="Contraseña" class="password" name="pass" required>
-            <input type="password" placeholder="Verificar Contraseña" class="verf-password" name="passV" required>
-            <input type="date" class="date" name="fechaNac" required>
+        <form class="form">
+            <input type="text" placeholder="Nombre" class="nombres" required>
+            <input type="text" placeholder="Apellido" class="apellidos" required>
+            <input type="email" placeholder="Correo Electrónico" class="e-mail" required>
+            <input type="password" placeholder="Contraseña" class="password" required>
+            <input type="password" placeholder="Verificar Contraseña" class="verf-password" required>
+            <input type="date" class="date" required>
             <input type="submit" value="Registrarse" class="registrarse">
         </form>
-        <a href="vis.inicioSesion.php" class="linked">¿Tienes una cuenta? Inicia Sesión</a>
+        <a href="" class="linked">¿Tienes una cuenta? Inicia Sesión</a>
     </div>
 </body>
 </html>

@@ -124,6 +124,17 @@ class Administrador{
 			return $profesionales;
 		}
 
+		//Muestras el listado de los administradores
+		public function listadoAdmin(){
+            $conexion = new Conexion();
+            $dbh = $conexion->get_conexion();
+            $sql = "Select * from administrador order by id, nombre, apellido";
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute();
+            $administradores = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $administradores;
+        }
+
 		//Elimina un usuario
 		public function eliminarCliente($id){
 			$conexion = new Conexion();

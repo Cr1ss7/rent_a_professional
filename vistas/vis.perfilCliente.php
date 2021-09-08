@@ -14,12 +14,19 @@
         require_once('../modelo/class.cliente.php');
         require_once('../modelo/class.userSession.php');
 
-        $clnt = new Cliente();
-        $userSession = new userSession();
+		error_reporting(0);
 
-        if(isset($_SESSION['cliente'])){
+        $userSession = new userSession();
+		$id = $_GET['id'];
+
+        if(isset($_SESSION['cliente']) && !isset($id)){
+        	$clnt = new Cliente();
             $clnt->setCliente($userSession->getCurrentCliente());	
-        }else{
+        }elseif(isset($_SESSION['profesional']) && isset($id) || isset($_SESSION['cliente']) && isset($id)){
+			$clnt = new Cliente();
+			$clnt->mostrarPerfil($id);
+			$userV = true;
+		}else{
             header("location: ../vistas/vis.inicioSesion.php");
         }
 	?>
@@ -27,7 +34,7 @@
 <body>
     <div class="containerKing">
         <div class="header">
-		<h3 class="nombreUsuario">Bienvenido: <?php echo $clnt->getNombre(). " ". $clnt->getApellido();?></h3>
+		<h3 class="nombreUsuario"><?php if($userV != true) echo "Bienvenido:" ?> <?php echo $clnt->getNombre(). " ". $clnt->getApellido();?></h3>
             <button class="endSesion"><a href="../controlador/cerrarSesion.php">Cerrar Sesión</a></button>
         </div>
         <header class="encabezado">
@@ -65,7 +72,7 @@
                 <div class="contDetails">
                     <div class="contInfoTitulo">
                         <h2>Información de Contacto</h2>
-                        <a href="vis.menuModificacionDatos.php" class="edit">editar</a>
+			<?php if($userV != true) echo '<a href="vis.menuModificacionDatos.php" class="edit">editar</a>'?>
                     </div>
                     <div class="contName">
                         <h4>Nombre:</h4>

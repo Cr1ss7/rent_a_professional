@@ -152,6 +152,23 @@
 			}
 		}
 
+
+		//Muestra el perfil de profesionales ajenos
+		public function mostrarPerfil($id){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "Select * from profesional where id=:id";
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindParam(":id",$id);
+		$stmt->execute();
+		$data = $stmt->fetch(PDO::FETCH_ASSOC);
+		$this->nombre = $data['nombre'];
+		$this->apellido = $data['apellido'];
+		$this->correo = $data['correo'];
+		$this->fechaNac = $data['fecha_nac'];
+	}
+
+
 		//Todas kas funciones get del profesional
 		public function getId(){
 			return $this->id;	

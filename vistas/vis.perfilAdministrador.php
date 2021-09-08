@@ -13,7 +13,6 @@
 	<?php
         require_once('../modelo/class.conexion.php');
         require_once('../modelo/class.administrador.php');
-        require_once('../modelo/class.publicacion.php');
         require_once('../modelo/class.userSession.php');
 
 		error_reporting(0);
@@ -28,6 +27,7 @@
 		}elseif(isset($_SESSION['admin']) && isset($id)){
 			$adm = new Administrador();
 			$adm->mostrarPerfil($id);
+			$userV = true;
 		}else{
             header('location: ../vistas/vis.inicioSesion.php');
         }
@@ -36,7 +36,7 @@
 <body>
     <div class="containerKing">
         <div class="header">
-			<h3 class="nombreUsuario">Bienvenido: <?php echo $adm->getNombre(). ' ' .$adm->getApellido(); ?></h3>
+			<h3 class="nombreUsuario"><?php if($userV != true) echo "Bienvenido:" ?> <?php echo $adm->getNombre(). ' ' .$adm->getApellido(); ?></h3>
             <button class="endSesion"><a href="../controlador/cerrarSesion.php">Cerrar Sesión</a></button>
         </div>
         <header class="encabezado">
@@ -44,7 +44,7 @@
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
                     <a href="#" class="links"><li class="buttonActive">Información General</li></a>
-                    <a href="vis.listadoAdministrador.html" class="links"><li class="buttons">Administradores</li></a>
+                    <a href="vis.listadoAdministrador.php" class="links"><li class="buttons">Administradores</li></a>
                     <a href="#" class="links"><li class="buttons">Reportes</li></a>
                 </ul>
             </nav>

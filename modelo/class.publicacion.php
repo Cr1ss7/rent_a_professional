@@ -23,5 +23,7 @@ class Publicacion{
 		$apellido = $datos['apellido'];
 		return $nombre. " ". $apellido;
 	}
+
+	
 }
 ?>

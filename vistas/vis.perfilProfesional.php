@@ -16,12 +16,19 @@
         require_once('../modelo/class.profecional.php');
         require_once('../modelo/class.userSession.php');
 
-        $prof = new Profesional();
-        $userSession = new userSession();
+		error_reporting(0);
 
-        if(isset($_SESSION['profesional'])){
+        $userSession = new userSession();
+		$id = $_GET['id'];
+
+        if(isset($_SESSION['profesional']) && !isset($id)){
+        	$prof = new Profesional();
             $prof->setProfesional($userSession->getCurrentProfesional());	
-        }else{
+		}elseif(isset($_SESSION['profesional']) && isset($id) || isset($_SESSION['cliente']) && isset($id)){
+			$prof = new Profesional();
+			$prof->mostrarPerfil($id);
+			$userV = true;
+		}else{
             header("location: ../vistas/vis.inicioSesion.php");
         }
     ?>
@@ -29,15 +36,15 @@
 <body>
     <div class="containerKing">
         <div class="header">
-            <h3 class="nombreUsuario">Bienvenido: <?php echo $prof->getNombre(). ' ' .$prof->getApellido();; ?> </h3>
+            <h3 class="nombreUsuario"><?php if($userV != true) echo "Bienvenido:" ?> <?php echo $prof->getNombre(). ' ' .$prof->getApellido();; ?> </h3>
             <button class="endSesion"><a href="../controlador/cerrarSesion.php">Cerrar Sesión</a></button>
         </div>
         <header class="encabezado">
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
-                    <a href="#" class="links"><li class="buttons">Inicio</li></a>
-                    <a href="#" class="links"><li class="buttons">Chat</li></a>
+                    <a href="vistaPublicacionesPro.html" class="links"><li class="buttons">Inicio</li></a>
+                    <a href="vistaChatPro.html" class="links"><li class="buttons">Chat</li></a>
                     <a href="#" class="links"><li class="buttonActive">Perfil</li></a>
                 </ul>
             </nav>
@@ -89,7 +96,7 @@
                 <div class="contDetails">
                     <div class="contInfoTitulo">
                         <h2>Información de Contacto</h2>
-                        <a href="../vistas/vis.menuModificacionDatos.php" class="edit">editar</a>
+					<?php if($userV != true) echo '<a href="vis.menuModificacionDatos.php" class="edit">editar</a>'?>
                     </div>
                     <div class="contName">
                         <h4>Nombre:</h4>

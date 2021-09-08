@@ -158,6 +158,22 @@
 			}
 		}
 
+		//Muestra el perfil cliente a las demas personas
+		public function mostrarPerfil($id){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "Select * from cliente where id=:id";
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindParam(":id",$id);
+		$stmt->execute();
+		$data = $stmt->fetch(PDO::FETCH_ASSOC);
+		$this->nombre = $data['nombre'];
+		$this->apellido = $data['apellido'];
+		$this->correo = $data['correo'];
+		$this->fechaNac = $data['fechaNac'];
+	}
+
+
 		//Todas la funciones get del cliente
 		public function getId(){
 			return $this->id;	

@@ -36,7 +36,7 @@
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
-                <a href="vis.perfilAdministrador.php" class="links"><li class="buttons">Información General</li></a>
+                <a href="vis.perfilAdministrador.php" class="links"><li class="buttons">Perfil</li></a>
                 <a href="Reportes.php" class="links"><li class="buttons">Reportes</li></a>
                 <a href="#" class="links"><li class="buttonActive">Administradores</li></a>
                 </ul>
@@ -61,9 +61,9 @@
                 foreach($listado as $admins){
                     echo '<div class="admins">';
                     echo '<div class="contName">';
-                    $enlace = "<a class='nombre' href=../vistas/vis.ReadperfilProfesional.php?&id=".$admins['id'].">"."<h3>".$admins['nombre']." ".$admins['apellido']."</h3></a>";
+					$enlace = "<a class='nombre' href=../vistas/vis.perfilAdministrador.php?&id=".$admins['id'].">"."<h3>".$admins['nombre']." ".$admins['apellido']."</h3></a>";
                     echo  '<h4>Administrador: </h4>';
-                    echo  $enlace;
+					echo $enlace;
                    echo '</div>';
                    echo '<div><h4>ID:'.$admins['id'].'</h4><h4>'.$admins['correo'].'</h4></div><br/>';
                 echo '</div>';
