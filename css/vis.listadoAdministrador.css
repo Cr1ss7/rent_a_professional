@@ -2,20 +2,23 @@
     padding: 0;
     margin: 0;
     font-family: 'M PLUS 1p', sans-serif;
-    overflow: hidden;
+    
 }
 body{
-    /*background-image: url("../img/fondo2.jpg");
-	background-repeat: no-repeat;
-   	background-size: cover;*/
-       overflow: auto;
-       background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
-        overflow: auto ;
-       min-height: 100vh;
-       max-width: 100%;
-       background-position: center;
-       justify-content: center;
-       align-items: center;
+    overflow: auto;
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+     overflow: auto ;
+    min-height: 100vh;
+    max-width: 100%;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+div h5{
+    padding:0;
+    margin: 0;
+    display: flex;
 }
 /*Botón y nombre de Usuario*/
 .header{
@@ -117,88 +120,20 @@ body{
 }
 /*Contenedor Principal (almacena los demas contenedores)*/
 .container{
-    margin: 0px 100px;
+    margin: 0 auto;
     padding: 20px 0px;
     width: auto;
     height: auto;
     display: flex;
     justify-content: flex-end;
-}
-/*Contenedor con foto de perfil*/
-.container2{
-    display: inline-block;
-    width: 35%;
-    height: 705px;
-    margin-right: auto;
-    justify-content: flex-start;
-    align-items: center;
- 
-}
-.subContainer{
-    border: 1px solid #fcfcfc;
-    width: auto;
-    height: 50%;
-    background-color: rgba(255,255,255,0.2);
-    backdrop-filter: blur(15px);
-    border-radius: 3px;
-    color: White;
-    font-weight: lighter;
-    padding: 20px;
-}
-.contProfile{
-    display: flex;
-    width: 100%;
     flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-}
-.contenidoProfile{
-    margin: 0 auto;
-    margin-top: 30px;
-    width: min-content;
-    justify-content: space-evenly;
-}
-
-.fotoPerfil{
-    width: 180px;
-    height: 180px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-top: 0;
-    margin-left: 10px;
-    border-radius: 50%;
-}
-.submitFoto{
-    position: relative;
-    border: 1px solid white;
-    width: 87px;
-    margin: 0px 50px;
-}
-.contProfTit{
-    width: 100%;
-    margin-bottom: 20px;
-}
-.contProfTit h2{
-    font-weight: lighter;
-    padding: 0 5px 10px 0;
-    border-bottom: 1px solid #fcfcfc;
-}
-.profilePic{
-    width: 150px;
-    height: 150px;
-    border-radius: 5%;
-    border: 4px solid white;
-    color: white;
-    background: transparent;
-    text-align: center;
-    font-size: 20px;
 }
 /*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
 .contInfo{
-    margin-left: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
     padding: 20px;
-    width: 65%;
+    width: auto;
     height: 100%;
     border: 1px solid #fcfcfc;
     background-color: rgba(255,255,255,0.2);
@@ -210,25 +145,79 @@ body{
 }
 .contInfoTitulo h2{
     font-weight: lighter;
-    padding: 0 5px 10px 0;
 }
 .contInfoTitulo{
     display: flex;
     width: auto;
-    border-bottom: 1px solid #fcfcfc;
     justify-content: space-between;
 }
-.contName h4, .contLastN h4, .contEmail h4, .contDate h4, .aboutMe h4, .curriculum h4{
+.addAdmin{
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid white;
+    font-size: 1em;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.añadir{
+    text-decoration: none;
+    color: black;
+}
+.addAdmin a{
+    text-decoration: none;
+    color: black;
+}
+.addAdmin2{
+    display: none;
+}
+.admins{
+    border: 1px solid white;
+    border-radius: 3px;
+    width: auto;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    margin: 20px 100px;
+    padding: 20px;
+    width: auto;
+    padding: 20px;
+}
+.contName h4{
     color: #fcfcfc;
     font-weight: lighter;
     font-size: 20px;
 }
-.contName h3, .contLastN h3, .contEmail h3, .contDate h3{
+.contName{
+    display: flex;
+    margin: 0px auto;
+}
+
+.contName h3{
+    margin-left: 10px;
+}
+.contName h3{
     color: black;
     font-weight: bold;
 }
-.contName, .contLastN, .contEmail, .contDate, .curriculum{
+.contNameF{
+    display: flex;
+    margin: 0px auto;
     padding: 10px;
+}
+.contNameF h4{
+    color: #fcfcfc;
+    font-weight: lighter;
+    font-size: 20px;
+}
+.contNameF h3{
+    margin-left: 10px;
+}
+.contNameF h3{
+    color: black;
+    font-weight: bold;
 }
 /*Media query's para responsividad*/
 /*Para tablets*/
@@ -238,7 +227,7 @@ body{
     }
     .containerKing{
         width: 100%;
-        margin: 25% auto;
+        margin: 35% auto;
     }
     .header{
         display: flex;
@@ -268,7 +257,14 @@ body{
         display: flex;
         justify-content: flex-end;
     }
-    
+    .contInfo{
+        width: 95%;
+        margin: 0;
+    }
+    .admins{
+        width: 95%;
+        margin: 20px 0;
+    }
 }
 @media only screen and (min-width: 701px) and (max-width: 980px){
     *{
@@ -276,7 +272,7 @@ body{
     }
     .containerKing{
         width: 100%;
-        margin: 15% auto;
+        margin: 30% auto;
     }
     .header{
         display: flex;
@@ -306,27 +302,13 @@ body{
         display: flex;
         justify-content: flex-end;
     }
-    .rating{
-        position: relative;
-        display: flex;
-        margin: 60px 0px;
-        margin-bottom: 20px;
-        justify-content: flex-start;
-        align-items: center;
+    .contInfo{
+        width: 94%;
+        margin: 0;
     }
-    .rating label img{
-        height: 40px; 
-        width: 40px;
-    }
-    .rating label h4{
-        color: #fff;
-        font-size: 10px;
-        padding-top: 10px;
-        font-weight: bold;
-        white-space: nowrap;
-        opacity: 0;
-        transform: translateY(-50px) scale(0);
-        transition: 0.5s;
+    .admins{
+        width: 94%;
+        margin: 20px 0;
     }
 }
 /*Para telefonos*/
@@ -437,6 +419,28 @@ body{
         color: white;
         text-decoration: none;
         font-weight: lighter;
+        font-size: 1.2em;
+    }
+    .addAdmin2{
+        height: 50px;
+        width: 100%;
+        margin: 20px auto;
+        margin-bottom: 0;
+        background-color: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        color: white;
+        font-size: 18px;
+        border: 1px solid #fcfcfc;
+        border-radius: 3px;
+        outline: none;
+        cursor: pointer;
+        display: block;
+    }
+    .addAdmin2 a{
+        color: white;
+        text-decoration: none;
+        font-weight: lighter;
+        font-size: 1.2em;
     }
     .navigationBar{
         height: auto;
@@ -462,93 +466,22 @@ body{
         flex-direction: column;
         justify-content: flex-end;
         overflow: hidden;
-    }
-    /*Contenedor con foto de perfil*/
-    .container2{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: max-content;
-        margin-right: auto;
-        justify-content: flex-start;
-        align-items: center;
-    }
-    .subContainer{
-        border: 1px solid #fcfcfc;
+    }  
+    .addAdmin{
+        display: none;
+    }  
+    .admins{
         width: 87%;
-        height: 50%;
-        background-color: rgba(255,255,255,0.2);
-        backdrop-filter: blur(15px);
-        border-radius: 3px;
-        color: White;
-        font-weight: lighter;
-        padding: 20px;
+        margin: 20px auto;
+        margin-bottom: 0px;
     }
-    .contProfile{
-        display: flex;
-        width: 100%;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-    .contenidoProfile{
-        margin: 0 auto;
-        width: min-content;
-        justify-content: space-evenly;
-    }
-    .contFormProfile{
-        margin: 0 auto;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-    }
-    .fotoPerfil{
-        width: 130px;
-        height: 130px;
-        margin: 0 auto;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        margin-top: 0;
-        margin-left: 10px;
-        border-radius: 50%;
-    }
-    .submitFoto{
-        position: relative;
-        border: 1px solid white;
-        width: 86px;
-        margin: 0px auto;
-        margin-top: 10px;
-    }
-    .contProfTit{
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .contProfTit h2{
-        font-weight: lighter;
-        padding: 0 5px 10px 0;
-        border-bottom: 1px solid #fcfcfc;
-    }
-    .profilePic{
-        width: 150px;
-        height: 150px;
-        border-radius: 5%;
-        border: 4px solid white;
-        color: white;
-        background: transparent;
-        text-align: center;
-        font-size: 20px;
-    }
-    
     /*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
     .contInfo{
         margin: 0px auto;
-        margin-top: 20px;
+        margin-top: 0px;
         padding: 20px;
         width: 87%;
         height: 100%;
-        border: 1px solid #fcfcfc;
         background-color: rgba(255,255,255,0.2);
         backdrop-filter: blur(15px);
         border-radius: 3px;
@@ -558,20 +491,12 @@ body{
     }
     .contInfoTitulo h2{
         font-weight: lighter;
-        padding: 0 5px 10px 0;
+        font-size: 1.5em;
+        padding: 0 5px 0 0;
     }
     .contInfoTitulo{
         display: flex;
         width: auto;
-        border-bottom: 1px solid #fcfcfc;
         justify-content: space-between;
-    }
-    .edit{
-        padding: 0 5px 10px 0;
-        background-color: transparent;
-        border: none;
-        color: darkblue;
-        font-weight: bold;
-        outline: none;
     }
 }

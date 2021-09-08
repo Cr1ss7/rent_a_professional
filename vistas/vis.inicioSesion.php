@@ -31,7 +31,7 @@
 			?>
            <div class="flex4">
                <p>si aun no te registras: </p>
-               <a href="vis.registroProfesional.php"> Registrate</a>
+               <a href="../index.html"> Registrate</a>
            </div>
           
 		</div>

@@ -36,8 +36,8 @@
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
-                    <a href="vistaPublicacionesPro.html" class="links"><li class="buttons">Inicio</li></a>
-                    <a href="vistaChatPro.html" class="links"><li class="buttons">Chat</li></a>
+                    <a href="#" class="links"><li class="buttons">Inicio</li></a>
+                    <a href="#" class="links"><li class="buttons">Chat</li></a>
                     <a href="#" class="links"><li class="buttonActive">Perfil</li></a>
                 </ul>
             </nav>

@@ -21,7 +21,7 @@ try{
 	$userSession = new userSession();
 	$clnt->setCliente($mail);
 	$userSession->setCurrentCliente($mail);
-	echo "</br><a href='../vistas/vis.inicioSesion.php'>Iniciar sesión</a>";
+	header ('location: ../vistas/vis.perfilCliente.php');
 
 }catch(Exception $e){
 	$errorReg = $e->getMessage();
