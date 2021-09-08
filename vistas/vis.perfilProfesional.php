@@ -118,7 +118,7 @@
                     </div>
                     <div class="curriculum">
                         <h4>Curriculum:</h4>
-						<?php echo "<h2 class'curri'><a href='". $doc->getDocNombre($prof->getId()). "'>Ver Curriculo</a></h2>"; ?>
+						<?php echo "<h2 class'curri'><a href='". $doc->getDocNombre($prof->getId()). "' target='_blank'>Ver Curriculo</a></h2>"; ?>
                     </div>
                 </div>          
             </div>
