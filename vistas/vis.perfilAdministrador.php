@@ -13,15 +13,22 @@
 	<?php
         require_once('../modelo/class.conexion.php');
         require_once('../modelo/class.administrador.php');
+        require_once('../modelo/class.publicacion.php');
         require_once('../modelo/class.userSession.php');
 
-        $adm = new Administrador();
+		error_reporting(0);
+
         $userSession = new userSession();
+		$id = $_GET['id'];
 
         //verifica si la sesion esta iniciada
-        if(isset($_SESSION['admin'])){
+        if(isset($_SESSION['admin']) && !isset($id)){
+        	$adm = new Administrador();
             $adm->setAdm($userSession->getCurrentAdm());	
-        }else{
+		}elseif(isset($_SESSION['admin']) && isset($id)){
+			$adm = new Administrador();
+			$adm->mostrarPerfil($id);
+		}else{
             header('location: ../vistas/vis.inicioSesion.php');
         }
 	?>
@@ -36,9 +43,9 @@
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
-                <a href="" class="links"><li class="buttonActive">Perfil</li></a>
-                <a href="Reportes.php" class="links"><li class="buttons">Reportes</li></a>
-                <a href="vis.listadoAdministrador.php" class="links"><li class="buttons">Administradores</li></a>
+                    <a href="#" class="links"><li class="buttonActive">Información General</li></a>
+                    <a href="vis.listadoAdministrador.html" class="links"><li class="buttons">Administradores</li></a>
+                    <a href="#" class="links"><li class="buttons">Reportes</li></a>
                 </ul>
             </nav>
         </header>
