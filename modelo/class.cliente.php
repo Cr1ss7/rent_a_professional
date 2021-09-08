@@ -170,7 +170,7 @@
 		$this->nombre = $data['nombre'];
 		$this->apellido = $data['apellido'];
 		$this->correo = $data['correo'];
-		$this->fechaNac = $data['fechaNac'];
+		$this->fechaNac = $data['fecha_nac'];
 	}
 
 

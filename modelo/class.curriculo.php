@@ -9,7 +9,7 @@ class Curriculo{
 	private $route;
 
 	//funcion constructor para la verificacion de las variables
-	public function __construct($id,$name,$ext){
+	public function veriCurri($id,$name,$ext){
 		if(strlen($name)>0 && strlen($ext)>0){
 			$this->id = $id; 
 			$this->nombre = $name;
@@ -50,6 +50,17 @@ class Curriculo{
 		return $this->route;
 	}
 	
+	public function getDocNombre($id){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "select * from curri where idProfesional=:id";
+		$stmt = $dbh->prepare($sql); 	
+		$stmt->bindParam(":id",$id);
+		$stmt->execute();
+		$data = $stmt->fetch(PDO::FETCH_ASSOC); 
+		$docRoute = $data['direccion']. "/". $data['nombre'];
+		return $docRoute;
+	}
 	
 }
 ?>

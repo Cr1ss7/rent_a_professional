@@ -14,10 +14,12 @@
     <?php
         require_once('../modelo/class.conexion.php');
         require_once('../modelo/class.profecional.php');
+        require_once('../modelo/class.curriculo.php');
         require_once('../modelo/class.userSession.php');
 
 		error_reporting(0);
 
+		$doc = new Curriculo();
         $userSession = new userSession();
 		$id = $_GET['id'];
 
@@ -116,7 +118,7 @@
                     </div>
                     <div class="curriculum">
                         <h4>Curriculum:</h4>
-                        <input type="file">
+						<?php echo "<h2 class'curri'><a href='". $doc->getDocNombre($prof->getId()). "'>Ver Curriculo</a></h2>"; ?>
                     </div>
                 </div>          
             </div>

@@ -19,7 +19,8 @@
 	$tmp = $_FILES['curriculo']['tmp_name'];
 
 	try{
-	$curriculo = new Curriculo($id,$name, $ext);
+	$curriculo = new Curriculo();
+	$curriculo->veriCurri($id,$name, $ext);
 	$curriculo->setRoute();
 	$mensajeDoc = $curriculo->docProfesional();		
 	move_uploaded_file($_FILES['curriculo']['tmp_name'],$dir.$id.'/'.$name);

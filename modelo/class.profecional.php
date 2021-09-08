@@ -162,6 +162,7 @@
 		$stmt->bindParam(":id",$id);
 		$stmt->execute();
 		$data = $stmt->fetch(PDO::FETCH_ASSOC);
+		$this->id = $data['id'];
 		$this->nombre = $data['nombre'];
 		$this->apellido = $data['apellido'];
 		$this->correo = $data['correo'];

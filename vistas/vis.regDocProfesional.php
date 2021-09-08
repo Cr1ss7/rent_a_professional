@@ -14,8 +14,8 @@
             <h2 class="texto">Añadir Documento</h2>
         </header>
         <form method="POST" action="../controlador/insertarCurriculo.php" enctype="multipart/form-data">
-             <p class="texto">Hola querido Usuario, en este  apartado, en el botón "Elegir archivo" al oprimirlo  seleccionaras tu documento que demuestre tu experiencia laboral. </p>
-                <input type="file" name="curriculo" accept=".doc,.docx,.pdf" class="input-file" value="" onChange="onLoadImage(event.target.files)">
+             <p class="texto">Hola querido Usuario, en este  apartado, en el botón "Elegir archivo" al oprimirlo  seleccionaras tu documento que demuestre tu experiencia laboral. El documento tiene que ser en PDF obligatorio. </p>
+                <input type="file" name="curriculo" accept=".pdf" class="input-file" value="" onChange="onLoadImage(event.target.files)">
                 <input type="submit" value="Enviar" class="enviar"  required>
         </form>
     </div>
