@@ -124,18 +124,6 @@ class Administrador{
 			return $profesionales;
 		}
 
-
-		public function listadoAdmin(){
-			$conexion = new Conexion();
-			$dbh = $conexion->get_conexion();
-			$sql = "Select * from administrador order by id, nombre, apellido";
-			$stmt = $dbh->prepare($sql);
-			$stmt->execute();
-			$administradores = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			return $administradores;
-		}
-
-		
 		//Elimina un usuario
 		public function eliminarCliente($id){
 			$conexion = new Conexion();
@@ -163,6 +151,21 @@ class Administrador{
 				$stmt->execute();
 			}
 		}
+
+		//Muesta un perfil ajeno
+		public function mostrarPerfil($id){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "Select * from administrador where id=:id";
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindParam(":id",$id);
+		$stmt->execute();
+		$data = $stmt->fetch(PDO::FETCH_ASSOC);
+		$this->nombre = $data['nombre'];
+		$this->apellido = $data['apellido'];
+		$this->correo = $data['correo'];
+		$this->fechaNac = $data['fechaNac'];
+	}
 
 		//Todas kas funciones get del administrador 
 		public function getId(){
