@@ -46,6 +46,25 @@
 			}
 		}
 		
+		//Verifica si el correo ya esta en uso
+		public function searchProf($user){
+			$conexion = new Conexion();
+			$dbh = $conexion->get_conexion();
+			$sql = ('select * from profesional where correo = :correo');		
+			$stm = $dbh->prepare($sql);
+			$stm->bindParam(':correo',$user);
+			if(!$stm){
+				throw new Exception("Error al buscar al usuario");
+			}else{
+				$stm->execute();
+				if($stm->rowCount()){
+					return true;
+				}else{
+					return false;
+				}
+			}
+		}
+
 		//verifica si el profesional existe (inicio de sesion)
 		public function profesionalExt($user, $pass){
 			$md5pass = md5($pass);

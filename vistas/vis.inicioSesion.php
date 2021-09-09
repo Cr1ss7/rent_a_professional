@@ -30,8 +30,10 @@
 			}
 			?>
            <div class="flex4">
-               <p>si aun no te registras: </p>
-               <a href="vis.registroProfesional.php"> Registrate</a>
+               	<p>si aun no te registras: Registrate como</p>
+               	<a href="vis.registroProfesional.php"> Profesional</a>
+				<p>o como un</p>
+               	<a href="vis.registroCliente.php"> Cliente</a>
            </div>
           
 		</div>

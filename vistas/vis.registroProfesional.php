@@ -28,7 +28,8 @@
                 <option class="option">Doctor</option>
                 <option class="option">Diseñador</option>
                 <option class="option">Profesor</option>
-            </select></br>
+            </select></br></br>
+			<p class="linked"><?php if(isset($errorLlenado)) echo $errorLlenado?></p>
             <input type="submit" name="enviar" value="Registrarse" class="registrarse"></br>
         </form>
         <a href="vis.inicioSesion.php" class="linked">¿Tienes una cuenta? Inicia Sesión</a>

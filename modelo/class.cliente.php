@@ -44,6 +44,25 @@
 			}
 		}
 		
+		//Verifica si el correo ya esta en uso
+		public function searchClnt($user){
+			$conexion = new Conexion();
+			$dbh = $conexion->get_conexion();
+			$sql = ('select * from cliente where correo = :correo');		
+			$stm = $dbh->prepare($sql);
+			$stm->bindParam(':correo',$user);
+			if(!$stm){
+				throw new Exception("Error al buscar al usuario");
+			}else{
+				$stm->execute();
+				if($stm->rowCount()){
+					return true;
+				}else{
+					return false;
+				}
+			}
+		}
+
 		//Verifica si existe el cliente
 		public function clienteExt($user, $pass){
 			$md5pass = md5($pass);

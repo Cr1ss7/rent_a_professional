@@ -16,13 +16,17 @@ $fechaN = isset($_POST['fechaNac'])?$_POST['fechaNac']:"";
 try{
 	//Se verifican las variables
 	$clnt->veriCliente($name, $ape, $mail, $pass, $passV, $fechaN);
+	if(!$clnt->searchClnt($mail)){
 	$clnt->nuevoCliente();
 	//Se prepara la sesion
 	$userSession = new userSession();
 	$clnt->setCliente($mail);
 	$userSession->setCurrentCliente($mail);
-	echo "</br><a href='../vistas/vis.inicioSesion.php'>Iniciar sesión</a>";
-
+	header('location: ../vistas/vis.perfilCliente.php');
+	}else{
+		$errorReg = "El correo ya se encuentra en uso";
+		include_once '../vistas/vis.registroCliente.php';
+	}
 }catch(Exception $e){
 	$errorReg = $e->getMessage();
 	include_once '../vistas/vis.registroCliente.php';

@@ -6,6 +6,20 @@
 	<link rel="stylesheet" href="../css/vis.regDocProfesional.css?v=<?php echo time();?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+	<?php
+	require_once('../modelo/class.conexion.php');
+	require_once('../modelo/class.profecional.php');
+	require_once('../modelo/class.userSession.php');
+
+	$prof = new Profesional();
+	$userSession = new userSession();
+
+	if(isset($_SESSION['profesional'])){
+		$prof->setProfesional($userSession->getCurrentProfesional());
+	}else{
+		header('location: ../vistas/vis.inicioSesion.php');
+	}
+	?>
 </head>
 <body>
     <div class="containerRegisPro">

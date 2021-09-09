@@ -18,12 +18,17 @@
 
 	try{
 		$profesional->veriProfesional($nombre,$apellido,$correo,$pass,$pass2,$profesion,$fecha_nac);
-		$mensaje = $profesional->nuevoProfecional();
-		//sesion del usuario
-		$userSesion = new UserSession(); 
-		$profesional->setProfesional($correo);
-		$userSesion->setCurrentProfesional($correo);
-		include_once '../vistas/vis.regDocProfesional.php';
+		if(!$profesional->searchProf($correo)){
+			$mensaje = $profesional->nuevoProfecional();
+			//sesion del usuario
+			$userSesion = new UserSession(); 
+			$profesional->setProfesional($correo);
+			$userSesion->setCurrentProfesional($correo);
+			header('location: ../vistas/vis.regDocProfesional.php');
+		}else{
+			$errorLlenado = "El correo ya se encuentra en uso"; 
+			include_once '../vistas/vis.registroProfesional.php';
+		}
 	}catch(Exception $e){
 		$errorLlenado = $e->getMessage();
 		include_once '../vistas/vis.registroProfesional.php';
