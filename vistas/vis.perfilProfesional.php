@@ -75,46 +75,44 @@
                             <h2>Profesional</h2>
                         </div>
                         <div class="contenidoProfile">
-                            <div class="contFormProfile">
-                                                        
-                              <?php
-                              echo "<img src='".$resultadoFoto->Foto($prof->getId())."' width='300' heigth='100' class='fotoPerfil'>";
-                              if($userV == false){
-                              echo '<form action="../controlador/ctrlfotoProfesional.php" method="POST" enctype="multipart/form-data">
-                                 <br>
-                                <input type="file" name="foto" id="foto" class="bottonImage">
-                                <br>
-                                <input type="submit" name="enviar" value="Enviar" class="submitFoto">
-                                </form>';
-                              }
-                              ?> 
+                            <div class="contFormProfile">          
+                                <?php
+                                    echo "<img src='".$resultadoFoto->Foto($prof->getId())."' width='300' heigth='100' class='fotoPerfil'>";
+                                    if($userV == false){
+                                    echo '<form action="../controlador/ctrlfotoProfesional.php" method="POST" enctype="multipart/form-data">
+                                        <br>
+                                        <input type="file" name="foto" id="foto" class="bottonImage">
+                                        <br>
+                                        <input type="submit" name="enviar" value="Enviar" class="submitFoto">
+                                        </form>';
+                                    }
+                                ?> 
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="calification">
+                <!--<div class="calification">
                     <div class="rate">
                         <h2>Calificación:</h2>
                     </div>
                     <div class="rating">
-                        <!--<input type="radio" name="star" id="star1" checked="checked">-->
+                        <input type="radio" name="star" id="star1" checked="checked">
                         <label for="star1"><span class="fa fa-star" id="star" onclick="rate(this)"></span></label>
                         <input type="checkbox" value="1" id="star1" checked>
-                        <!--<input type="radio" name="star" id="star2">-->
+                        <input type="radio" name="star" id="star2">
                         <label for="star2"><span class="fa fa-star" id="star" onclick="rate(this)"></span></label>
 
-                        <!--<input type="radio" name="star" id="star3">-->
+                        <input type="radio" name="star" id="star3">
                         <label for="star3"><span class="fa fa-star" id="star" onclick="rate(this)"></span></label>
 
-                        <!--<input type="radio" name="star" id="star4">-->
+                        <input type="radio" name="star" id="star4">
                         <label for="star4"><span class="fa fa-star" id="star" onclick="rate(this)"></span></label>
 
-                        <!--<input type="radio" name="star" id="star5">-->
+                        <input type="radio" name="star" id="star5">
                         <label for="star5"><span class="fa fa-star" id="star" onclick="rate(this)"></span></label>
                     </div>
-                    <!--Script para validar el sistema de califiación-->
-                    <script></script>
-                </div>
+                    Script para validar el sistema de califiación
+                </div>-->
             </div>
             <div class="contInfo">
                 <div class="contDetails">
@@ -143,15 +141,15 @@
                         <?php echo "<h2 class'curri'><a href='". $doc->getDocNombre($prof->getId()). "' target='_blank'>Ver Curriculo</a></h2>"; ?>
                     </div>
                     <div>
-                    <?php
-                     if($userV != false){
-                            echo '<div class="containerHijo1">';
-                            echo '<button onclick="'."location.href='#popup'".'" class="publicar">Reportar</button>';
-                            echo '</div>';
-                    }
-                    ?>    
+                        <?php
+                            if($userV != false){
+                                echo '<div class="containerHijo1">';
+                                echo '<button onclick="'."location.href='#popup'".'" class="publicar">Reportar</button>';
+                                echo '</div>';
+                            }
+                        ?>    
                     </div>
-                    </div>
+                </div>
             </div>
             <form action="../controlador/ctrlReportes.php" method="post">
         <div id="popup" class="overlay">
