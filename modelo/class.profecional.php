@@ -6,9 +6,8 @@
 		private $pass;
 		private $profesion;
 		private $fechaNac;
-
 		private $id;
-
+		private $estado;
 		//verifica que los campos estan completos (Es para el registro)
 		public function veriProfesional($nombre, $apellido, $correo, $pass, $pass2, $profesion, $fechaNac){
 			if(strlen($nombre)>0 && strlen($apellido)>0 && strlen($correo)>0 && strlen($pass)>0 && strlen($pass2)>0 && strlen($fechaNac)>0 && strlen($profesion)>0){	
@@ -108,6 +107,22 @@
 				
 			}
 		}	
+
+		public function setId($user){
+			$modelo = new Conexion();
+			$conexion = $modelo->get_conexion();
+			$sql = 'select * from profesional where correo = :correo';
+			$stm = $conexion->prepare($sql);
+			$stm->bindParam(':correo',$user);
+			if(!$stm){
+				return 'Error al ejecutar el comando';
+			}else{
+				$stm->execute();
+				$currentUser = $stm->fetch(PDO::FETCH_ASSOC);
+				$this->id = $currentUser['id'];
+			}
+		}	
+
 		//Funcion desfasada
 		/*public function modificarPro($nombre,$apellido,$correo){
 			$conexion = new Conexion();
@@ -191,14 +206,14 @@
 
 
 		//Todas kas funciones get del profesional
-		public function getId(){
-			return $this->id;	
-		}
-		
 		public function getEstado(){
 			return $this->estado;	
 		}
-		
+
+		public function getId(){
+			return $this->id;	
+		}
+
 		public function getNombre(){
 			return $this->nombre;	
 		}

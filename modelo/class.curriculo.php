@@ -9,7 +9,7 @@ class Curriculo{
 	private $route;
 
 	//funcion constructor para la verificacion de las variables
-	public function veriCurri($id,$name,$ext){
+	public function setCurri($id,$name,$ext){
 		if(strlen($name)>0 && strlen($ext)>0){
 			$this->id = $id; 
 			$this->nombre = $name;
