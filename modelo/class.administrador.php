@@ -5,7 +5,6 @@ class Administrador{
 	private $correo;
 	private $pass;
 	private $fechaNac;
-
 	private $id;
 
 		//Verificacion de valores
@@ -66,7 +65,27 @@ class Administrador{
 		}
 
 		//Setea el administrador y todos sus datos
-		public function setAdm($user){
+        public function setAdm($user){
+            $conexion = new Conexion();
+            $dbh= $conexion->get_conexion();
+            $sql = 'select * from administrador where correo = :correo';
+            $stm = $dbh->prepare($sql);
+            $stm->bindParam(':correo',$user);
+            if(!$stm){
+                return 'Error al ejecutar el comando';
+            }else{
+                $stm->execute();
+                $currentUser = $stm->fetch(PDO::FETCH_ASSOC);
+                $this->id = $currentUser['id'];
+                $this->nombre = $currentUser['nombre'];
+                $this->apellido = $currentUser['apellido'];
+                $this->correo = $currentUser['correo'];
+                $this->fechaNac = $currentUser['fechaNac'];
+                $this->contador = $currentUser['contador'];
+            }
+        }
+
+		public function setId($user){
 			$conexion = new Conexion();
 			$dbh= $conexion->get_conexion();
 			$sql = 'select * from administrador where correo = :correo';
@@ -78,15 +97,11 @@ class Administrador{
 				$stm->execute();
 				$currentUser = $stm->fetch(PDO::FETCH_ASSOC);
 				$this->id = $currentUser['id'];
-				$this->nombre = $currentUser['nombre'];	
-				$this->apellido = $currentUser['apellido'];	
-				$this->correo = $currentUser['correo'];
-				$this->fechaNac= $currentUser['fechaNac'];
 			}
 		}	
 
 		//Metodo para modificar los datos
-		public function modificarAdm($nombre,$apellido,$correo){
+		/*public function modificarAdm($nombre,$apellido,$correo){
 			$conexion = new Conexion();
 			$dbh = $conexion->get_conexion();
 			$sql = "Update administrador set nombre=:nombre, apellido=:apellido, correo=:correo where id=:id";
@@ -100,7 +115,22 @@ class Administrador{
 			}else{
 				$stmt->execute();
 			}
-		}
+		}*/
+
+		public function modifyPass($contrasena){
+            $md5pass = md5($contrasena);
+            $conexion = new Conexion;
+            $dbh = $conexion -> get_conexion();
+            $sql = "UPDATE administrador SET contrasena=:contrasena WHERE id=:id";
+            $stmt= $dbh -> prepare($sql);
+            $stmt -> bindParam(":contrasena",$md5pass);
+            $stmt->bindParam(":id",$this->id);
+            if(!$stmt){
+                throw new Exception("Error al modificar datos");
+            }else{
+                $stmt -> execute();
+            }
+        }
 
 		//Muestra el listado de los clientes
 		public function listadoCliente(){
@@ -148,7 +178,37 @@ class Administrador{
 				$stmt->execute();
 			}
 		}
-	
+		
+		//Verifica la cantidad de veces que el Administrador a iniciado sesion
+        public function admCount(){
+            $conexion = new Conexion();
+            $dbh = $conexion->get_conexion();
+            //$contador == 0;
+            $sql = ("SELECT * FROM administrador WHERE contador = 0");
+            $stm = $dbh->prepare($sql);
+            if(!$stm){
+                return 'Error al ejecutar el comando';
+            }else{
+                $stm->execute();
+                $currentUser = $stm->fetch(PDO::FETCH_ASSOC);
+                $this->contador = $currentUser['contador'];
+            }
+        }
+
+        //Detecta la cantidad de veces que ha iniciado sesion el administrador
+        public function admAumento($correo){
+            $conexion = new Conexion();
+            $dbh = $conexion->get_conexion();
+            $sql = ("UPDATE administrador SET contador = 1 WHERE correo=:correo");
+            try{
+                $stmt = $dbh->prepare($sql);
+                $stmt->bindParam(':correo', $correo);
+                $stmt->execute();
+            }catch(PDOException $e){
+                echo "Error: ". $e->getMessage();
+            }
+        }
+		
 		//Elimina un profesional
 		public function eliminarProfesional($id){
 			$conexion = new Conexion();
@@ -178,6 +238,45 @@ class Administrador{
 		$this->fechaNac = $data['fechaNac'];
 	}
 
+	public function eliminarReporte($id){
+        $cn = new Conexion();
+        $dbh = $cn->get_conexion();
+        $sql = "DELETE FROM reportes WHERE id=:id";
+        try{
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':id',$id);
+            $stmt->execute();
+        }catch(PDOException $e){
+            echo "Error: ". $e->getMessage();
+        }
+    }
+
+	public function banearCliente($id){
+		$cn = new Conexion();
+        $dbh = $cn->get_conexion();
+        $sql = "UPDATE cliente SET estado=1 WHERE id=:id";
+        try{
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':id',$id);
+            $stmt->execute();
+        }catch(PDOException $e){
+            echo "Error: ". $e->getMessage();
+        }
+	}
+
+	public function banearPro($id){
+		$cn = new Conexion();
+        $dbh = $cn->get_conexion();
+        $sql = "UPDATE profesional SET estado=1 WHERE id=:id";
+        try{
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':id',$id);
+            $stmt->execute();
+        }catch(PDOException $e){
+            echo "Error: ". $e->getMessage();
+        }
+	}
+
 		//Todas kas funciones get del administrador 
 		public function getId(){
 			return $this->id;	
@@ -198,6 +297,10 @@ class Administrador{
 		public function getFechaNac(){
 			return $this->fechaNac;
 		}
+
+		public function getContador(){
+            return $this->contador;
+        }
 	}
 
 ?>
