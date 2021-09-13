@@ -17,7 +17,7 @@ if(isset($_SESSION['cliente'])){
 	try{
 		$clnt->datosPubli($titulo,$descripcion,$precio);
 		$clnt->nuevaPubli();
-		echo "publicacion exitosa";
+		header("location: ../vistas/vis.publicaciones.php");
 	}catch(Exception $e){
 		$errorDatos = $e->getMessage();
 		include '../vistas/vis.publicaciones.php';
