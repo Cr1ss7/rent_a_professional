@@ -5,8 +5,8 @@
 		private $correo;
 		private $pass;
 		private $fechaNac;
-
 		private $id;
+		private $estado;
 
 		//Se verifican que todos los campos estan completos (Es para el registro)
 		public function veriCliente($nombre, $apellido, $correo, $pass, $pass2, $fechaNac){
@@ -85,7 +85,6 @@
 		}
 
 		//Setea el cliente y todos sus datos
-		//Setea el cliente y todos sus datos
 		public function setCliente($user){
 			$modelo = new Conexion();
 			$conexion = $modelo->get_conexion();
@@ -103,6 +102,21 @@
 				$this->apellido = $currentUser['apellido'];
 				$this->fechaNac = $currentUser['fecha_nac'];
 				$this->estado = $currentUser['estado'];
+			}
+		}	
+
+		public function setId($user){
+			$modelo = new Conexion();
+			$conexion = $modelo->get_conexion();
+			$sql = 'select * from cliente where correo = :correo';
+			$stm = $conexion->prepare($sql);
+			$stm->bindParam(':correo',$user);
+			if(!$stm){
+				return 'Error al ejecutar el comando';
+			}else{
+				$stm->execute();
+				$currentUser = $stm->fetch(PDO::FETCH_ASSOC);
+				$this->id = $currentUser['id'];
 			}
 		}	
 
@@ -132,8 +146,6 @@
 			}
 		}
 
-		
-		
 		//Modifica el nombre
 		public function modifyName($nombre,$apellido){
 			$conexion = new Conexion;
@@ -217,7 +229,7 @@
 		public function getFechaNac(){
 			return $this->fechaNac;	
 		}
-		
+
 		public function getEstado(){
 			return $this->estado;	
 		}
