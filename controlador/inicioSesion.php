@@ -35,9 +35,9 @@
 				$prof->setProfesional($userForm);
 				$estado = $prof->getEstado();
 			if ($estado == "0"){
-				header('location: ../vistas/vis.perfilProfesional.php');
 				$userSession->setCurrentProfesional($userForm);
 				$prof->setProfesional($userForm);
+				header('location: ../vistas/vis.perfilProfesional.php');
 			}else{
 				$errorlogin = "Esta cuenta ha sido baneada";
 				include '../vistas/vis.inicioSesion.php';

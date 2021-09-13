@@ -20,7 +20,7 @@
 
 	try{
 	$curriculo = new Curriculo();
-	$curriculo->veriCurri($id,$name, $ext);
+	$curriculo->setCurri($id,$name, $ext);
 	$curriculo->setRoute();
 	$mensajeDoc = $curriculo->docProfesional();		
 	move_uploaded_file($_FILES['curriculo']['tmp_name'],$dir.$id.'/'.$name);
