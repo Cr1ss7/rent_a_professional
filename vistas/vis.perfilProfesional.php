@@ -79,15 +79,15 @@
                                                         
                               <?php
                               echo "<img src='".$resultadoFoto->Foto($prof->getId())."' width='300' heigth='100' class='fotoPerfil'>";
+                              if($userV == false){
+                              echo '<form action="../controlador/ctrlfotoProfesional.php" method="POST" enctype="multipart/form-data">
+                                 <br>
+                                <input type="file" name="foto" id="foto" class="bottonImage">
+                                <br>
+                                <input type="submit" name="enviar" value="Enviar" class="submitFoto">
+                                </form>';
+                              }
                               ?> 
-                            
-                                
-                            <form action="../controlador/ctrlfotoProfesional.php" method="POST" enctype="multipart/form-data">
-                            <br>
-                            <input type="file" name="foto" id="foto" class="bottonImage">
-                            <br>
-                            <input type="submit" name="enviar" value="Enviar" class="submitFoto">
-                            </form>
                             </div>
                         </div>
                     </div>
