@@ -15,10 +15,10 @@
         require_once('../modelo/class.administrador.php');
         require_once('../modelo/class.userSession.php');
 
-		error_reporting(0);
 
+        error_reporting(0);
         $userSession = new userSession();
-		$id = $_GET['id'];
+		$id = $_GET['idC'];
 
         //verifica si la sesion esta iniciada
         if(isset($_SESSION['admin']) && !isset($id)){
@@ -26,8 +26,10 @@
             $adm->setAdm($userSession->getCurrentAdm());	
 		}elseif(isset($_SESSION['admin']) && isset($id)){
 			$adm = new Administrador();
+            $adm->setId($userSession->getCurrentAdm());
+            $idP = $adm->getId();
 			$adm->mostrarPerfil($id);
-			$userV = true;
+			$userV = true;            
 		}else{
             header('location: ../vistas/vis.inicioSesion.php');
         }
@@ -43,9 +45,9 @@
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
-                    <a href="#" class="links"><li class="buttonActive">Información General</li></a>
-                    <a href="vis.listadoAdministrador.php" class="links"><li class="buttons">Administradores</li></a>
-                    <a href="#" class="links"><li class="buttons">Reportes</li></a>
+                <a href="vis.perfilAdministrador.php" class="links"><li class="buttonActive">Perfil</li></a>
+                <a href="Reportes.php" class="links"><li class="buttons">Reportes</li></a>
+                <a href="vis.listadoAdministrador.php" class="links"><li class="buttons">Administradores</li></a>
                 </ul>
             </nav>
         </header>
@@ -73,6 +75,7 @@
                 <div class="contDetails">
                     <div class="contInfoTitulo">
                         <h2>Información de Contacto</h2>
+                        <?php if($userV != true) echo '<a href="vis.menuModificacionDatos.php" class="edit">editar</a>'?>
                     </div>
                     <div class="contName">
                         <h4>Nombre:</h4>
@@ -90,7 +93,9 @@
                         <h4>Fecha de Nacimiento:</h4>
                         <h3><?php echo $adm->getFechaNac();?></h3>
                     </div>
-                </div>          
+                </div>
+                <div>
+        </div>          
             </div>
             <button class="endSesion2"><a href="../controlador/cerrarSesion.php">Cerrar Sesión</a></button>
         </div>

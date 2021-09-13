@@ -48,19 +48,39 @@
         </div>
         <div class="Reportes">
             <?php
-                require_once '../modelo/Class.MostrarReportes.php';
-                $a  = new Mostrar();
-                $reporte = $a->mostrarReportes();
-                foreach($reporte as $mostrar)
+                require_once '../modelo/Class.Reportes.php';
+                $Reportes  = new Reportes();
+                $reporte = $Reportes->mostrarReportes();
+                foreach($reporte as $mostrar){
+                if ($mostrar['reportado'] = "Prof"){
                 echo '<div class="ReportesCont">'.
-                        '<h3 class="UsuName">'.'JUAN'.'</h3>'.
-                        '<h4 class="ReportTitulo">'. $mostrar['titulo']. '</h4>'.
-                        '<p>'.$mostrar['descripcion'].'</p>'.
-                        '<h4 class="Reportado">'.'MARIO'.'</h4>'.  
-                        '<button class="butdelete">Eliminar</button>'.
-                        '<button class="butbanear">Banear</button>'.
-                    '</div>';
-                
+                    '<label class="UsuName">'.'Reportante: '.'<label class="Reportante">'.$Reportes->getNombreCompleto($mostrar['idClient']).'</label></label>'.
+                    '<label class="ReportTitulo">'.'Titulo: '.'<label class="titulo">'. $mostrar['titulo']. '</label>'.'</label>'.
+                    '<label class="ReportDescripcion">'.'Descripción: <br/>'.'</label>'.
+                    '<p class="descripcion">'.$mostrar['descripcion'].'</p>'.
+                    '<label class="UsuName">'.'Reportado: '.'<label class="Reportante">'.$Reportes->getNombreCompletoP($mostrar['idPro']).'</label></label>';
+                    $enlace = '<a href="../controlador/CtrlBanDel.php?accion=eliminar&id=';
+                    $enlace2 = '<a href="../controlador/CtrlBanDel.php?accion=BanearPro&id=';
+                    echo $enlace.$mostrar['Id'].'"><button class="butdelete">Eliminar</button></a>';
+                    echo $enlace2.$mostrar['idPro'].'&idRe='.$mostrar['Id'].'"><input type="button" onclick="mensaje()" value="Banear" class="butbanear"/></a></div>';
+                    echo '<script>
+                    function mensaje(){
+                        alert("El usuario ha sido baneado, el reporte se eliminara");
+                    }
+                    </script>';
+                }else{
+                    echo '<div class="ReportesCont">'.
+                    '<label class="UsuName">'.'Reportante: '.'<label class="Reportante">'.$Reportes->getNombreCompletoP($mostrar['idPro']).'</label></label>'.
+                    '<label class="ReportTitulo">'.'Titulo: '.'<label class="titulo">'. $mostrar['titulo']. '</label>'.'</label>'.
+                    '<label class="ReportDescripcion">'.'Descripción: <br/>'.'</label>'.
+                    '<p class="descripcion">'.$mostrar['descripcion'].'</p>'.
+                    '<label class="UsuName">'.'Reportado: '.'<label class="Reportante">'.$Reportes->getNombreCompleto($mostrar['idClient']).'</label></label>';
+                    $enlace = '<a href="../controlador/adminitracion.php?accion=eliminar&id=';
+                    $enlace2 = '<a href="../controlador/adminitracion.php?accion=BanearClient&id=';
+                    echo $enlace.$mostrar['Id'].'"><button class="butdelete" >Eliminar</button></a>';
+                    echo $enlace2.$mostrar['idClient'].'"><button class="butbanear" onClick="mensaje()" >Banear</button></a></div>';
+                }
+            }
             ?>
         </div>
     </div>

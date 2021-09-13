@@ -7,6 +7,9 @@
 	<link rel="stylesheet" href="../css/inicioSesion.css?v=<?php echo time();?>"/>
     <title>Rent a Professional - RAP</title>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+    <?php
+    error_reporting(0);
+    ?>
 </head>
 <body>
     <form method="POST" action="../controlador/inicioSesion.php">
@@ -26,16 +29,22 @@
            </div>
 			<?php
 			if(isset($errorlogin)){
-				echo $errorlogin; 	
-			}
+				echo $errorlogin; 
+                echo '<div class="flex4">
+                   <p>si aun no te registras: Registrate como</p>
+                   <a href="../vistas/vis.registroProfesional.php"> Profesional</a>
+                <p>o como un</p>
+                   <a href="../vistas/vis.registroCliente.php"> Cliente</a>
+           </div>';
+			}else{
+                echo '<div class="flex4">
+                   <p>si aun no te registras: Registrate como</p>
+                   <a href="vis.registroProfesional.php"> Profesional</a>
+                <p>o como un</p>
+                   <a href="vis.registroCliente.php"> Cliente</a>
+           </div>';
+            }
 			?>
-           <div class="flex4">
-               	<p>si aun no te registras: Registrate como</p>
-               	<a href="vis.registroProfesional.php"> Profesional</a>
-				<p>o como un</p>
-               	<a href="vis.registroCliente.php"> Cliente</a>
-           </div>
-          
 		</div>
 	</section>
    </form>  
