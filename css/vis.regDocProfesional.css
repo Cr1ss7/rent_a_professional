@@ -7,17 +7,12 @@
 body{
     background-image: linear-gradient(140deg,#B30917, #B30917, #B30917,#DB7D0A,#DB7D0A,#DB7D0A);
     background-size: 500%;
-    background-repeat: no-repeat;
-    background-size: cover;
- margin: 0;
- padding: 0;
- width: 100%;
- min-height: 100vh;
- max-width: 100%;
- background-position: center;
- display: flex;
- justify-content: center;
- align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    background-position: center;
 }
 .containerRegisPro{
 	background-color: rgba(255,255,255,0.2);

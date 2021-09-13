@@ -5,14 +5,14 @@
     font-family: 'M PLUS 1p', sans-serif;
 }
 body{
-    overflow: auto;
-       background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
-        overflow: auto ;
-       min-height: 100vh;
-       max-width: 100%;
-       background-position: center;
-       justify-content: center;
-       align-items: center;
+    background-image: linear-gradient(140deg,#B30917, #B30917, #B30917,#DB7D0A,#DB7D0A,#DB7D0A);
+    background-size: 500%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    background-position: center;
 }
 
 .flechita a{
