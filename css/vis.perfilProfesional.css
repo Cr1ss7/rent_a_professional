@@ -155,8 +155,11 @@ body{
     margin: 0 auto;
     width: min-content;
     justify-content: space-evenly;
+    height: 373px;
 }
-
+.contFormProfile{
+    margin: 40px auto;
+}
 .fotoPerfil{
     width: 180px;
     height: 180px;
@@ -164,14 +167,29 @@ body{
     align-items: center;
     position: relative;
     margin-top: 0;
-    margin-left: 10px;
+    margin-left: 18%;
     border-radius: 50%;
+}
+.bottonImage{
+    cursor: pointer;
 }
 .submitFoto{
     position: relative;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
     border: 1px solid white;
+    border-radius: 3px;
     width: 87px;
-    margin: 0px 50px;
+    margin: 0px 32%;
+    font-size: 1em;
+    color: black;
+}
+.submitFoto:hover{  
+    color: white;
+    transition: transform ease-in 0.1s;
+    transform: scale(1.05);
+    border: 1px solid #fcfcfc;
+    cursor: pointer;
 }
 .contProfTit{
     width: 100%;
@@ -276,11 +294,13 @@ body{
     transform: translateY(0) scale(1);
 }*/
 /*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
+.contProfile{
+    align-content: center;
+}
 .contInfo{
     margin-left: 20px;
     padding: 20px;
     width: 65%;
-    height: 576px;
     border: 1px solid #fcfcfc;
     background-color: rgba(255,255,255,0.2);
     backdrop-filter: blur(15px);
@@ -306,6 +326,7 @@ body{
     color: darkblue;
     font-weight: bold;
     outline: none;
+    text-decoration: none;
 }
 .contName h4, .contLastN h4, .contEmail h4, .contDate h4, .aboutMe h4, .curriculum h4{
     color: darkblue;
@@ -318,6 +339,11 @@ body{
 }
 .contName, .contLastN, .contEmail, .contDate, .curriculum{
     padding: 10px;
+}
+.curriculum a{
+    color: black;
+    font-weight: bold;
+    font-size: 0.8em;
 }
 .curriculum input{
     margin: 10px auto;
@@ -577,6 +603,15 @@ body{
         transform: translateY(-50px) scale(0);
         transition: 0.5s;
     }
+    .contInfoTitulo a{
+        text-decoration: none;
+    }
+    .bottonImage{
+        width: 250px;
+    }
+    .submitFoto{
+        font-size: 1.3em;
+    }
 }
 @media only screen and (min-width: 701px) and (max-width: 980px){
     *{
@@ -636,6 +671,23 @@ body{
         transform: translateY(-50px) scale(0);
         transition: 0.5s;
     }
+    .contProfile{
+        align-content: center;
+    }
+    .contInfoTitulo a{
+        text-decoration: none;
+    }
+    .fotoPerfil{
+        margin: 0 auto;
+    }
+    .bottonImage{
+        width: 87%;
+    }
+    .submitFoto{
+        margin: 0 25%;
+        font-size: 1.2em;
+    }
+
 }
 /*Para telefonos*/
 @media only screen and (min-width: 280px) and (max-width: 700px){
@@ -705,7 +757,7 @@ body{
         color: white;
         background-color: transparent;
         font-weight: lighter;
-        font-size: 18px;
+        font-size: 1.5em;
         padding: 10px;
         flex-wrap: wrap;
         flex-direction: row;
@@ -797,12 +849,13 @@ body{
         width: 100%;
         flex-direction: column;
         flex-wrap: wrap;
-        align-items: center;
+        align-content: center;
     }
     .contenidoProfile{
-        margin: 0 auto;
+        margin: 50px auto;
         width: min-content;
         justify-content: space-evenly;
+        margin-bottom: 0;
     }
     .contFormProfile{
         margin: 0 auto;
@@ -811,23 +864,20 @@ body{
         flex-direction: column;
         justify-content: flex-end;
     }
+    .contProfile{
+        align-content: center;
+    }
+    .contInfoTitulo a{
+        text-decoration: none;
+    }
     .fotoPerfil{
-        width: 130px;
-        height: 130px;
         margin: 0 auto;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        margin-top: 0;
-        margin-left: 10px;
-        border-radius: 50%;
+    }
+    .bottonImage{
+        width: 250px;
     }
     .submitFoto{
-        position: relative;
-        border: 1px solid white;
-        width: 86px;
-        margin: 0px auto;
-        margin-top: 10px;
+        font-size: 1.3em;
     }
     .contProfTit{
         width: 100%;
@@ -883,7 +933,7 @@ body{
     }
     /*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
     .contInfo{
-        margin: 0px auto;
+        margin: 20px auto;
         padding: 20px;
         width: 87%;
         height: 100%;
@@ -904,6 +954,9 @@ body{
         width: auto;
         border-bottom: 1px solid #fcfcfc;
         justify-content: space-between;
+    }
+    .contInfoTitulo a{
+        text-decoration: none;
     }
     .edit{
         padding: 0 5px 10px 0;
