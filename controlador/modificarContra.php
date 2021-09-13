@@ -2,10 +2,12 @@
     require_once("../modelo/class.conexion.php");
     require_once("../modelo/class.profecional.php");
     require_once("../modelo/class.cliente.php");
+    require_once("../modelo/class.administrador.php");
     require_once("../modelo/class.userSession.php");
 
     $prof= new Profesional();
-	$clnt = new Cliente();
+    $clnt = new Cliente();
+    $adm = new Administrador();
     $userSession = new userSession();
 
     if(isset($_SESSION['profesional'])){
@@ -31,7 +33,21 @@
                 echo $e -> getMessage();
             }
         }
-	}else{
+	}else if(isset($_SESSION['admin'])){
+        $adm->setAdm($userSession->getCurrentAdm());
+        if(strlen($_POST['password'])>0){
+            $contrasena = $_POST['password'];
+            try{
+                $adm -> modifyPass($contrasena);
+                header("location: ../controlador/cerrarSesion.php");
+            }catch(Exception $e){
+                echo $e -> getMessage();
+            }
+        }else{
         header("location: ../vista/vis.inicioSesion.php");
+        }
+    }
+    else{
+        header("location: ../vistas/vis.inicioSesion.php");
     }
 ?>

@@ -28,20 +28,50 @@
 		$userForm = $_POST['mail'];
 		$passForm = $_POST['pass'];
 
+
 		//Busca al usuario existente
 		//Profesional
 		if($prof->profesionalExt($userForm, $passForm)){
-			//echo "usuario validado";
-			$userSession->setCurrentProfesional($userForm);
-			$prof->setProfesional($userForm);
+				$prof->setProfesional($userForm);
+				$estado = $prof->getEstado();
+			if ($estado == "0"){
+				header('location: ../vistas/vis.perfilProfesional.php');
+				$userSession->setCurrentProfesional($userForm);
+				$prof->setProfesional($userForm);
+			}else{
+				$errorlogin = "Esta cuenta ha sido baneada";
+				include '../vistas/vis.inicioSesion.php';
+			}
 			//include '../vistas/vis.perfilProfesional.php';
-			header('location: ../vistas/vis.perfilProfesional.php');
 		//Cliente
 		}elseif($clnt->clienteExt($userForm,$passForm)){
-			$userSession->setCurrentCliente($userForm);
 			$clnt->setCliente($userForm);
-			header('location: ../vistas/vis.perfilCliente.php');
+			$estado=$clnt->getEstado();
+			if ($estado == "0"){
+				$userSession->setCurrentCliente($userForm);
+				header('location: ../vistas/vis.perfilCliente.php');
+				$prof->setProfesional($userForm);
+			}else{
+				$errorlogin = "Esta cuenta ha sido baneada";
+				include '../vistas/vis.inicioSesion.php';
+			}
 		//Administrador
+		}elseif($adm->admExt($userForm,$passForm)){
+            $userSession->setCurrentAdm($userForm);
+            $adm->setAdm($userForm);
+            $aumento = $adm->admAumento($userForm);
+            $contador = $adm->getContador();
+            if($contador == 0){
+                $aumento;
+                //echo $contador;
+                //header("location: ../vistas/vis.modificarContrasena.php");
+                $cambio = '<script>alert("Debido a que su cuenta fue creada por un usuario ajeno, debera cambiar su contraseña por seguridad.");</script>';
+                include '../vistas/vis.modificarContrasena.php';
+            }else{
+                //echo "Sesion de adm";
+                header("location: ../vistas/vis.perfilAdministrador.php");
+
+            }
 		}elseif($adm->admExt($userForm,$passForm)){
 			$userSession->setCurrentAdm($userForm);
 			$adm->setAdm($userForm);
