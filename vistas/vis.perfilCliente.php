@@ -22,6 +22,7 @@
 		$id = $_GET['id'];
         if(isset($_SESSION['cliente']) && !isset($id)){
         	$clnt = new Cliente();
+            $userV = false;
             $clnt->setCliente($userSession->getCurrentCliente());	
         }elseif(isset($_SESSION['profesional']) && isset($id) || isset($_SESSION['cliente']) && isset($id)){
 			$clnt = new Cliente();
@@ -43,9 +44,17 @@
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
-                    <a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
-                    <a href="vis.listadocliente.php" class="links"><li class="buttons">Chats</li></a>
-                    <a href="" class="links"><li class="buttonActive">Perfil</li></a>
+                <?php
+                        if($userV != false){
+                            echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
+                             <a href="vistas.listadoProfesional.php" class="links"><li class="buttons">Chats</li></a>
+                             <a href="#" class="links"><li class="buttonActive">Perfil</li></a>';
+                        }else{
+                            echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
+                             <a href="vis.listadocliente.php" class="links"><li class="buttons">Chats</li></a>
+                             <a href="#" class="links"><li class="buttonActive">Perfil</li></a>';
+                        } 
+                        ?> 
                 </ul>
             </nav>
         </header>
