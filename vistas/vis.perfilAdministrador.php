@@ -24,7 +24,8 @@
         //verifica si la sesion esta iniciada
         if(isset($_SESSION['admin']) && !isset($id)){
         	$adm = new Administrador();
-            $adm->setAdm($userSession->getCurrentAdm());	
+            $adm->setAdm($userSession->getCurrentAdm());
+            $admp = true;	
 		}elseif(isset($_SESSION['admin']) && isset($id)){
 			$adm = new Administrador();
             $adm->setId($userSession->getCurrentAdm());
@@ -66,16 +67,18 @@
                         <div class="contenidoProfile">
                             <div class="contFormProfile">
                             <?php
-                              echo "<img src='".$resultadoFoto->Foto($adm->getId())."' width='300' heigth='100' class='fotoPerfil'>";
+                                if(!$admp){
+                                echo "<img src='".$resultadoFoto->Foto($id)."' width='300' heigth='100' class='fotoPerfil'>";
+                                }else{
+                                    echo "<img src='".$resultadoFoto->Foto($adm->getId())."' width='300' heigth='100' class='fotoPerfil'>";
+                                    echo '<form action="../controlador/ctrlfotoAdministrador.php" method="POST" enctype="multipart/form-data">
+                                    <br>
+                                    <input type="file" name="foto" id="foto" class="bottonImage">
+                                    <br>
+                                    <input type="submit" name="enviar" value="Enviar" class="submitFoto">
+                                    </form>';
+                                }
                               ?> 
-                            
-                                
-                            <form action="../controlador/ctrlfotoAdministrador.php" method="POST" enctype="multipart/form-data">
-                            <br>
-                            <input type="file" name="foto" id="foto" class="bottonImage">
-                            <br>
-                            <input type="submit" name="enviar" value="Enviar" class="submitFoto">
-                            </form>
                             </div>
                         </div>
                     </div>
