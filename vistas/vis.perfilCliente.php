@@ -12,13 +12,14 @@
 	<?php
 		require_once('../modelo/class.conexion.php');
         require_once('../modelo/class.cliente.php');
+        require_once('../modelo/class.fotoCliente.php');
         require_once('../modelo/class.userSession.php');
-
-		error_reporting(0);
-
+        require_once('../modelo/class.administrador.php');
+         $resultadoFoto = new clienteFoto();
+        $adm = new Administrador();
         $userSession = new userSession();
+        error_reporting(0);
 		$id = $_GET['id'];
-
         if(isset($_SESSION['cliente']) && !isset($id)){
         	$clnt = new Cliente();
             $clnt->setCliente($userSession->getCurrentCliente());	
@@ -26,6 +27,7 @@
 			$clnt = new Cliente();
 			$clnt->mostrarPerfil($id);
 			$userV = true;
+            echo $idP;
 		}else{
             header("location: ../vistas/vis.inicioSesion.php");
         }
@@ -41,10 +43,9 @@
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
-                    <a href="#" class="links"><li class="buttonActive">Información General</li></a>
-                    <a href="#" class="links"><li class="buttons">Opcion 1</li></a>
-                    <a href="#" class="links"><li class="buttons">Opcion 2</li></a>
-                    <a href="#" class="links"><li class="buttons">Opcion 3</li></a>
+                    <a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
+                    <a href="vis.listadocliente.php" class="links"><li class="buttons">Chats</li></a>
+                    <a href="" class="links"><li class="buttonActive">Perfil</li></a>
                 </ul>
             </nav>
         </header>
@@ -61,8 +62,17 @@
                         </div>
                         <div class="contenidoProfile">
                             <div class="contFormProfile">
-                                <img src="../img/foto-perfil.png" alt="Foto Perfil" class="fotoPerfil">
-                                <input type="file" name="subir" value="Cambiar foto de perfil" class="submitFoto" >
+                            <?php
+                              echo "<img src='".$resultadoFoto->Foto($clnt->getId())."' width='300' heigth='100' class='fotoPerfil'>";
+                              ?> 
+                            
+                                
+                            <form action="../controlador/ctrlfotoCliente.php" method="POST" enctype="multipart/form-data">
+                            <br>
+                            <input type="file" name="foto" id="foto" class="bottonImage">
+                            <br>
+                            <input type="submit" name="enviar" value="Enviar" class="submitFoto">
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -90,8 +100,38 @@
                         <h4>Fecha de Nacimiento:</h4>
 						<h3><?php echo $clnt->getFechaNac()?></h3>
                     </div>
+                    <div>
+                    <?php
+                if($userV != false){
+                    echo '<div class="containerHijo1">';
+                    echo '<button onclick="'."location.href='#popup'".'" class="publicar">Publicar</button>';
+                    echo '</div>';
+        }?>    
+                    </div>
                 </div>          
             </div>
+        <form action="../controlador/ctrlReportes.php" method="post">
+        <div id="popup" class="overlay">
+       
+       <div id="popupBody">
+           <div class="caja1">
+               <img src="../css/img/logo.png" alt="Rent a Professional">
+           </div>
+           <a id="cerrar" href="#">&times;</a>
+          
+           <div class="caja2">
+               <input type="text" placeholder="Tìtulo de peticiòn:" id="titulo" name="titulo">
+               <input type="text" placeholder="Descripciòn:" id="descripcion" name="descripcion" class="Dess">
+               <input type="hidden" name="idClient" value="<?php echo $id; ?>">   
+               <input type="hidden" name="idPro" value="<?php echo $idP; ?>">  
+               <input type="hidden" name="tipo" value="Client">
+           </div>
+           <div class="caja3">
+           <input type="submit" value="Publicar" name="publicar">
+           </div>
+           </div>
+       </div>
+       </form>  
             <button class="endSesion2"><a href="../controlador/cerrarSesion.php">Cerrar Sesión</a></button>
         </div> 
     </div>   

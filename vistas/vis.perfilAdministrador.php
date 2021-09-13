@@ -14,9 +14,10 @@
         require_once('../modelo/class.conexion.php');
         require_once('../modelo/class.administrador.php');
         require_once('../modelo/class.userSession.php');
-
+        require_once('../modelo/class.fotoAdministrador.php');
 
         error_reporting(0);
+        $resultadoFoto = new adminFoto();
         $userSession = new userSession();
 		$id = $_GET['idC'];
 
@@ -64,8 +65,17 @@
                         </div>
                         <div class="contenidoProfile">
                             <div class="contFormProfile">
-                                <img src="../img/foto-perfil.png" alt="Foto Perfil" class="fotoPerfil">
-                                <input type="file" name="subir" value="Cambiar foto de perfil" class="submitFoto" >
+                            <?php
+                              echo "<img src='".$resultadoFoto->Foto($adm->getId())."' width='300' heigth='100' class='fotoPerfil'>";
+                              ?> 
+                            
+                                
+                            <form action="../controlador/ctrlfotoAdministrador.php" method="POST" enctype="multipart/form-data">
+                            <br>
+                            <input type="file" name="foto" id="foto" class="bottonImage">
+                            <br>
+                            <input type="submit" name="enviar" value="Enviar" class="submitFoto">
+                            </form>
                             </div>
                         </div>
                     </div>

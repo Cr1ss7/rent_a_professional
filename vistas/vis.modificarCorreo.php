@@ -11,22 +11,26 @@
     <script defer src="../JavaScript/menuHamburguesa.js"></script>
     <title>Document</title>
     <?php
-		require_once("../modelo/class.conexion.php");
+        require_once("../modelo/class.conexion.php");
         require_once("../modelo/class.profecional.php");
         require_once("../modelo/class.cliente.php");
         require_once("../modelo/class.userSession.php");
+        require_once("../modelo/class.administrador.php");
 
         $userSesion =new userSession();
 
         if(isset($_SESSION['profesional'])){
-        	$user = new Profesional();
+            $user = new Profesional();
             $user->setProfesional($userSesion->getCurrentProfesional());
-		}elseif(isset($_SESSION['cliente'])){
-			$user = new Cliente();
-			$user->setCliente($userSesion->getCurrentCliente());
-		}else
-			//header("location: ../vistas/vis.inicioSesion.php");
-	?>
+        }elseif(isset($_SESSION['cliente'])){
+            $user = new Cliente();
+            $user->setCliente($userSesion->getCurrentCliente());
+        }elseif(isset($_SESSION['admin'])){
+            $user = new Administrador();
+            $user->setAdm($userSesion->getCurrentAdm());
+        }
+            //header("location: ../vistas/vis.inicioSesion.php");
+    ?>
 </head>
 <body>
     <div class="containerKing">
@@ -37,9 +41,6 @@
         <header class="encabezado">
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
-                <ul class="navButtons">
-                    <a href="../vista/vis.menuModificacionDatos.html" class="links"><li class="buttons">Regresar</li></a>
-                </ul>
             </nav>
         </header>
         <div class="header2">
