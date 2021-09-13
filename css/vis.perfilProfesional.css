@@ -4,16 +4,14 @@
     font-family: 'M PLUS 1p', sans-serif;
 }
 body{
-    background-image: linear-gradient(145deg,#FF0A12,#00F5F9,#FF0A12,#00F5F9);
+    background-image: linear-gradient(140deg,#B30917, #B30917, #B30917,#DB7D0A,#DB7D0A,#DB7D0A);
     background-size: 500%;
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100vh;
     max-width: 100%;
-    background-position: center;
-    justify-content: center;
-    align-items: center;
+    background-position: center;;
 }
 /*Botón y nombre de Usuario*/
 .header{
@@ -341,6 +339,192 @@ body{
     padding: 10px;
 }
 
+.containerHijo1{
+    display: flex;
+    width: 50%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20px;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    color: white;
+    border: 1px solid white;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.publicar{
+    width: 70%;
+    height: 30px;
+    cursor: pointer;
+    
+}
+/*efecto de ventana emergente*/
+.overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+   
+
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+
+}
+
+
+
+/*caja padre*/
+#popupBody{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 270px;
+    width: 40%;
+    height: 80%;
+    border-radius: 15px;
+    background: #FFF;
+    transition: all 500ms ease;
+    box-shadow: 1px 7px 25px rgba(0,0,0,0.6);
+    border: 1px solid #fcfcfc;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: white;
+    font-weight: lighter; 
+}
+
+#popupBody div{
+    width: 70%;
+    margin: 5px;
+}
+/*caja 1*/
+#popupBody .caja1{
+    display: flex;
+    height: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.caja1 img{
+    width: 30%;
+}
+
+
+/*caja 2*/
+#popupBody .caja2{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    height: 40%;
+    width: 90%;
+}
+#popupBody .caja2 input{
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: white;
+    width: 70%;
+    font-weight: lighter; 
+    font-size: 110%;
+}
+#popupBody .caja2 #NP{
+    text-align: center;
+}
+#popupBody .caja2 .Dess{
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: white;
+    width: 90%;
+    padding-bottom: 17%;
+    font-weight: lighter; 
+}
+#popupBody .caja2 input::placeholder{
+    color: white;
+}
+
+
+/*caja 3*/
+#popupBody .caja3{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#popupBody .caja3 input{
+    cursor: pointer;
+    outline: none;
+	border: none;
+    border: 1px solid #fcfcfc;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: white;
+    font-weight: lighter;
+    font-size: 1em; 
+    padding: 10px;
+}
+#popupBody .caja3 input:hover{
+	background-color:#aaaa;
+}
+
+
+/*boton de cerrar popup*/
+#cerrar{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+/* botones de agregar*/
+.bottonImage{
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 13px;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    color: white;
+    border: 1px solid white;
+
+    border-radius: 6px;
+
+  }
+  .bottonImage:hover{
+    color: black;
+    background-color: #ffffff;
+  }
+
+  
 /*Media query's para responsividad*/
 /*Para tablets*/
 @media only screen and (min-width: 981px) and (max-width: 1200px){
