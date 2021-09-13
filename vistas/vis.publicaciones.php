@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/vis.publicaciones.css">
+    <link rel="stylesheet" href="../css/vis.publicaciones.css?v=<?php echo time(); ?>">
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
@@ -15,15 +15,22 @@
 	require_once("../modelo/class.cliente.php");
 	require_once("../modelo/class.publicacion.php");
 	require_once("../modelo/class.userSession.php");
+    require_once('../modelo/class.profecional.php');
 
 	$clnt = new Cliente();
 	$userSession = new userSession();
 	$data = new Publicacion();
+    $prof = new Profesional();
 
-	if(isset($_SESSION['cliente']))
+	if(isset($_SESSION['cliente'])){
 		$clnt->setCliente($userSession->getCurrentCliente());
-	else
+        $profs = true;
+    }elseif(isset($_SESSION['profesional'])){
+        $profs = false;
+        $prof->setProfesional($userSession->getCurrentProfesional());
+    }else{
 		header("location: ../vistas/vis.inicioSesion.php");
+    }
 	?>
 </head>
 <body>
@@ -36,11 +43,21 @@
         <header class="encabezado">
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
-                <ul class="navButtons">
-                    <a href="#" class="links"><li class="buttonActive">Inicio</li></a>
-                    <a href="vistaChat.html" class="links"><li class="buttons">Chat</li></a>
-                    <a href="vis.perfilCliente.html" class="links"><li class="buttons">Perfil</li></a>
-                </ul>
+                <?php
+                if($profs){
+                    echo ' <ul class="navButtons">
+                       <a href="" class="links"><li class="buttonActive">Inicio</li></a>
+                       <a href="vis.listadoCliente.php" class="links"><li class="buttons">Chats</li></a>
+                       <a href="vis.perfilCliente.php" class="links"><li class="buttons">Perfil</li></a>
+                        </ul>';
+                }else{
+                    echo ' <ul class="navButtons">
+                       <a href="" class="links"><li class="buttonActive">Inicio</li></a>
+                       <a href="#" class="links"><li class="buttons">Chat</li></a>
+                       <a href="vis.perfilProfesional.php" class="links"><li class="buttons">Perfil</li></a>
+                        </ul>';
+                }
+                ?>
             </nav>
         </header>
         <!-- seccion de boton de publicaciones-->
@@ -51,14 +68,13 @@
 
 
 
-    
-    
-        <div class="containerHijo1">
-            
-            <button onclick="location.href='#popup'" class="publicar">Publicar</button>
-        </div>
-       
-
+        <?php
+                if($profs){
+                    echo '<div class="containerHijo1">';
+                    echo '<button onclick="'."location.href='#popup'".'" class="publicar">Publicar</button>';
+                    echo '</div>';
+                }
+        ?>
         <!-- seccion de cuadro de publicaciones-->
         <div class="containerHijo2">
            
@@ -76,12 +92,15 @@
                     "<h3>Tìtulo: " . $peticion['titulo']."</h3>".
                 "</div>".
                 "<h4>Descripciòn: " . $peticion['descripcion']."</h4>".
-                
                 "<br>".
                 "<div class='Precio'>".
-                    "<h3>$ " . $peticion['precio']."</h3>".
-                "</div>".
-            "</div>";
+                    "<h3>$ " . $peticion['precio']."</h3>";
+                    if(!$profs){
+                        $enlace = '<a href="../controlador/listaChat.php?accion=aceptar&id=';
+                        echo $enlace.$peticion['idcliente'].'&idSes'.'"<button class="aceptar">Aceptar</button></a>';
+                    }
+            echo "</div>";
+            echo "</div>";
                   }
         ?>
             
@@ -105,16 +124,11 @@
                <a id="cerrar" href="#">&times;</a>
               
                <div class="caja2">
-                   <input type="text" placeholder="Tìtulo de peticiòn:" id="titulo" name="titulo">
-                   <input type="text" placeholder="Descripciòn:" id="descripcion" name="descripcion" class="Dess">
-                   <input type="text" placeholder="Precio a pagar $:" id="Precio" name="precio">
+                   <input type="text" placeholder="Tìtulo de peticiòn:" id="titulo" name="titulo" required> 
+                   <input type="text" placeholder="Descripciòn:" id="descripcion" name="descripcion" class="Dess" required>
+                   <input type="text" placeholder="Precio a pagar $:" id="Precio" name="precio" required>
+                   <input type="hidden" name="idC" value="<?php echo $clnt->getId(); ?>">
 
-                   <select name="Profesion" class="profesion">
-                           <option class="option" value="Desarrollador de Software">Desarrollador de Software</option>
-                           <option class="option" value="Doctor">Doctor</option>
-                           <option class="option" value="Diseñador">Diseñador</option>
-                           <option class="option" calue="Profesor">Profesor</option>
-                   </select>
                 <?php
 				if(isset($errorDatos)){
 					echo "<p>".$errorDatos."</p>";
