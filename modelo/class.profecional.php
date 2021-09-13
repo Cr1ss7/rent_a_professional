@@ -104,9 +104,10 @@
 				$this->correo = $currentUser['correo'];
 				$this->profesion = $currentUser['profesion'];
 				$this->fechaNac = $currentUser['fecha_nac'];
+				$this->estado = $currentUser['estado'];
+				
 			}
 		}	
-
 		//Funcion desfasada
 		/*public function modificarPro($nombre,$apellido,$correo){
 			$conexion = new Conexion();
@@ -193,7 +194,11 @@
 		public function getId(){
 			return $this->id;	
 		}
-
+		
+		public function getEstado(){
+			return $this->estado;	
+		}
+		
 		public function getNombre(){
 			return $this->nombre;	
 		}
