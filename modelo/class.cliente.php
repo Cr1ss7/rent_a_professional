@@ -85,6 +85,7 @@
 		}
 
 		//Setea el cliente y todos sus datos
+		//Setea el cliente y todos sus datos
 		public function setCliente($user){
 			$modelo = new Conexion();
 			$conexion = $modelo->get_conexion();
@@ -101,6 +102,7 @@
 				$this->nombre = $currentUser['nombre'];	
 				$this->apellido = $currentUser['apellido'];
 				$this->fechaNac = $currentUser['fecha_nac'];
+				$this->estado = $currentUser['estado'];
 			}
 		}	
 
@@ -130,6 +132,8 @@
 			}
 		}
 
+		
+		
 		//Modifica el nombre
 		public function modifyName($nombre,$apellido){
 			$conexion = new Conexion;
@@ -212,6 +216,10 @@
 		
 		public function getFechaNac(){
 			return $this->fechaNac;	
+		}
+		
+		public function getEstado(){
+			return $this->estado;	
 		}
 	}
 
