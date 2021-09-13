@@ -22,9 +22,9 @@
                 echo $e -> getMessage();
             }
         }
-	}elseif(isset($_SESSION['cliente'])){
-		$clnt->setCliente($userSession->getCurrentCliente());
-		if(strlen($_POST['password'])>0){
+    }elseif(isset($_SESSION['cliente'])){
+        $clnt->setCliente($userSession->getCurrentCliente());
+        if(strlen($_POST['password'])>0){
             $contrasena = $_POST['password'];
             try{
                 $prof -> modifyPass($contrasena);
@@ -33,7 +33,7 @@
                 echo $e -> getMessage();
             }
         }
-	}else if(isset($_SESSION['admin'])){
+    }else if(isset($_SESSION['admin'])){
         $adm->setAdm($userSession->getCurrentAdm());
         if(strlen($_POST['password'])>0){
             $contrasena = $_POST['password'];
@@ -44,10 +44,8 @@
                 echo $e -> getMessage();
             }
         }else{
-        header("location: ../vista/vis.inicioSesion.php");
+        header("location: ../vistas/vis.inicioSesion.php");
         }
     }
-    else{
-        header("location: ../vistas/vis.inicioSesion.php");
-    }
+
 ?>
