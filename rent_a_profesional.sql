@@ -91,15 +91,6 @@ CREATE TABLE `archivos` (
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `chat`
---
-
-CREATE TABLE `chat` (
-  `id` int(11) NOT NULL,
-  `idprofesional` int(11) NOT NULL,
-  `idcliente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
