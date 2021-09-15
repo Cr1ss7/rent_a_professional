@@ -170,8 +170,29 @@ INSERT INTO `curri` (`id`, `direccion`, `nombre`, `extension`, `idProfesional`) 
 (11, '../uploads/64', 'Diagnostic Test 3 Richmond.pdf', 'pdf', 64);
 
 -- --------------------------------------------------------
+-- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `chat`
+--
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `de` varchar(15) NOT NULL,
+  `para` varchar(15) NOT NULL,
+  `idC` int(6) NOT NULL,
+  `idP` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `chat`
+--
+
+INSERT INTO `chat` (`id`, `de`, `para`, `idC`, `idP`) VALUES
+(76, 'Uniqua', 'Fernando', 18, 63),
+(77, 'Uniqua', 'Juan', 19, 63);
+--
+-- --------------------------------------------------------
+
 -- Estructura de tabla para la tabla `mensaje`
 --
 
@@ -302,17 +323,6 @@ ALTER TABLE `archivos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idchat` (`idchat`);
 
---
--- Indices de la tabla `chat`
---
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idprofesional_2` (`idprofesional`,`idcliente`),
-  ADD UNIQUE KEY `idprofesional_3` (`idprofesional`,`idcliente`),
-  ADD KEY `idprofesional` (`idprofesional`),
-  ADD KEY `idusuario` (`idcliente`);
-
---
 -- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
@@ -349,6 +359,12 @@ ALTER TABLE `profesionalfoto`
 ALTER TABLE `publicaciones`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idcliente` (`idcliente`);
+
+--
+-- Indices de la tabla `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `reportes`
@@ -437,14 +453,6 @@ ALTER TABLE `reportes`
 --
 ALTER TABLE `archivos`
   ADD CONSTRAINT `archivos_ibfk_1` FOREIGN KEY (`idchat`) REFERENCES `chat` (`id`);
-
---
--- Filtros para la tabla `chat`
---
-ALTER TABLE `chat`
-  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`idprofesional`) REFERENCES `profesional` (`id`),
-  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`),
-  ADD CONSTRAINT `chat_ibfk_3` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`);
 
 --
 -- Filtros para la tabla `curri`
