@@ -1,4 +1,5 @@
 <?php
+	include_once '../modelo/class.Conexion.php';
 class Chat{
 
 	public function mostrarMsg($idProf, $idClnt){
@@ -13,6 +14,35 @@ class Chat{
 		return $data;
 	}
 
+	public function CrearChat($nameC,$nameP,$idC,$idP){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "Insert into chat (de, para, idC, idP) values (:nameP, :nameC, :idC, :idP)";
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindParam(":nameC",$nameC);
+		$stmt->bindParam(":nameP",$nameP);
+		$stmt->bindParam(":idC",$idC);
+		$stmt->bindParam(":idP",$idP);
+		$stmt->execute();
+	}
+
+	public function veriChat($nameP,$nameC){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		try {
+			$sql = "Select * from chat where de=:nameP and para=:nameC";
+			$stmt = $dbh->prepare($sql);
+			$stmt->bindParam(":nameP",$nameP);
+			$stmt->bindParam(":nameC",$nameC);
+			$stmt->execute();
+			$data = $stmt->fetch(PDO::FETCH_ASSOC);
+			return $data;
+		} catch (Exeption $e) {
+			return $e->getMessage();
+		}
+	}
+
+
 	public function enviarMsg($user, $msg, $idProf, $idClnt, $tipo){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();
@@ -26,15 +56,14 @@ class Chat{
 		$stmt->execute();
 	}
 
-	public function verChat($idProf,$idClnt){
+	public function verChatP($user){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();
-		$sql = "Select * from mensaje where idProfesional=:idProf and idCliente=:idClnt";
+		$sql = "Select * from mensaje where user=:user";
 		$stmt = $dbh->prepare($sql);
-		$stmt->bindParam(":idProf",$idProf);
-		$stmt->bindParam(":idClnt",$idClnt);
+		$stmt->bindParam(":user",$user);
 		$stmt->execute();
-		$extChat = $stmt->rowCount();
+		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		return $extChat;
 	}
 }

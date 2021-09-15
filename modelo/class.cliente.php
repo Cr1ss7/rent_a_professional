@@ -202,12 +202,23 @@
 		$stmt->bindParam(":id",$id);
 		$stmt->execute();
 		$data = $stmt->fetch(PDO::FETCH_ASSOC);
+		$this->id = $data['id'];
 		$this->nombre = $data['nombre'];
 		$this->apellido = $data['apellido'];
 		$this->correo = $data['correo'];
 		$this->fechaNac = $data['fecha_nac'];
 	}
 
+	public function verChat($name){
+		$conexion = new Conexion();
+	$dbh = $conexion->get_conexion();
+	$sql = "Select * from chat where para=:name";
+	$stmt = $dbh->prepare($sql);
+	$stmt->bindParam(":name",$name);
+	$stmt->execute();
+	$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+	}
 
 		//Todas la funciones get del cliente
 		public function getId(){

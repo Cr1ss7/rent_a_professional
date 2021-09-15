@@ -204,6 +204,17 @@
 		$this->fechaNac = $data['fecha_nac'];
 	}
 
+		public function verChat($name){
+			$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "Select * from chat where de=:name";
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindParam(":name",$name);
+		$stmt->execute();
+		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return $data;
+		}
+
 
 		//Todas kas funciones get del profesional
 		public function getEstado(){

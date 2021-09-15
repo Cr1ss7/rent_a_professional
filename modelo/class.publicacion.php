@@ -24,6 +24,18 @@ class Publicacion{
 		return $nombre. " ". $apellido;
 	}
 
+	public function getNombre($idCliente){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "select nombre from cliente where id=:id";
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindParam(":id",$idCliente);
+		$stmt->execute();
+		$datos = $stmt->fetch(PDO::FETCH_ASSOC);
+		$nombre = $datos['nombre'];
+		return $nombre;
+	}
+	
 	
 }
 ?>
