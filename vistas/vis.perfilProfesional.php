@@ -52,12 +52,12 @@
                     <?php
                         if($userV != false){
                             echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
-                             <a href="vis.listadoCliente.php" class="links"><li class="buttons">Chats</li></a>
-                             <a href="#" class="links"><li class="buttonActive">Perfil</li></a>';
+                             <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
+                             <a href="vis.perfilCliente.php" class="links"><li class="buttonActive">Perfil</li></a>';
                         }else{
                             echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
-                             <a href="#" class="links"><li class="buttons">Chats</li></a>
-                             <a href="#" class="links"><li class="buttonActive">Perfil</li></a>';
+                             <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
+                             <a href="vis.perfilProfeisonal.php" class="links"><li class="buttonActive">Perfil</li></a>';
                         }  
                     ?>
                 </ul>

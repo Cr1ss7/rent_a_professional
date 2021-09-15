@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/vis.chat.css">
+    <link rel="stylesheet" href="../css/vis.chat.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/65b3ef90af.js" crossorigin="anonymous"></script>
     <title>Chat</title>
 	<?php
@@ -29,7 +29,7 @@
 </head>
 <body>
     <div class="ContKing">
-        <div class="flechita"><a href="vistaPublicaciones.html"><i class="fas fa-chevron-left"></a></i></div>
+        <div class="flechita"><a href="vis.listadoChats.php"><i class="fas fa-chevron-left"></a></i></div>
         <div class="chatBody">
 			<?php
 				$chat = new Chat();

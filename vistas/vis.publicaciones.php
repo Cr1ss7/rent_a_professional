@@ -46,14 +46,14 @@
                 <?php
                 if($profs){
                     echo ' <ul class="navButtons">
-                       <a href="" class="links"><li class="buttonActive">Inicio</li></a>
-                       <a href="vis.listadoCliente.php" class="links"><li class="buttons">Chats</li></a>
+                       <a href="vis.publicaciones.php" class="links"><li class="buttonActive">Inicio</li></a>
+                       <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
                        <a href="vis.perfilCliente.php" class="links"><li class="buttons">Perfil</li></a>
                         </ul>';
                 }else{
                     echo ' <ul class="navButtons">
-                       <a href="" class="links"><li class="buttonActive">Inicio</li></a>
-                       <a href="#" class="links"><li class="buttons">Chat</li></a>
+                       <a href="vis.publicaciones.php" class="links"><li class="buttonActive">Inicio</li></a>
+                       <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
                        <a href="vis.perfilProfesional.php" class="links"><li class="buttons">Perfil</li></a>
                         </ul>';
                 }
@@ -96,8 +96,8 @@
                 "<div class='Precio'>".
                     "<h3>$ " . $peticion['precio']."</h3>";
                     if(!$profs){
-                        $enlace = '<a href="../controlador/listaChat.php?accion=aceptar&id=';
-                        echo $enlace.$peticion['idcliente'].'&idSes'.'"<button class="aceptar">Aceptar</button></a>';
+                        $enlace = '<a href="../controlador/listaChat.php?accion=aceptar&nameC=';
+                        echo $enlace.$data->getNombre($peticion['idcliente']).'&NameProf='.$prof->getNombre().'&idC='.$peticion['idcliente'].'&idP='.$prof->getId().'"<button class="aceptar">Aceptar</button></a>';
                     }
             echo "</div>";
             echo "</div>";

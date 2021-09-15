@@ -18,7 +18,7 @@
          $resultadoFoto = new clienteFoto();
         $adm = new Administrador();
         $userSession = new userSession();
-        error_reporting(0);
+
 		$id = $_GET['id'];
         if(isset($_SESSION['cliente']) && !isset($id)){
         	$clnt = new Cliente();
@@ -28,7 +28,6 @@
 			$clnt = new Cliente();
 			$clnt->mostrarPerfil($id);
 			$userV = true;
-            echo $idP;
 		}else{
             header("location: ../vistas/vis.inicioSesion.php");
         }
@@ -47,12 +46,12 @@
                 <?php
                         if($userV != false){
                             echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
-                             <a href="vistas.listadoProfesional.php" class="links"><li class="buttons">Chats</li></a>
-                             <a href="#" class="links"><li class="buttonActive">Perfil</li></a>';
+                             <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
+                             <a href="vis.perfilProfesional" class="links"><li class="buttonActive">Perfil</li></a>';
                         }else{
                             echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
-                             <a href="vis.listadocliente.php" class="links"><li class="buttons">Chats</li></a>
-                             <a href="#" class="links"><li class="buttonActive">Perfil</li></a>';
+                             <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
+                             <a href="vis.perfilCliente" class="links"><li class="buttonActive">Perfil</li></a>';
                         } 
                         ?> 
                 </ul>
@@ -73,15 +72,16 @@
                             <div class="contFormProfile">
                             <?php
                               echo "<img src='".$resultadoFoto->Foto($clnt->getId())."' width='300' heigth='100' class='fotoPerfil'>";
+                              if($userV == false){
+
+                                echo '<form action="../controlador/ctrlfotoProfesional.php" method="POST" enctype="multipart/form-data">
+                                    <br>
+                                    <input type="file" name="foto" id="foto" class="bottonImage">
+                                    <br>
+                                    <input type="submit" name="enviar" value="Enviar" class="submitFoto">
+                                    </form>';
+                                }
                               ?> 
-                            
-                                
-                            <form action="../controlador/ctrlfotoCliente.php" method="POST" enctype="multipart/form-data">
-                            <br>
-                            <input type="file" name="foto" id="foto" class="bottonImage">
-                            <br>
-                            <input type="submit" name="enviar" value="Enviar" class="submitFoto">
-                            </form>
                             </div>
                         </div>
                     </div>
