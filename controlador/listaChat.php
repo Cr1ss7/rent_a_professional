@@ -9,18 +9,20 @@ $chat = new Chat();
 $userSession = new userSession();
 $nameC = isset($_GET['nameC'])?$_GET['nameC']:"";
 $nameP = isset($_GET['NameProf'])?$_GET['NameProf']:"";
-$idC = isset($_GET['idC'])?$_GET['idC']:"";
 $idP = isset($_GET['idP'])?$_GET['idP']:"";
+$idC = isset($_GET['idC'])?$_GET['idC']:"";
+$apeC = isset($_GET['ApeC'])?$_GET['ApeC']:"";
+$apeP = isset($_GET['apeP'])?$_GET['apeP']:"";
+
 $msg = "Hola Estoy Interesado en el trabajo";
 
-$veri = $chat->veriChat($nameP,$nameC);
+$veri = $chat->veriChat($nameP,$nameC,$apeP, $apeC);
 try{
-		if(!empty($veri['de']) && !empty($veri['para'])){
-			header("location:../vistas/vis.publicaciones.php");
+		if(!empty($veri['nameP']) && !empty($veri['nameC']) && !empty($veri['apeP']) && !empty($veri['apeC'])){
+			header("location:../vistas/vis.chat.php?id=". $idC);
 		}else{
-			$chat->CrearChat($nameC,$nameP,$idC,$idP);
-			header("location:../vistas/vistas.listadoProfesional.php");
-		}
+			$chat->CrearChat($nameC,$nameP,$idC,$idP,$apeP,$apeC);
+			header("location:../vistas/vis.chat.php?id=". $idC);
 } catch (Exception $e) {
 	echo  "ekisde" . $e->getMessage();
 }
