@@ -16,13 +16,15 @@
 	require_once('../modelo/class.userSession.php');
     require_once('../modelo/class.administrador.php');
     require_once('../modelo/class.profecional.php');
+    require_once('../modelo/class.publicacion.php');
 	$adm = new Administrador();
 	$userSession = new userSession();
-
+    error_reporting(0);
 	//verifica si la sesion esta iniciada
 	if(isset($_SESSION['profesional'])){
 		$prof = new Profesional();
         $profs = false;
+        $pub = new Publicacion;
         $prof->setProfesional($userSession->getCurrentProfesional());
     }elseif(isset($_SESSION['cliente'])){
 		$clnt = new Cliente();
@@ -72,9 +74,9 @@
             
             <?php
                 if(!$profs){
-                    $chats = $prof->verChat($prof->getNombre());
+                    $chats = $prof->verChat($prof->getNombre(), $prof->getApellido());
                 }else{
-                    $chats = $clnt->verChat($clnt->getNombre());
+                    $chats = $clnt->verChat($clnt->getNombre(), $clnt->getApellido());
                 }
                 if(!$profs){
                     foreach($chats as $chats){
@@ -83,7 +85,7 @@
                         $enlace = "<a class='nombre' href='../vistas/vis.perfilCliente.php?&id=".$chats['idC']."'>";
                         $enlace2 = "<a class='nombre' href='../vistas/vis.chat.php?&id=".$chats['idC']."'>";
                         echo '<h4>Nombre:</h4>';
-                        echo $enlace."<h3>".$chats['para']."</h3></a>";
+                        echo $enlace."<h3>".$chats['nameC']." ".$chats['apeC']."</h3></a>";
                         echo '</div>';
                         echo $enlace2.'<button class="addAdmin">Ir a chat</button></a>';
                         echo '</div>';
@@ -95,7 +97,7 @@
                         $enlace = "<a class='nombre' href='../vistas/vis.chat.php?&id=".$chats['idP']."'>";
                         $enlace2 = "<a class='nombre' href='../vistas/vis.Perfilprofesional.php?&id=".$chats['idP']."'>";
                         echo '<h4>Nombre:</h4>';
-                        echo $enlace2."<h3>".$chats['de']."</h3></a>";
+                        echo $enlace2."<h3>".$chats['nameP']." ".$chats['apeP']."</h3></a>";
                         echo '</div>';
                         echo $enlace.'<button class="addAdmin">Ir a chat</button></a>';
                         echo '</div>';

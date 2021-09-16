@@ -18,7 +18,7 @@
          $resultadoFoto = new clienteFoto();
         $adm = new Administrador();
         $userSession = new userSession();
-
+        error_reporting(0);
 		$id = $_GET['id'];
         if(isset($_SESSION['cliente']) && !isset($id)){
         	$clnt = new Cliente();
