@@ -146,6 +146,23 @@
 			}
 		}
 
+		public function estadoPubli($id){
+			$conexion = new Conexion();
+			$dbh = $conexion->get_conexion();
+			$sql = "UPDATE publicaciones set estado=1 where id=:id";
+			$stmt= $dbh -> prepare($sql);
+			$stmt -> bindParam(":id",$id);
+			$stmt -> execute();
+		}
+
+		public function deletePubli($id){
+			$conexion = new Conexion();
+			$dbh = $conexion->get_conexion();
+			$sql = "DELETE FROM publicaciones where id=:id";
+			$stmt= $dbh -> prepare($sql);
+			$stmt -> bindParam(":id",$id);
+			$stmt -> execute();
+		}
 		//Modifica el nombre
 		public function modifyName($nombre,$apellido){
 			$conexion = new Conexion;
