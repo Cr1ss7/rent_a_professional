@@ -4,8 +4,7 @@
     font-family: 'M PLUS 1p', sans-serif;
 }
 body{
-    background-image: linear-gradient(140deg,#B30917, #B30917, #B30917,#DB7D0A,#DB7D0A,#DB7D0A);
-    background-size: 500%;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     margin: 0;
     padding: 0;
     width: 100%;
@@ -331,6 +330,7 @@ body{
     margin: 20px;
     padding: 30px;
     width: 40%;
+    
     backdrop-filter: blur(10px);
     border:  1px solid white;
     border-radius: 15px;
@@ -385,6 +385,42 @@ body{
     color: white;
 }
 
+.buteliminar{
+    background-color: rgb(0, 32, 175);
+    color: white;
+    padding: 5px;
+    border-radius: 7px;
+    margin-top: 13px;
+    border-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.butend{
+    background-color:  rgb(0, 32, 175);
+    color: white;
+    padding: 5px;
+    border-radius: 7px;
+    margin-left: 10px;
+    margin-top: 13px;
+    border-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.buteliminar:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.butend:hover{
+    background-color: rgb(0, 32, 175);
+    cursor: pointer;
+}
+
+.petiend{
+    color: yellow;
+    display: flex;
+    font-weight: bold;
+    padding-top: 5px;
+}
 
 @media only screen and (max-width: 1025px){
 
@@ -398,9 +434,12 @@ body{
     .publicacionesCont{
         width: 34%;
         padding: 40px;
+        margin-left: 10px;
+
     }
     
 }
+
 
 
 @media only screen and (max-width: 769px){
@@ -592,4 +631,10 @@ body{
         width: 100%;
         margin: 35% auto;
     }
+
+    .butend{
+        margin-left: 1px;
+    }
+
+    
 }

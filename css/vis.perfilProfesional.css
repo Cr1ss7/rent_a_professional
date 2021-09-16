@@ -3,15 +3,16 @@
     margin: 0;
     font-family: 'M PLUS 1p', sans-serif;
 }
+
 body{
-    background-image: linear-gradient(140deg,#B30917, #B30917, #B30917,#DB7D0A,#DB7D0A,#DB7D0A);
-    background-size: 500%;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100vh;
     max-width: 100%;
-    background-position: center;;
+    background-position: center;
+    
 }
 /*Botón y nombre de Usuario*/
 .header{
@@ -211,7 +212,7 @@ body{
     font-size: 20px;
 }
 /*Calificacion de profesional*/
-.calification{
+/*.calification{
     margin: 20px 0;
     width: auto;
     height: 33%;
@@ -238,7 +239,7 @@ body{
     margin-left: 50%;
     position: absolute;
     font-size: 2em;
-}*/
+}
 .rating{
     position: relative;
     display: flex;
@@ -329,7 +330,7 @@ body{
     text-decoration: none;
 }
 .contName h4, .contLastN h4, .contEmail h4, .contDate h4, .aboutMe h4, .curriculum h4{
-    color: darkblue;
+    color: white;
     font-weight: lighter;
     font-size: 20px;
 }
@@ -554,9 +555,6 @@ body{
 /*Media query's para responsividad*/
 /*Para tablets*/
 @media only screen and (min-width: 981px) and (max-width: 1200px){
-    *{
-        overflow: hidden;
-    }
     .containerKing{
         width: 100%;
         margin: 25% auto;
@@ -614,9 +612,6 @@ body{
     }
 }
 @media only screen and (min-width: 701px) and (max-width: 980px){
-    *{
-        overflow: hidden;
-    }
     .containerKing{
         width: 100%;
         margin: 15% auto;
@@ -691,10 +686,6 @@ body{
 }
 /*Para telefonos*/
 @media only screen and (min-width: 280px) and (max-width: 700px){
-    *{
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
     .containerKing{
         width: 100%;
         margin: 0 auto;
@@ -745,6 +736,9 @@ body{
     }
     .buttons{
         color: #fcfcfc;
+    }
+    .buttonActive{
+        color: black;
     }
     .nav-menu_visible {
         left: 0;
