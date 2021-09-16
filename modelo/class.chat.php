@@ -14,26 +14,30 @@ class Chat{
 		return $data;
 	}
 
-	public function CrearChat($nameC,$nameP,$idC,$idP){
+	public function CrearChat($nameC,$nameP,$idC,$idP,$apeP,$apeC){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();
-		$sql = "Insert into chat (de, para, idC, idP) values (:nameP, :nameC, :idC, :idP)";
+		$sql = "Insert into chat (nameP, nameC, idC, idP, apeP, apeC) values (:nameP, :nameC, :idC, :idP, :apeP , :apeC)";
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindParam(":nameC",$nameC);
 		$stmt->bindParam(":nameP",$nameP);
 		$stmt->bindParam(":idC",$idC);
 		$stmt->bindParam(":idP",$idP);
+		$stmt->bindParam(":apeP",$apeP);
+		$stmt->bindParam(":apeC",$apeC);
 		$stmt->execute();
 	}
 
-	public function veriChat($nameP,$nameC){
+	public function veriChat($nameP,$nameC,$apeP,$apeC){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();
 		try {
-			$sql = "Select * from chat where de=:nameP and para=:nameC";
+			$sql = "Select * from chat where nameP=:nameP and nameC=:nameC and apeP=:apeP and apeC=:apeC";
 			$stmt = $dbh->prepare($sql);
 			$stmt->bindParam(":nameP",$nameP);
 			$stmt->bindParam(":nameC",$nameC);
+			$stmt->bindParam(":apeP",$apeP);
+			$stmt->bindParam(":apeC",$apeC);
 			$stmt->execute();
 			$data = $stmt->fetch(PDO::FETCH_ASSOC);
 			return $data;

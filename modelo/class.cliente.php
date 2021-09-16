@@ -193,6 +193,8 @@
 			}
 		}
 
+
+		
 		//Muestra el perfil cliente a las demas personas
 		public function mostrarPerfil($id){
 		$conexion = new Conexion();
@@ -208,13 +210,14 @@
 		$this->correo = $data['correo'];
 		$this->fechaNac = $data['fecha_nac'];
 	}
-
-	public function verChat($name){
+// verifica a que chats pertenece el Cliente con su nombre y apellido y luego se usa para mostrar estos chats con el nombre de el otro partipante
+	public function verChat($name,$ape){
 		$conexion = new Conexion();
 	$dbh = $conexion->get_conexion();
-	$sql = "Select * from chat where para=:name";
+	$sql = "Select * from chat where nameC=:name and apeC=:apeC";
 	$stmt = $dbh->prepare($sql);
 	$stmt->bindParam(":name",$name);
+	$stmt->bindParam(":apeC",$ape);
 	$stmt->execute();
 	$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $data;
