@@ -50,8 +50,10 @@
                              <a href="vis.perfilProfesional" class="links"><li class="buttonActive">Perfil</li></a>';
                         }else{
                             echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
+                            <a href="vis.Mispublicaciones.php" class="links"><li class="buttons">Mis publicaciones</li></a>
                              <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
                              <a href="vis.perfilCliente" class="links"><li class="buttonActive">Perfil</li></a>';
+                             
                         } 
                         ?> 
                 </ul>

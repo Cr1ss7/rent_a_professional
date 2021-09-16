@@ -49,9 +49,11 @@
                     if(!$profs){
                     echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
                     <a href="vis.listadoChats.php" class="links"><li class="buttonActive">Chats</li></a>
+                    
                     <a href="vis.perfilProfesional.php" class="links"><li class="buttons">Perfil</li></a>';
                     }else{
                     echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
+                    <a href="vis.Mispublicaciones.php" class="links"><li class="buttons">Mis publicaciones</li></a>
                     <a href="vis.listadoChats.php" class="links"><li class="buttonActive">Chats</li></a>
                     <a href="vis.perfilCliente.php" class="links"><li class="buttons">Perfil</li></a>';
                     }

@@ -78,7 +78,7 @@
                     $enlace = '<a href="../controlador/adminitracion.php?accion=eliminar&id=';
                     $enlace2 = '<a href="../controlador/adminitracion.php?accion=BanearClient&id=';
                     echo $enlace.$mostrar['Id'].'"><button class="butdelete" >Eliminar</button></a>';
-                    echo $enlace2.$mostrar['idClient'].'"><button class="butbanear" onClick="mensaje()" >Banear</button></a></div>';
+                    echo $enlace2.$mostrar['idPro'].'&idRe='.$mostrar['Id'].'"><input type="button" onclick="mensaje()" value="Banear" class="butbanear"/></a></div>';
                 }
             }
             ?>

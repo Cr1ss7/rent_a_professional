@@ -57,7 +57,7 @@
                         }else{
                             echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
                              <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
-                             <a href="vis.perfilProfeisonal.php" class="links"><li class="buttonActive">Perfil</li></a>';
+                             <a href="vis.perfilProfesional.php" class="links"><li class="buttonActive">Perfil</li></a>';
                         }  
                     ?>
                 </ul>

@@ -46,16 +46,10 @@
                 <?php
                 if($profs){
                     echo ' <ul class="navButtons">
-                       <a href="vis.publicaciones.php" class="links"><li class="buttonActive">Inicio</li></a>
-                       <a href="vis.Mispublicaciones.php" class="links"><li class="buttons">Mis publicaciones</li></a>
+                       <a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
+                       <a href="vis.Mispublicaciones.php" class="links"><li class="buttonActive">Mis publicaciones</li></a>
                        <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
                        <a href="vis.perfilCliente.php" class="links"><li class="buttons">Perfil</li></a>
-                        </ul>';
-                }else{
-                    echo ' <ul class="navButtons">
-                       <a href="vis.publicaciones.php" class="links"><li class="buttonActive">Inicio</li></a>
-                       <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
-                       <a href="vis.perfilProfesional.php" class="links"><li class="buttons">Perfil</li></a>
                         </ul>';
                 }
                 ?>
@@ -67,15 +61,6 @@
             <button class="endSesion"><a href="../controlador/cerrarSesion.php">Cerrar Sesión</a></button>
         </div>
 
-
-
-        <?php
-                if($profs){
-                    echo '<div class="containerHijo1">';
-                    echo '<button onclick="'."location.href='#popup'".'" class="publicar">Publicar</button>';
-                    echo '</div>';
-                }
-        ?>
         <!-- seccion de cuadro de publicaciones-->
         <div class="containerHijo2">
            
@@ -84,10 +69,10 @@
 				$publi = $data->mostrarPubli();
   
                   foreach($publi as $peticion){
-                      if($peticion['estado'] == 0){
-                 echo "<div class='publicacionesCont'>".
+                      if($peticion['idcliente'] == $clnt->getId()){
+                echo "<div class='publicacionesCont'>".
                 "<div class='containerDatosCliente'>".
-            
+    
                 "<h5>". $data->getNombreCompleto($peticion['idcliente'])."</h5>".
                 "</div>".
                 "<div class='containerTitulo'>".
@@ -97,11 +82,15 @@
                 "<br>".
                 "<div class='Precio'>".
                     "<h3>$ " . $peticion['precio']."</h3>";
-
-                    if(!$profs){
-                        $enlace = '<a href="../controlador/listaChat.php?accion=aceptar&nameC=';
-                        echo $enlace.$data->getNombre($peticion['idcliente']).'&ApeC='.$data->getApe($peticion['idcliente']).'&NameProf='.$prof->getNombre().'&apeP='.$prof->getApellido().'&idC='.$peticion['idcliente'].'&idP='.$prof->getId().'&idPubli='.$peticion['id'].'"><input type="button" onclick="mensaje()" value="Aceptar" class="aceptar"/></a>';
-                    }
+                    $enlace = '<a href="../controlador/publicaciones.php?accion=eliminarP&id=';
+                    $enlace2 = '<a href="../controlador/publicaciones.php?accion=PetiEnd&id=';
+                    if($peticion['estado']==1){
+                        echo '<label class="petiend">*Este trabajo ha sido finalizado. Puedes Eliminarlo*</label>';
+                        }else{
+                            echo '<label class="petiend">*Este trabajo aun puede ser visto por un profesional en el inicio*</label>';
+                        }
+                    echo $enlace.$peticion['id'].'"><input type="button" onclick="mensaje()" value="Eliminar Petición" class="buteliminar"/></a>';
+                    echo $enlace2.$peticion['id'].'"><input type="button" onclick="mensaje()" value="Petición finalizada" class="butend"/></a>';
                     echo "</div>";
                     echo "</div>";
                 }
@@ -110,37 +99,7 @@
             
            </div>
         </div>
-
-
-
     </div>
-<button class="endSesion2"><a href="../controlador/cerrarSesion.php">Cerrar Sesión</a></button>
-    
- <!-- seccion de ventana emergete -->
-    <div>
-    <form action="../Controlador/publicaciones.php" method="post">
-            <div id="popup" class="overlay">
-           
-           <div id="popupBody">
-               <div class="caja1">
-                   <img src="../css/img/logo.png" alt="Rent a Professional">
-               </div>
-               <a id="cerrar" href="#">&times;</a>
-              
-               <div class="caja2">
-                   <input type="text" placeholder="Tìtulo de peticiòn:" id="titulo" name="titulo" required> 
-                   <input type="text" placeholder="Descripciòn:" id="descripcion" name="descripcion" class="Dess" required>
-                   <input type="text" placeholder="Precio a pagar $:" id="Precio" name="precio" required>
-                   <input type="hidden" name="idC" value="<?php echo $clnt->getId(); ?>">
-
-                <?php
-				if(isset($errorDatos)){
-					echo "<p>".$errorDatos."</p>";
-				}
-				?> 
-               </div>
-               <div class="caja3">
-               <input type="submit" value="Publicar" name="publicar">
                </div>
                </div>
            </div>
