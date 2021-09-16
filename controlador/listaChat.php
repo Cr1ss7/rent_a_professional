@@ -23,6 +23,7 @@ try{
 		}else{
 			$chat->CrearChat($nameC,$nameP,$idC,$idP,$apeP,$apeC);
 			header("location:../vistas/vis.chat.php?id=". $idC);
+		}
 } catch (Exception $e) {
 	echo  "ekisde" . $e->getMessage();
 }
