@@ -6,14 +6,18 @@ require_once("../modelo/class.userSession.php");
 
 $clnt = new Cliente();
 $userSession = new userSession();
-
+$publi = new Publicacion();
 $titulo = isset($_POST['titulo'])?$_POST['titulo']:"";
 $descripcion = isset($_POST['descripcion'])?$_POST['descripcion']:"";
 $precio = isset($_POST['precio'])?$_POST['precio']:"";
+$action = isset($_REQUEST['accion'])?$_REQUEST['accion']:"";
+$id = isset($_GET['id'])?$_GET['id']:"";
 
 if(isset($_SESSION['cliente'])){
-	$clnt->setCliente($userSession->getCurrentCliente());
-	$id = $clnt->getId();
+	// si empty tiene !empty regresa true cuando variable existe y tiene un valor no nulo, en el caso de empty regresa un false con ese mismo caso
+	if(empty($action)){
+		$clnt->setCliente($userSession->getCurrentCliente());
+		$id = $clnt->getId();
 	try{
 		$clnt->datosPubli($titulo,$descripcion,$precio);
 		$clnt->nuevaPubli();
@@ -22,6 +26,15 @@ if(isset($_SESSION['cliente'])){
 		$errorDatos = $e->getMessage();
 		include '../vistas/vis.publicaciones.php';
 	}
+	}else{
+		if($action=="eliminarP"){
+			$clnt->deletePubli($id);
+			header("location: ../vistas/vis.Mispublicaciones.php");
+	    }elseif($action=="PetiEnd"){
+			$clnt->estadoPubli($id);
+			header("location: ../vistas/vis.Mispublicaciones.php");
+		}
+}
 }else{
 	header("location: ../vistas/vis.inicioSesion.php");
 }
