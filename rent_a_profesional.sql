@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-09-2021 a las 08:53:53
+-- Tiempo de generación: 17-09-2021 a las 01:19:05
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -64,9 +64,9 @@ CREATE TABLE `adminitradorfoto` (
 --
 
 INSERT INTO `adminitradorfoto` (`id`, `foto`, `idAdministrador`) VALUES
-(5, '../foto/bd5d3ace36ad7195e36029718f147fdc.jpg', 14),
-(6, '../foto/bd5d3ace36ad7195e36029718f147fdc.jpg', 14),
-(7, '../foto/bd5d3ace36ad7195e36029718f147fdc.jpg', 14),
+(5, '../foto/IMG_20210909_104309.jpg', 14),
+(6, '../foto/IMG_20210909_104309.jpg', 14),
+(7, '../foto/IMG_20210909_104309.jpg', 14),
 (8, '../foto/0bdbcecdd451354a7c6bc13006c2ab03.jpg', 16),
 (9, '../foto/0bdbcecdd451354a7c6bc13006c2ab03.jpg', 16),
 (10, '../foto/0bdbcecdd451354a7c6bc13006c2ab03.jpg', 16),
@@ -74,7 +74,9 @@ INSERT INTO `adminitradorfoto` (`id`, `foto`, `idAdministrador`) VALUES
 (12, '../foto/0bdbcecdd451354a7c6bc13006c2ab03.jpg', 16),
 (13, '../foto/0bdbcecdd451354a7c6bc13006c2ab03.jpg', 16),
 (14, '../foto/0bdbcecdd451354a7c6bc13006c2ab03.jpg', 16),
-(15, '../foto/0bdbcecdd451354a7c6bc13006c2ab03.jpg', 16);
+(15, '../foto/0bdbcecdd451354a7c6bc13006c2ab03.jpg', 16),
+(16, '../foto/IMG_20210909_104309.jpg', 14),
+(17, '../foto/IMG_20210909_104309.jpg', 14);
 
 -- --------------------------------------------------------
 
@@ -91,6 +93,31 @@ CREATE TABLE `archivos` (
 
 -- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `chat`
+--
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `nameP` varchar(15) NOT NULL,
+  `nameC` varchar(15) NOT NULL,
+  `idC` int(6) NOT NULL,
+  `idP` int(6) NOT NULL,
+  `apeP` varchar(11) NOT NULL,
+  `apeC` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `chat`
+--
+
+INSERT INTO `chat` (`id`, `nameP`, `nameC`, `idC`, `idP`, `apeP`, `apeC`) VALUES
+(86, 'Uniqua', 'Fernando', 18, 63, 'Umbreon', 'Rodriguez'),
+(87, 'Uniqua', 'Juan', 19, 63, 'Umbreon', 'es'),
+(88, 'Uniqua', 'Fernando', 18, 63, '13', 'Rodriguez'),
+(89, 'Uniqua', 'Fernando', 18, 63, '14', 'Rodriguez'),
+(90, 'rro', 'Fernando', 18, 61, 'douuu', 'Rodriguez'),
+(91, 'rro', 'Juan', 19, 61, 'douuu', 'es');
 
 -- --------------------------------------------------------
 
@@ -161,29 +188,8 @@ INSERT INTO `curri` (`id`, `direccion`, `nombre`, `extension`, `idProfesional`) 
 (11, '../uploads/64', 'Diagnostic Test 3 Richmond.pdf', 'pdf', 64);
 
 -- --------------------------------------------------------
--- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `chat`
---
-CREATE TABLE `chat` (
-  `id` int(11) NOT NULL,
-  `de` varchar(15) NOT NULL,
-  `para` varchar(15) NOT NULL,
-  `idC` int(6) NOT NULL,
-  `idP` int(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `chat`
---
-
-INSERT INTO `chat` (`id`, `de`, `para`, `idC`, `idP`) VALUES
-(76, 'Uniqua', 'Fernando', 18, 63),
-(77, 'Uniqua', 'Juan', 19, 63);
---
--- --------------------------------------------------------
-
 -- Estructura de tabla para la tabla `mensaje`
 --
 
@@ -193,8 +199,28 @@ CREATE TABLE `mensaje` (
   `msg` varchar(150) NOT NULL,
   `idProfesional` int(11) NOT NULL,
   `idCliente` int(11) NOT NULL,
-  `tipo` int(11) NOT NULL
+  `tipo` int(11) NOT NULL,
+  `estado` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `mensaje`
+--
+
+INSERT INTO `mensaje` (`id`, `user`, `msg`, `idProfesional`, `idCliente`, `tipo`, `estado`) VALUES
+(1, 'rro', 'Hola Estoy Interesado en el trabajo', 61, 18, 1, '0'),
+(2, 'rro', 'Hola Estoy Interesado en el trabajo', 61, 19, 1, '0'),
+(3, 'rro', 'Hola Estoy Interesado en el trabajo', 0, 18, 1, ''),
+(4, 'rro', 'Hola Estoy Interesado en el trabajo', 0, 18, 1, ''),
+(5, 'rro', 'Hola Estoy Interesado en el trabajo', 0, 18, 1, ''),
+(6, 'rro', 'Hola Estoy Interesado en el trabajo', 0, 18, 1, ''),
+(7, 'Uniqua', 'Hola Estoy Interesado en el trabajo', 0, 0, 1, ''),
+(8, 'Uniqua', 'Hola Estoy Interesado en el trabajo', 0, 0, 1, ''),
+(9, 'Uniqua', 'Hola Estoy Interesado en el trabajo', 0, 0, 1, ''),
+(10, 'Uniqua', 'Hola Estoy Interesado en el trabajo', 0, 0, 1, ''),
+(11, 'Uniqua', 'Hola Estoy Interesado en el trabajo', 0, 0, 1, ''),
+(12, 'Uniqua', 'HOLAAA', 63, 18, 1, ''),
+(13, 'Uniqua', 'GOIL', 63, 19, 1, '');
 
 -- --------------------------------------------------------
 
@@ -220,7 +246,7 @@ CREATE TABLE `profesional` (
 
 INSERT INTO `profesional` (`id`, `nombre`, `apellido`, `correo`, `contrasena`, `profesion`, `fecha_nac`, `Calificacion`, `estado`) VALUES
 (61, 'rro', 'douuu', 'rr@gmail.com', '698d51a19d8a121ce581499d7b701668', 'Desarrollador de Software', '2021-09-01', NULL, 0),
-(62, 'Juan ', 'fernandez ', 'ju@gmail.com', '698d51a19d8a121ce581499d7b701668', 'Desarrollador de Software', '2021-09-01', NULL, 1),
+(62, 'Juan ', 'fernandez ', 'ju@gmail.com', '698d51a19d8a121ce581499d7b701668', 'Desarrollador de Software', '2021-09-01', NULL, 0),
 (63, 'Uniqua', 'Umbreon', 'un@gmail.com', '698d51a19d8a121ce581499d7b701668', 'Desarrollador de Software', '2021-09-01', NULL, 0),
 (64, 'austin ', 'Juan', 'uss@gmail.com', '698d51a19d8a121ce581499d7b701668', 'Desarrollador de Software', '2021-09-01', NULL, 0);
 
@@ -244,7 +270,10 @@ INSERT INTO `profesionalfoto` (`id`, `foto`, `idProfesional`) VALUES
 (1, '../foto/st,small,507x507-pad,600x600,f8f8f8.jpg', 63),
 (2, '../foto/st,small,507x507-pad,600x600,f8f8f8.jpg', 63),
 (3, '../foto/st,small,507x507-pad,600x600,f8f8f8.jpg', 63),
-(4, '../foto/bd5d3ace36ad7195e36029718f147fdc.jpg', 64);
+(4, '../foto/bd5d3ace36ad7195e36029718f147fdc.jpg', 64),
+(5, '../foto/0bdbcecdd451354a7c6bc13006c2ab03.jpg', 61),
+(6, '../foto/0bdbcecdd451354a7c6bc13006c2ab03.jpg', 61),
+(7, '../foto/bd5d3ace36ad7195e36029718f147fdc.jpg', 62);
 
 -- --------------------------------------------------------
 
@@ -257,16 +286,18 @@ CREATE TABLE `publicaciones` (
   `titulo` varchar(50) NOT NULL,
   `descripcion` varchar(500) NOT NULL,
   `idcliente` int(11) NOT NULL,
-  `precio` int(11) NOT NULL
+  `precio` int(11) NOT NULL,
+  `estado` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `publicaciones`
 --
 
-INSERT INTO `publicaciones` (`id`, `titulo`, `descripcion`, `idcliente`, `precio`) VALUES
-(13, 'gkkjhkjhkjhkjhkjhkjhkj', 'kjhkjhkjhkjhkjhkjhkjhkj', 18, 120),
-(14, 'xd', 'wwqdwqdwqdwqd', 18, 2147483647);
+INSERT INTO `publicaciones` (`id`, `titulo`, `descripcion`, `idcliente`, `precio`, `estado`) VALUES
+(13, 'gkkjhkjhkjhkjhkjhkjhkj', 'kjhkjhkjhkjhkjhkjhkjhkj', 18, 120, 0),
+(14, 'xd', 'wwqdwqdwqdwqd', 18, 2147483647, 0),
+(15, 'Pintura Realista', 'sasadsadasdsadsa', 19, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -314,6 +345,13 @@ ALTER TABLE `archivos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idchat` (`idchat`);
 
+--
+-- Indices de la tabla `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
@@ -333,6 +371,12 @@ ALTER TABLE `curri`
   ADD KEY `idProfesional` (`idProfesional`);
 
 --
+-- Indices de la tabla `mensaje`
+--
+ALTER TABLE `mensaje`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `profesional`
 --
 ALTER TABLE `profesional`
@@ -350,12 +394,6 @@ ALTER TABLE `profesionalfoto`
 ALTER TABLE `publicaciones`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idcliente` (`idcliente`);
-
---
--- Indices de la tabla `chat`
---
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `reportes`
@@ -379,7 +417,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `adminitradorfoto`
 --
 ALTER TABLE `adminitradorfoto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `archivos`
@@ -391,7 +429,7 @@ ALTER TABLE `archivos`
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -412,6 +450,12 @@ ALTER TABLE `curri`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT de la tabla `mensaje`
+--
+ALTER TABLE `mensaje`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT de la tabla `profesional`
 --
 ALTER TABLE `profesional`
@@ -421,13 +465,13 @@ ALTER TABLE `profesional`
 -- AUTO_INCREMENT de la tabla `profesionalfoto`
 --
 ALTER TABLE `profesionalfoto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `reportes`
