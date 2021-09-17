@@ -11,6 +11,7 @@ class Publicacion{
 		return $publicaciones;
 	}
 
+
 	public function getNombreCompleto($idCliente){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();
@@ -37,5 +38,16 @@ class Publicacion{
 	}
 	
 	
+	public function getApe($idCliente){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "select apellido from cliente where id=:id";
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindParam(":id",$idCliente);
+		$stmt->execute();
+		$datos = $stmt->fetch(PDO::FETCH_ASSOC);
+		$ape = $datos['apellido'];
+		return $ape;
+	}
 }
 ?>
