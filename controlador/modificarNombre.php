@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 require_once("../modelo/class.conexion.php");
 require_once("../modelo/class.profecional.php");
@@ -12,7 +13,6 @@ $clnt = new Cliente();
 $userSession = new userSession();
 
 if(isset($_SESSION['profesional'])){
-	echo "Se encuentra una sesion";
 	$prof -> setProfesional($userSession -> getCurrentProfesional());
 	if(strlen($_POST['nombre'])>0 && strlen($_POST['apellido'])>0){
 	   $nombre = $_POST['nombre'];

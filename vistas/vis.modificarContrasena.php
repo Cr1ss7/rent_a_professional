@@ -1,3 +1,5 @@
+<?php error_reporting(0) ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +13,11 @@
     <script defer src="../JavaScript/menuHamburguesa.js"></script>
     <title>Document</title>
     <?php
-        error_reporting(0);
-
         require_once("../modelo/class.conexion.php");
         require_once("../modelo/class.profecional.php");
         require_once("../modelo/class.cliente.php");
         require_once("../modelo/class.administrador.php");
         require_once("../modelo/class.userSession.php");
-
         $userSesion =new userSession();
 
         if(isset($_SESSION['profesional'])){
@@ -43,9 +42,6 @@
         <header class="encabezado">
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
-                <ul class="navButtons">
-                    <a href="../vistas/vis.menuModificacionDatos.html" class="links"><li class="buttons">Regresar</li></a>
-                </ul>
             </nav>
         </header>
         <div class="header2">
@@ -55,7 +51,7 @@
         <div class="container">
             <div class="contenido">
                 <h3>Digitar nueva Contraseña</h3>
-                <form class="cambios" method="POST" action="../Controlador/modificarContra.php">
+                <form class="cambios" method="POST" action="../controlador/modificarContra.php">
                     <input type="password" name="password" placeholder="Contraseña" required autocomplete="off" class="nuevoCorreo">
                     <input type="submit" value="Modificar datos" class="modificarDatos" onClick="mensaje()">
                 </form>

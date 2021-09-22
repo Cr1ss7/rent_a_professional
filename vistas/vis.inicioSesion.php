@@ -1,3 +1,8 @@
+
+<?php 
+error_reporting(0);
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +11,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../css/inicioSesion.css?v=<?php echo time();?>"/>
     <title>Rent a Professional - RAP</title>
+    <script src="https://kit.fontawesome.com/65b3ef90af.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
     <?php
-    error_reporting(0);
     ?>
 </head>
 <body>
     <form method="POST" action="../controlador/inicioSesion.php">
 	<section>
    		<div class="flex-caja">
-           
+           <a href="../index.html" class="flechita"><i class="fas fa-chevron-left"></i></a>
            <div class="flex1">
                <img src="../css/img/logo.png" alt="Rent a Professional">
             </div>

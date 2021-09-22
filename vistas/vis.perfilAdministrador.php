@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,9 +48,9 @@
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
-                <a href="vis.perfilAdministrador.php" class="links"><li class="buttonActive">Perfil</li></a>
                 <a href="Reportes.php" class="links"><li class="buttons">Reportes</li></a>
                 <a href="vis.listadoAdministrador.php" class="links"><li class="buttons">Administradores</li></a>
+                <a href="vis.perfilAdministrador.php" class="links"><li class="buttonActive">Perfil</li></a>
                 </ul>
             </nav>
         </header>
@@ -73,7 +74,7 @@
                                     echo "<img src='".$resultadoFoto->Foto($adm->getId())."' width='300' heigth='100' class='fotoPerfil'>";
                                     echo '<form action="../controlador/ctrlfotoAdministrador.php" method="POST" enctype="multipart/form-data">
                                     <br>
-                                    <input type="file" name="foto" id="foto" class="bottonImage">
+                                    <input type="file" name="foto" id="foto" accept=".jpg, .png" class="bottonImage">
                                     <br>
                                     <input type="submit" name="enviar" value="Enviar" class="submitFoto">
                                     </form>';

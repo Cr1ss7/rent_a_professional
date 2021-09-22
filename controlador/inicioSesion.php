@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 	require_once ('../modelo/class.conexion.php');
 	require_once ('../modelo/class.profecional.php');
@@ -72,11 +73,6 @@
                 header("location: ../vistas/vis.perfilAdministrador.php");
 
             }
-		}elseif($adm->admExt($userForm,$passForm)){
-			$userSession->setCurrentAdm($userForm);
-			$adm->setAdm($userForm);
-			//echo "Sesion de adm";
-			header("location: ../vistas/vis.perfilAdministrador.php");
 		}else{ //Redirecciona al inicio de sesion
 			$errorlogin = "nombre de usuario y/o password es incorrecto";
 			include '../vistas/vis.inicioSesion.php';

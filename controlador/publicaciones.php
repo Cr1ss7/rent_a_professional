@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 require_once("../modelo/class.conexion.php");
 require_once("../modelo/class.cliente.php");
@@ -11,7 +12,7 @@ $titulo = isset($_POST['titulo'])?$_POST['titulo']:"";
 $descripcion = isset($_POST['descripcion'])?$_POST['descripcion']:"";
 $precio = isset($_POST['precio'])?$_POST['precio']:"";
 $action = isset($_REQUEST['accion'])?$_REQUEST['accion']:"";
-$id = isset($_GET['id'])?$_GET['id']:"";
+$idP = isset($_GET['id'])?$_GET['id']:"";
 
 if(isset($_SESSION['cliente'])){
 	// si empty tiene !empty regresa true cuando variable existe y tiene un valor no nulo, en el caso de empty regresa un false con ese mismo caso
@@ -28,10 +29,10 @@ if(isset($_SESSION['cliente'])){
 	}
 	}else{
 		if($action=="eliminarP"){
-			$clnt->deletePubli($id);
+			$clnt->deletePubli($idP);
 			header("location: ../vistas/vis.Mispublicaciones.php");
 	    }elseif($action=="PetiEnd"){
-			$clnt->estadoPubli($id);
+			$clnt->estadoPubli($idP);
 			header("location: ../vistas/vis.Mispublicaciones.php");
 		}
 }

@@ -1,10 +1,11 @@
+<?php session_start(); ?>
 <?php
     require_once("../modelo/class.conexion.php");
     require_once("../modelo/class.profecional.php");
     require_once("../modelo/class.cliente.php");
     require_once("../modelo/class.administrador.php");
     require_once("../modelo/class.userSession.php");
-
+    
     $prof= new Profesional();
     $clnt = new Cliente();
     $adm = new Administrador();
@@ -27,7 +28,7 @@
         if(strlen($_POST['password'])>0){
             $contrasena = $_POST['password'];
             try{
-                $prof -> modifyPass($contrasena);
+                $clnt -> modifyPass($contrasena);
                 header("location: ../controlador/cerrarSesion.php");
             }catch(Exception $e){
                 echo $e -> getMessage();

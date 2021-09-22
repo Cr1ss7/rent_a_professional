@@ -125,13 +125,88 @@ body{
 .container2{
     display: inline-block;
     width: 35%;
-    height: 705px;
+    height: 670px;
     margin-right: auto;
     justify-content: flex-start;
     align-items: center;
- 
 }
-
+.subContainer{
+    border: 1px solid #fcfcfc;
+    width: auto;
+    height: 50%;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
+    color: White;
+    font-weight: lighter;
+    padding: 20px;
+}
+.contProfile{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.contenidoProfile{
+    margin: 0 auto;
+    width: min-content;
+    justify-content: space-evenly;
+    height: 373px;
+}
+.contFormProfile{
+    margin: 40px auto;
+}
+.fotoPerfil{
+    width: 180px;
+    height: 180px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 0;
+    margin-left: 18%;
+    border-radius: 50%;
+}
+.bottonImage{
+    cursor: pointer;
+}
+.submitFoto{
+    position: relative;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid white;
+    border-radius: 3px;
+    width: 87px;
+    margin: 0px 32%;
+    font-size: 1em;
+    color: black;
+}
+.submitFoto:hover{  
+    color: white;
+    transition: transform ease-in 0.1s;
+    transform: scale(1.05);
+    border: 1px solid #fcfcfc;
+    cursor: pointer;
+}
+.contProfTit{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.contProfTit h2{
+    font-weight: lighter;
+    padding: 0 5px 10px 0;
+    border-bottom: 1px solid #fcfcfc;
+}
+.profilePic{
+    width: 150px;
+    height: 150px;
+    border-radius: 5%;
+    border: 4px solid white;
+    color: white;
+    background: transparent;
+    text-align: center;
+    font-size: 20px;
+}
 .containerHijo1{
     display: flex;
     width: 50%;
@@ -154,6 +229,23 @@ body{
     cursor: pointer;
     
 }
+
+.edit{
+    padding: 0 5px 10px 0;
+    background-color: transparent;
+    border: none;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    outline: none;
+
+}
+
+.edit:hover{
+    color: white ;
+}
+
+
 /*efecto de ventana emergente*/
 .overlay {
     display: flex;
@@ -177,9 +269,6 @@ body{
 	align-items: center;
 
 }
-
-
-
 /*caja padre*/
 #popupBody{
     display: flex;
@@ -201,7 +290,6 @@ body{
     color: white;
     font-weight: lighter; 
 }
-
 #popupBody div{
     width: 70%;
     margin: 5px;
@@ -220,8 +308,6 @@ body{
 .caja1 img{
     width: 50%;
 }
-
-
 /*caja 2*/
 #popupBody .caja2{
     display: flex;
@@ -257,8 +343,6 @@ body{
 #popupBody .caja2 input::placeholder{
     color: white;
 }
-
-
 /*caja 3*/
 #popupBody .caja3{
     display: flex;
@@ -283,8 +367,6 @@ body{
 #popupBody .caja3 input:hover{
 	background-color:#aaaa;
 }
-
-
 /*boton de cerrar popup*/
 #cerrar{
     position: absolute;
@@ -296,8 +378,6 @@ body{
     text-decoration: none;
     color: white;
 }
-
-
 .subContainer{
     border: 1px solid #fcfcfc;
     width: auto;
@@ -309,61 +389,12 @@ body{
     font-weight: lighter;
     padding: 20px;
 }
-.contProfile{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-}
-.contenidoProfile{
-    margin: 0 auto;
-    margin-top: 30px;
-    width: min-content;
-    justify-content: space-evenly;
-}
-
-.fotoPerfil{
-    width: 180px;
-    height: 180px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-top: 0;
-    margin-left: 10px;
-    border-radius: 50%;
-}
-.submitFoto{
-    position: relative;
-    border: 1px solid white;
-    width: 87px;
-    margin: 0px 50px;
-}
-.contProfTit{
-    width: 100%;
-    margin-bottom: 20px;
-}
-.contProfTit h2{
-    font-weight: lighter;
-    padding: 0 5px 10px 0;
-    border-bottom: 1px solid #fcfcfc;
-}
-.profilePic{
-    width: 150px;
-    height: 150px;
-    border-radius: 5%;
-    border: 4px solid white;
-    color: white;
-    background: transparent;
-    text-align: center;
-    font-size: 20px;
-}
 /*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
 .contInfo{
     margin-left: 20px;
     padding: 20px;
     width: 65%;
-    height: 100%;
+    height: 400px;
     border: 1px solid #fcfcfc;
     background-color: rgba(255,255,255,0.2);
     backdrop-filter: blur(15px);
@@ -383,7 +414,7 @@ body{
     justify-content: space-between;
 }
 .contName h4, .contLastN h4, .contEmail h4, .contDate h4, .aboutMe h4, .curriculum h4{
-    color: #fcfcfc;
+    color: darkblue;
     font-weight: lighter;
     font-size: 20px;
 }
@@ -452,7 +483,15 @@ body{
         display: flex;
         justify-content: flex-end;
     }
-    
+    .contInfoTitulo a{
+        text-decoration: none;
+    }
+    .bottonImage{
+        width: 250px;
+    }
+    .submitFoto{
+        font-size: 1.3em;
+    }
 }
 @media only screen and (min-width: 701px) and (max-width: 980px){
 
@@ -509,6 +548,22 @@ body{
         opacity: 0;
         transform: translateY(-50px) scale(0);
         transition: 0.5s;
+    }
+    .contProfile{
+        align-content: center;
+    }
+    .contInfoTitulo a{
+        text-decoration: none;
+    }
+    .fotoPerfil{
+        margin: 0 auto;
+    }
+    .bottonImage{
+        width: 87%;
+    }
+    .submitFoto{
+        margin: 0 25%;
+        font-size: 1.2em;
     }
 }
 /*Para telefonos*/
@@ -667,12 +722,13 @@ body{
         width: 100%;
         flex-direction: column;
         flex-wrap: wrap;
-        align-items: center;
+        align-content: center;
     }
     .contenidoProfile{
-        margin: 0 auto;
+        margin: 50px auto;
         width: min-content;
         justify-content: space-evenly;
+        margin-bottom: 0;
     }
     .contFormProfile{
         margin: 0 auto;
@@ -681,23 +737,20 @@ body{
         flex-direction: column;
         justify-content: flex-end;
     }
+    .contProfile{
+        align-content: center;
+    }
+    .contInfoTitulo a{
+        text-decoration: none;
+    }
     .fotoPerfil{
-        width: 130px;
-        height: 130px;
         margin: 0 auto;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        margin-top: 0;
-        margin-left: 10px;
-        border-radius: 50%;
+    }
+    .bottonImage{
+        width: 250px;
     }
     .submitFoto{
-        position: relative;
-        border: 1px solid white;
-        width: 86px;
-        margin: 0px auto;
-        margin-top: 10px;
+        font-size: 1.3em;
     }
     .contProfTit{
         width: 100%;

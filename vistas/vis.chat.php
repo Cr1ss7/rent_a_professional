@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,8 @@
 	require_once("../modelo/class.userSession.php");
 	require_once("../modelo/class.chat.php");
 
+    error_reporting(0);
+
 	$id = $_GET['id'];
 	$userSession = new userSession();
 
@@ -26,10 +29,16 @@
 	}else
 		header("location: ../vistas/vis.inicioSesion.php");
 	?>
+
+<script>
+        function ajax(){
+            setInterval(function(){ajax();, 1000});
+        }
+    </script>
 </head>
-<body>
+<body onload="ajax();">
     <div class="ContKing">
-        <div class="flechita"><a href="vis.listadoChats.php"><i class="fas fa-chevron-left"></a></i></div>
+        <div class="flechita"><a href="vis.listadoChats.php" class="flechitalink"><i class="fas fa-chevron-left"></a></i></div>
         <div class="chatBody">
 			<?php
 				$chat = new Chat();
@@ -84,32 +93,11 @@
     </div>
     <div class="OpChat">
 	<form action="../controlador/enviarMsg.php?id=<?php echo $id;?>" method="POST">
-		<input type="text" name="msg" autocomplete="off">
-		<input type="submit" value="enviar" name="enviarMsg">
+		<input class="textMSG" placeholder="Escribe un mensaje aqui" type="text" name="msg" autocomplete="off">
+		<input type="submit" value="enviar" name="enviarMsg" class="enviar">
+		<i class="fas fa-paperclip labelFile"><input type="file"></i>
 		</form>
     </div>
 </div>
 </body>
 </html>
-
-
-<!--
-<div class="chatBody">
-        <div class="panelMensajeIzquiendo">
-            <div class="chat-cuerpo">
-                <h3>•Jose Abduzcan</h3>
-                <div class="contenedorDeMensaje">
-                    <p>¿Sabias que de cada 10 personas en el mundo 5 son la mitad?de verdad xd xd xd xd xd xd de verdad xd xd xd juela xd xd xd ue te parece si vamos a tomarnops un trago pedazo de kksi vamos a tomarnops un trago peda si vamos a tomarnops un trago peda</p>
-                </div>
-            </div>
-        </div>
-        <div class="panelMensajeDerecho">
-            <div class="chat-cuerpo">
-                <h3>•Manolo 503</h3>
-                <div class="contenedorDeMensaje">
-                    <p>¡Dato curiosos! eh madafaka te reviento la puta cara gilipollas de mierda ¡Dato curiosos! eh madafaka te reviento la puta cara gilipollas de mierda ¡Dato curiosos! eh madafaka te reviento la puta cara gilipollas de mierda</p>
-                </div>
-            </div>
-        </div>
-    </div>
--->

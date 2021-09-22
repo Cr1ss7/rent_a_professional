@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,8 @@
         require_once('../modelo/class.conexion.php');
         require_once('../modelo/class.administrador.php');
         require_once('../modelo/class.userSession.php');
+        
+        error_reporting(0);
 
         $adm = new administrador();
         $userSession = new userSession();

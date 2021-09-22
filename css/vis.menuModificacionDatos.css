@@ -169,6 +169,8 @@ body{
     transform: scale(1.05);
     border: 2px solid #fcfcfc;
 }
+
+
 /*Media query's para responsividad*/
 /*Para tablets*/
 @media only screen and (min-width: 981px) and (max-width: 1200px){

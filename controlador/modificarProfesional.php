@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 require_once("../modelo/class.conexion.php");
 require_once("../modelo/class.profecional.php");

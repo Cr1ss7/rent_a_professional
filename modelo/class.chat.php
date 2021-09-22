@@ -1,5 +1,5 @@
 <?php
-	include_once '../modelo/class.Conexion.php';
+	include_once '../modelo/class.conexion.php';
 class Chat{
 
 	public function mostrarMsg($idProf, $idClnt){
@@ -12,6 +12,18 @@ class Chat{
 		$stmt->execute();
 		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		return $data;
+	}
+
+	public function verUltimoMsg($idProf, $idClnt){
+			$conexion = new Conexion();
+			$dbh = $conexion->get_conexion();
+			$sql = "Select * from mensaje where idProfesional=:idProf and idCliente=:idClnt order by id desc ";
+			$stmt = $dbh->prepare($sql);
+			$stmt->bindParam(":idProf",$idProf);
+			$stmt->bindParam(":idClnt",$idClnt);
+			$stmt->execute();
+			$data = $stmt->fetch(PDO::FETCH_ASSOC);
+			return $data;
 	}
 
 	public function CrearChat($nameC,$nameP,$idC,$idP,$apeP,$apeC){

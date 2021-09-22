@@ -40,7 +40,6 @@
 				throw new Exception("Error. No se pudo ejecutar el comando");	
 			}else{
 				$stm->execute();
-				echo "se ha registrado correctamente";
 			}
 		}
 		

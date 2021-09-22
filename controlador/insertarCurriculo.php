@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 	require_once('../modelo/class.conexion.php');
 	require_once('../modelo/class.curriculo.php');
@@ -10,7 +11,7 @@
 	$prof = new Profesional();
 	$userSesion = new UserSession();
 	$prof->setProfesional($userSesion->getCurrentProfesional());
-	$dir = 'c:/xampp/htdocs/RAP/uploads/';
+	$dir = '/storage/ssd5/117/17606117/public_html/uploads/';
 
 	$id = $prof->getId();
 
@@ -24,7 +25,7 @@
 	$curriculo->setRoute();
 	$mensajeDoc = $curriculo->docProfesional();		
 	move_uploaded_file($_FILES['curriculo']['tmp_name'],$dir.$id.'/'.$name);
-	echo "<script>alert('Su curriculum se ha subido correctamente, va a ser redirigido al inicio de sesión');</script>";
+	
 	header("location: ../vistas/vis.inicioSesion.php");
 	}catch (Exception $e){
 		$e->getMessage();

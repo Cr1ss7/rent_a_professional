@@ -1,4 +1,5 @@
 *{
+    overflow: hidden;
     padding: 0;
     margin: 0;
     font-family: 'M PLUS 1p', sans-serif;
@@ -34,6 +35,12 @@ body{
     border-left: 1px solid black;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+}
+
+
+.flechitalink{
+    text-decoration: none;
+    color: black;
 }
 
 .chatBody{
@@ -99,26 +106,69 @@ body{
     font-size: 25px;
     align-items: flex-start;
 }
-
-.Message{
-    width: 90%;
-    resize: none;
-    border-radius: 10px;
-    padding: 5px;
-    overflow-y: auto;
+.OpChat form{
+    width: 100%;
 }
 
-.iconss{
+/*seccio de envio de mensaje*/
+.textMSG{
+
+    width: 75%;
+    font-size: 0.9em;
+    height: auto;
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(15px);
+    color: black;
+    font-weight: lighter;
+    border-radius: 30px;
+    padding: 6px 15px 6px 15px;
+    border: 1px solid #000000;
+    outline: none;
+    
+    
+}
+
+::placeholder { 
+    color: black; 
+    
+    font-size: 0.9em;
+}
+
+
+.enviar{
+    width: 70px;
+    font-size: 0.8em;
+    padding: 5px 0px 5px 0px;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(15px);
+    font-weight: lighter;
+}
+
+.enviar:hover {
+    background-color:#999999; 
+    color: white;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.labelFile{
+    color: black;
+    margin-left: 5px;
+    font-size: 28px;
     display: flex;
-    margin: 10px;
-    width: 30%;
+    padding-top: 10px;
 }
 
-.iconss i{
-    margin-right: 20px;
-}
 
 @media only screen and (max-width: 1025px){
+    *{
+        overflow-y: scroll;
+    }
 
     .ContKing{
         margin-top: 30%;
@@ -135,21 +185,30 @@ body{
 
     .flechita{
     width: 80%;
-}
-
-}
-
-@media only screen and (max-width: 500px){
-    .Message{
-        width: 50%;
     }
 
-    .iconss i{
-        margin-right: 0;
+    .textMSG{
+        width: 60%;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 500px){
+    *{
+        overflow-y: scroll;
+    }
+    .Message{
+        width: 30%;
     }
 
     .ContKing{
         margin-top: 0;
+    }
+
+    .textMSG{
+        width: 40%;
     }
 
 }
@@ -158,6 +217,10 @@ body{
 
     *{
         overflow-y: scroll;
+    }
+
+    .textMSG{
+        width: 30%;
     }
 
 }

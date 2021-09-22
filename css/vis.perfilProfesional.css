@@ -168,11 +168,13 @@ body{
     align-items: center;
     position: relative;
     margin-top: 0;
-    margin-left: 18%;
+    margin-left: auto;
     border-radius: 50%;
 }
-.bottonImage{
+.bottonImage{    
     cursor: pointer;
+    width: 160px;
+    margin: 0 auto;
 }
 .submitFoto{
     position: relative;
@@ -181,7 +183,7 @@ body{
     border: 1px solid white;
     border-radius: 3px;
     width: 87px;
-    margin: 0px 32%;
+    margin: 0px 24%;
     font-size: 1em;
     color: black;
 }
@@ -320,15 +322,22 @@ body{
     border-bottom: 1px solid #fcfcfc;
     justify-content: space-between;
 }
+
 .edit{
     padding: 0 5px 10px 0;
     background-color: transparent;
     border: none;
-    color: darkblue;
+    color: black;
+    text-decoration: none;
     font-weight: bold;
     outline: none;
-    text-decoration: none;
+
 }
+
+.edit:hover{
+    color: white ;
+}
+
 .contName h4, .contLastN h4, .contEmail h4, .contDate h4, .aboutMe h4, .curriculum h4{
     color: white;
     font-weight: lighter;

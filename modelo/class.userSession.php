@@ -2,9 +2,9 @@
 
 class userSession{
 	//Crea la sesion
-	public function __construct(){
-		session_start();
-	}
+	//public function __construct(){
+	//	session_start();
+	//}
 
 	//Setea la sesion del profesional
 	public function setCurrentProfesional($user){

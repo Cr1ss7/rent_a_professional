@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,15 +11,17 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
     <script defer src="../JavaScript/menuHamburguesa.js"></script>
-    
-    <?php
+        <?php
+        error_reporting(0);
+        require_once('../modelo/class.userSession.php');
         require_once('../modelo/class.conexion.php');
         require_once('../modelo/class.profecional.php');
-        require_once('../modelo/class.userSession.php');
         require_once('../modelo/class.cliente.php');
         require_once('../modelo/class.curriculo.php');
         require_once('../modelo/class.fotoProfeional.php');
+        
         error_reporting(0);
+
         $userSession = new userSession();
         $resultadoFoto = new profeionalFoto();
         $doc = new Curriculo();
@@ -38,6 +41,7 @@
             header("location: ../vistas/vis.inicioSesion.php");
         }
     ?>
+
 </head>
 <body>
     <div class="containerKing">
@@ -52,6 +56,7 @@
                     <?php
                         if($userV != false){
                             echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
+                            <a href="vis.listadoChats.php" class="links"><li class="buttons">Mis Publicaciones</li></a>
                              <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
                              <a href="vis.perfilCliente.php" class="links"><li class="buttonActive">Perfil</li></a>';
                         }else{
@@ -81,7 +86,7 @@
                                     if($userV == false){
                                     echo '<form action="../controlador/ctrlfotoProfesional.php" method="POST" enctype="multipart/form-data">
                                         <br>
-                                        <input type="file" name="foto" id="foto" class="bottonImage">
+                                        <input type="file" name="foto" id="foto" accept=".jpg, .png" class="bottonImage">
                                         <br>
                                         <input type="submit" name="enviar" value="Enviar" class="submitFoto">
                                         </form>';

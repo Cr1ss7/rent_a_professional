@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +17,12 @@
             <h2>Rent a Profesional</h2>
         </header>
         <form method="POST" action="../controlador/insertarProfecional.php" class="formPro">
-            <input type="text" name="nombre" id="name" autocomplete="off" placeholder="Nombre" class="nombres"></br>
-            <input type="text" name="apellido" id="lastName" autocomplete="off" placeholder="Apellido" class="apellidos"></br>
-            <input type="email" name="correo" id="email" autocomplete="off" placeholder="Correo Electrónico" class="e-mail"></br>
+            <input type="text" name="nombre" id="name" autocomplete="off" placeholder="Nombre" class="nombres" required></br>
+            <input type="text" name="apellido" id="lastName" autocomplete="off" placeholder="Apellido" class="apellidos" required></br>
+            <input type="email" name="correo" id="email" autocomplete="off" placeholder="Correo Electrónico" class="e-mail" required></br>
             <input type="password" name="pass" id="pass" autocomplete="off" placeholder="Contraseña" class="password"></br>
-            <input type="password" name="pass2" id="pass2" autocomplete="off" placeholder="Verificar Contraseña" class="verf-password"></br>
-            <input type="date" name="fecha_nac" id="fechaNac" autocomplete="off" class="date"></br>
+            <input type="password" name="pass2" id="pass2" autocomplete="off" placeholder="Verificar Contraseña" class="verf-password" required></br>
+            <input type="date" name="fecha_nac" id="fechaNac" autocomplete="off" class="date" required></br>
             <label class="profesionLabel">Profesión:</label>
             <select name="profesion" class="profesion">
                 <option class="option">Desarrollador de Software</option>

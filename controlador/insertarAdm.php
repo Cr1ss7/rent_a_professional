@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 require_once("../modelo/class.conexion.php");
 require_once("../modelo/class.administrador.php");
@@ -15,15 +16,20 @@ $pass = $_POST['pass'];
 $pass2 = $_POST['passV'];
 $fechaNac = $_POST['fechaNac'];
 
+
+$destinatario = $correo;
+$contendio = "Hola: " . $nombre ." ".$apellido . "\nTu cuenta de administrador ha sido creada, tus credenciales son las siguientes \nCorreo: " . $correo . "\nConstraseña: " . $pass;
+mail($destinatario,"Tu cuenta de administrador",$contendio,'From: rentaprofessional0@gmail.com'.'\r\n');
+
 try{
 	//verifica los datos
 	$adm->veriAdm($nombre,$apellido,$correo,$pass,$pass2,$fechaNac);
 	//Crea un nuevo Administrador
 	$mensaje = $adm->nuevoAdm();	
 	//Se inicia la sesion
-	$userSession = new userSession();
-	$adm->setAdm($correo);
-	$userSession->setCurrentAdm($correo);
+	//$userSession = new userSession();
+	//$adm->setAdm($correo);
+	//$userSession->setCurrentAdm($correo);
 	//echo $mensaje;
 	header('location: ../vistas/vis.perfilAdministrador.php');
 }catch(Exception $e){

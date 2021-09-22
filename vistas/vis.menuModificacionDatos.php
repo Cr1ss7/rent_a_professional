@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,18 +17,23 @@
         require_once("../modelo/class.cliente.php");
         require_once("../modelo/class.userSession.php");
         require_once("../modelo/class.administrador.php");
+        
+        error_reporting(0);
 
         $userSesion =new userSession();
 
         if(isset($_SESSION['profesional'])){
             $user = new Profesional();
             $user->setProfesional($userSesion->getCurrentProfesional());
+            $menu = "prof";
         }elseif(isset($_SESSION['cliente'])){
             $user = new Cliente();
             $user->setCliente($userSesion->getCurrentCliente());
+            $menu = "client";
         }elseif(isset($_SESSION['admin'])){
             $user = new Administrador();
             $user->setAdm($userSesion->getCurrentAdm());
+            $menu = "admin";
             //header("location: ../vistas/vis.inicioSesion.php");
         }
     ?>
@@ -43,6 +49,22 @@
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
+                <?php 
+                    if($menu == "prof"){
+                        echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
+                        <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
+                        <a href="vis.perfilProfesional.php" class="links"><li class="buttonActive">Perfil</li></a>';
+                    }elseif($menu == "client") {
+                        echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
+                        <a href="vis.listadoChats.php" class="links"><li class="buttons">Mis Publicaciones</li></a>
+                        <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
+                        <a href="vis.perfilCliente.php" class="links"><li class="buttonActive">Perfil</li></a>';
+                    }elseif ($user->getContador() == 1 && $menu == "admin") {
+                        echo '<a href="vis.perfilAdministrador.php" class="links"><li class="buttons">Perfil</li></a>
+                        <a href="#" class="links"><li class="buttonActive">Reportes</li></a>
+                        <a href="vis.listadoAdministrador.php" class="links"><li class="buttons">Administradores</li></a>';
+                    }
+                ?>
                 </ul>
             </nav>
         </header>

@@ -52,7 +52,6 @@ class Reportes{
             $stmt->bindParam(':idClient', $this->idC);
             $stmt->bindParam(':reportado', $this->tipo);
             $stmt->execute();
-            header('location: ../vistas/vis.listadocliente.php');
         }catch(PDOException $e){
             echo "Error: ". $e->getMessage();
         }

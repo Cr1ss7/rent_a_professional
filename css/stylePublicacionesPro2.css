@@ -2,23 +2,16 @@
     padding: 0;
     margin: 0;
     font-family: 'M PLUS 1p', sans-serif;
-    
 }
 body{
-    overflow: auto;
-    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: linear-gradient(140deg,#B30917, #B30917, #B30917,#DB7D0A,#DB7D0A,#DB7D0A);
+    background-size: 500%;
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100vh;
     max-width: 100%;
     background-position: center;
-}
-
-div h5{
-    padding:0;
-    margin: 0;
-    display: flex;
 }
 /*Botón y nombre de Usuario*/
 .header{
@@ -63,6 +56,7 @@ div h5{
 .endSesion2{
     display: none;
 }
+
 /*Barra de navegacion*/
 /*Fondo y medidas de la barra de navegación*/
 .nav-toggle{
@@ -118,123 +112,131 @@ div h5{
     font-weight: bold;
     width: max-content;
 }
-/*Contenedor Principal (almacena los demas contenedores)*/
-.container{
-    margin: 0 auto;
-    padding: 20px 0px;
-    width: auto;
+
+/*contenedoress*/
+
+.containerHijo2{
+    
+    width: 100%;
     height: auto;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
 }
-/*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
-.contInfo{
-    margin-left: 100px;
-    margin-right: 100px;
-    padding: 20px;
-    width: auto;
-    height: 100%;
-    border: 1px solid #fcfcfc;
-    background-color: rgba(255,255,255,0.2);
-    backdrop-filter: blur(15px);
-    border-radius: 3px;
-    color: white;
-    font-weight: lighter;
-    padding: 20px;
+.aceptar{
+    width: 20%;
+    height: 30px;
+   
+    float: right;
 }
-.contInfoTitulo h2{
-    font-weight: lighter;
-}
-.contInfoTitulo{
-    display: flex;
-    width: auto;
-    justify-content: space-between;
-}
-.addAdmin{
+.aceptar{
+    font-size: 15px;
     background-color: rgba(255,255,255,0.1);
-    color: white;
-    border: 1px solid white;
-    font-size: 1em;
-    border-radius: 3px;
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-    padding: 5px;
-}
-
-.añadir{
-    text-decoration: none;
-    color: black;
-}
-.addAdmin a{
-    text-decoration: none;
-    color: black;
-}
-.addAdmin2{
-    display: none;
-}
-.admins{
-    border: 1px solid white;
-    border-radius: 3px;
-    width: auto;
-    background-color: rgba(255,255,255,0.2);
     backdrop-filter: blur(15px);
-    margin: 20px 100px;
-    padding: 20px;
-    width: auto;
-    padding: 20px;
+    color: black;
+    padding: 4px 4px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    
 }
-.contName h4{
-    color: #fcfcfc;
-    font-weight: lighter;
-    font-size: 20px;
-}
-.contName{
-    display: flex;
-    margin: 0px auto;
+.aceptar {
+    
+    transition-duration: 0.4s;
 }
 
-.contName h3{
-    margin-left: 10px;
+.aceptar:hover {
+    background-color: blue;
+    color: white;
 }
-.contName h3{
-    font-weight: bold;
-}
-.contNameF{
+
+
+
+
+
+/*estilo de contenido de containerHijo2*/
+.publicaciones{
     display: flex;
-    margin: 0px auto;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    /*border: 1px solid #fcfcfc;
+    backdrop-filter: blur(15px);*/
+    border-radius: 3px;
+    color: black;
     padding: 10px;
 }
-.contNameF h4{
-    color: #fcfcfc;
-    font-weight: lighter;
-    font-size: 20px;
+
+.publicacionesCont{
+    padding-left: 10px;
+    background-color: rgba(255,255,255,0.4);
+    margin: 20px;
+    padding: 30px;
+    width: 40%;
+    backdrop-filter: blur(10px);
+    border:  1px solid white;
+    border-radius: 15px;
+
 }
-.contNameF h3{
-    margin-left: 10px;
-}
-.contNameF h3{
+
+.publicacionesCont h4{
     font-weight: bold;
+    padding-bottom: 10px;
+
+}
+.containerDatosCliente{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.containerTitulo{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.profesion{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
 
-.nombre{
-    text-decoration: none;
-    color: black;
-}
+@media only screen and (max-width: 1025px){
 
-.nombre:hover{
-    color:white;
-}
-
-
-/*Media query's para responsividad*/
-/*Para tablets*/
-@media only screen and (min-width: 981px) and (max-width: 1200px){
-    .containerKing{
-        width: 100%;
-        margin: 35% auto;
+    *{
+        overflow-y: scroll;
     }
+    .publicaciones{
+        width: 100%;
+    }
+
+    .publicacionesCont{
+        width: 34%;
+        padding: 40px;
+    }
+    .aceptar{
+        width: 40%;
+
+    }
+    
+}
+
+
+@media only screen and (max-width: 769px){
+     .publicacionesCont{
+        width: 78%;
+        padding: 40px;
+    }
+
+    .publicaciones{
+        margin-top: 60px;
+    }
+    .aceptar{
+        width: 40%;
+
+    }
+}
+
+
+
+@media only screen and (min-width: 981px) and (max-width: 1200px){
     .header{
         display: flex;
         justify-content: flex-end;
@@ -255,27 +257,15 @@ div h5{
         padding: 0px 10px 0px;
         border-radius: 3px;
     }
-    .container{
-        margin: 0px 20px;
-        padding: 20px 0px;
-        width: auto;
-        height: auto;
-        display: flex;
-        justify-content: flex-end;
+    .aceptar{
+        width: 40%;
+
     }
-    .contInfo{
-        width: 95%;
-        margin: 0;
-    }
-    .admins{
-        width: 95%;
-        margin: 20px 0;
-    }
+    
 }
 @media only screen and (min-width: 701px) and (max-width: 980px){
-    .containerKing{
-        width: 100%;
-        margin: 30% auto;
+    *{
+        overflow: hidden;
     }
     .header{
         display: flex;
@@ -305,21 +295,20 @@ div h5{
         display: flex;
         justify-content: flex-end;
     }
-    .contInfo{
-        width: 94%;
-        margin: 0;
+    .aceptar{
+        width: 40%;
+
     }
-    .admins{
-        width: 94%;
-        margin: 20px 0;
-    }
+    
 }
 /*Para telefonos*/
 @media only screen and (min-width: 280px) and (max-width: 700px){
-    .containerKing{
-        width: 100%;
-        margin: 0 auto;
-        overflow: hidden;
+    *{
+        overflow-y: scroll;
+    }
+    .aceptar{
+        width: 40%;
+
     }
     .header{
         display: flex;
@@ -364,25 +353,22 @@ div h5{
         transition: left 0.2s;
         overflow-y: auto;
     }
-    .buttons{
-        color: #fcfcfc;
-    }
     .nav-menu_visible {
         left: 0;
     }
-    /*Nombre de Usuario*/
-    .nombreUsuario{
-        margin-right: auto;
-        margin-top: 65px;
-        text-align: left;
-        color: white;
-        background-color: transparent;
-        font-weight: lighter;
-        font-size: 18px;
-        padding: 10px;
-        flex-wrap: wrap;
-        flex-direction: row;
-    }
+   /*Nombre de Usuario*/
+   .nombreUsuario{
+    margin-right: auto;
+    margin-top: 65px;
+    text-align: left;
+    color: white;
+    background-color: transparent;
+    font-weight: lighter;
+    font-size: 18px;
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
     /*Boton de cerrar sesion*/
     .endSesion{
         height: 50px;
@@ -418,28 +404,6 @@ div h5{
         color: white;
         text-decoration: none;
         font-weight: lighter;
-        font-size: 1.2em;
-    }
-    .addAdmin2{
-        height: 50px;
-        width: 100%;
-        margin: 20px auto;
-        margin-bottom: 0;
-        background-color: rgba(255,255,255,0.1);
-        backdrop-filter: blur(15px);
-        color: white;
-        font-size: 18px;
-        border: 1px solid #fcfcfc;
-        border-radius: 3px;
-        outline: none;
-        cursor: pointer;
-        display: block;
-    }
-    .addAdmin2 a{
-        color: white;
-        text-decoration: none;
-        font-weight: lighter;
-        font-size: 1.2em;
     }
     .navigationBar{
         height: auto;
@@ -456,46 +420,8 @@ div h5{
         z-index: 1;
         position: fixed;
     }
-    .container{
-        margin: 0px 10px;
-        padding: 20px 0px;
-        width: auto;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        overflow: hidden;
-    }  
-    .addAdmin{
-        display: none;
-    }  
-    .admins{
-        width: 87%;
-        margin: 20px auto;
-        margin-bottom: 0px;
-    }
-    /*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
-    .contInfo{
-        margin: 0px auto;
-        margin-top: 0px;
-        padding: 20px;
-        width: 87%;
-        height: 100%;
-        background-color: rgba(255,255,255,0.2);
-        backdrop-filter: blur(15px);
-        border-radius: 3px;
-        color: white;
-        font-weight: lighter;
-        padding: 20px;
-    }
-    .contInfoTitulo h2{
-        font-weight: lighter;
-        font-size: 1.5em;
-        padding: 0 5px 0 0;
-    }
-    .contInfoTitulo{
-        display: flex;
-        width: auto;
-        justify-content: space-between;
+    .continerKing{
+        width: 100%;
+        margin: 35% auto;
     }
 }

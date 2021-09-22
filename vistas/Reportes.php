@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,8 @@
 	require_once('../modelo/class.conexion.php');
 	require_once('../modelo/class.administrador.php');
 	require_once('../modelo/class.userSession.php');
+    
+    error_reporting(0);
 
 	$adm = new Administrador();
 	$userSession = new userSession();
@@ -36,10 +39,10 @@
             <nav class="navigationBar">
                 <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
                 <ul class="navButtons">
-                <a href="vis.perfilAdministrador.php" class="links"><li class="buttons">Perfil</li></a>
                 <a href="#" class="links"><li class="buttonActive">Reportes</li></a>
                 <a href="vis.listadoAdministrador.php" class="links"><li class="buttons">Administradores</li></a>
-                </ul>
+                <a href="vis.perfilAdministrador.php" class="links"><li class="buttons">Perfil</li></a>     
+            </ul>
             </nav>
         </header>
         <div class="header2">
@@ -52,16 +55,17 @@
                 $Reportes  = new Reportes();
                 $reporte = $Reportes->mostrarReportes();
                 foreach($reporte as $mostrar){
-                if ($mostrar['reportado'] = "Prof"){
+                if ($mostrar['reportado'] == "Prof"){
                 echo '<div class="ReportesCont">'.
                     '<label class="UsuName">'.'Reportante: '.'<label class="Reportante">'.$Reportes->getNombreCompleto($mostrar['idClient']).'</label></label>'.
                     '<label class="ReportTitulo">'.'Titulo: '.'<label class="titulo">'. $mostrar['titulo']. '</label>'.'</label>'.
                     '<label class="ReportDescripcion">'.'Descripción: <br/>'.'</label>'.
                     '<p class="descripcion">'.$mostrar['descripcion'].'</p>'.
                     '<label class="UsuName">'.'Reportado: '.'<label class="Reportante">'.$Reportes->getNombreCompletoP($mostrar['idPro']).'</label></label>';
+                    echo '<label class="UsuName">Rol: Profesional</label>';
                     $enlace = '<a href="../controlador/CtrlBanDel.php?accion=eliminar&id=';
                     $enlace2 = '<a href="../controlador/CtrlBanDel.php?accion=BanearPro&id=';
-                    echo $enlace.$mostrar['Id'].'"><button class="butdelete">Eliminar</button></a>';
+                    echo $enlace.$mostrar['Id'].'&idRe='.$mostrar['Id'].'"><button class="butdelete">Eliminar</button></a>';
                     echo $enlace2.$mostrar['idPro'].'&idRe='.$mostrar['Id'].'"><input type="button" onclick="mensaje()" value="Banear" class="butbanear"/></a></div>';
                     echo '<script>
                     function mensaje(){
@@ -75,6 +79,7 @@
                     '<label class="ReportDescripcion">'.'Descripción: <br/>'.'</label>'.
                     '<p class="descripcion">'.$mostrar['descripcion'].'</p>'.
                     '<label class="UsuName">'.'Reportado: '.'<label class="Reportante">'.$Reportes->getNombreCompleto($mostrar['idClient']).'</label></label>';
+                    echo '<label class="UsuName">Rol: Cliente</label>';
                     $enlace = '<a href="../controlador/adminitracion.php?accion=eliminar&id=';
                     $enlace2 = '<a href="../controlador/adminitracion.php?accion=BanearClient&id=';
                     echo $enlace.$mostrar['Id'].'"><button class="butdelete" >Eliminar</button></a>';

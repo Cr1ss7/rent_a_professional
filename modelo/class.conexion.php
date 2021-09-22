@@ -2,10 +2,10 @@
 
 class Conexion{
 	public function get_conexion(){
-		$user = 'root';
-		$pass = '';
+		$user = 'id17606117_root';
+		$pass = 'Rentaprofesional2022_';
 		$host = "localhost";
-		$db = 'rent_a_profesional';
+		$db = 'id17606117_rent_a_profesional';
 		try{
 			$dsn = "mysql:host=$host;dbname=$db;";
 			$dbh = new PDO($dsn, $user, $pass);

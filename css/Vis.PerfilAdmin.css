@@ -1,26 +1,26 @@
 *{
-    overflow: hidden;
     padding: 0;
     margin: 0;
     font-family: 'M PLUS 1p', sans-serif;
 }
 body{
-    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: url("img/fondo2.jpg");
+	background-repeat: no-repeat;
+   	background-size: cover;
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100vh;
     max-width: 100%;
     background-position: center;
+    justify-content: center;
+    align-items: center;
 }
 /*Botón y nombre de Usuario*/
 .header{
     display: flex;
     justify-content: flex-end;
     margin: 0px 100px;
-}
-.header2{
-    display: none;
 }
 /*Nombre de Usuario*/
 .nombreUsuario{
@@ -47,13 +47,6 @@ body{
     border-radius: 3px;
     outline: none;
     cursor: pointer;
-}
-.endSesion a{
-    color: white;
-    text-decoration: none;
-}
-.endSesion2{
-    display: none;
 }
 /*Barra de navegacion*/
 /*Fondo y medidas de la barra de navegación*/
@@ -107,9 +100,7 @@ body{
     font-weight: bold;
     width: max-content;
 }
-.nav-toggle{
-    display: none;
-}
+
 /*Contenedor Principal (almacena los demas contenedores)*/
 .container{
     margin: 0px 100px;
@@ -150,42 +141,23 @@ body{
     margin: 0 auto;
     width: min-content;
     justify-content: space-evenly;
-    height: 373px;
 }
-.contFormProfile{
-    margin: 40px auto;
-}
+
 .fotoPerfil{
     width: 180px;
     height: 180px;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin: 0 auto;
+    margin-top: 0;
+    margin-left: 10px;
     border-radius: 50%;
-}
-.bottonImage{
-    cursor: pointer;
-    width: 160px;
-    margin: 0 auto;
 }
 .submitFoto{
     position: relative;
-    background-color: rgba(255,255,255,0.1);
-    backdrop-filter: blur(15px);
     border: 1px solid white;
-    border-radius: 3px;
     width: 87px;
-    margin: 0px 24%;
-    font-size: 1em;
-    color: black;
-}
-.submitFoto:hover{  
-    color: white;
-    transition: transform ease-in 0.1s;
-    transform: scale(1.05);
-    border: 1px solid #fcfcfc;
-    cursor: pointer;
+    margin: 0px 50px;
 }
 .contProfTit{
     width: 100%;
@@ -211,7 +183,7 @@ body{
     margin-left: 20px;
     padding: 20px;
     width: 65%;
-    height: 440px;
+    height: 100%;
     border: 1px solid #fcfcfc;
     background-color: rgba(255,255,255,0.2);
     backdrop-filter: blur(15px);
@@ -234,15 +206,9 @@ body{
     padding: 0 5px 10px 0;
     background-color: transparent;
     border: none;
-    color: black;
-    text-decoration: none;
+    color: darkblue;
     font-weight: bold;
     outline: none;
-
-}
-
-.edit:hover{
-    color: white ;
 }
 .contName h4{
     color: darkblue;
@@ -324,201 +290,12 @@ body{
     font-size: 15px;
     padding: 10px;
 }
-
-.containerHijo1{
-    display: flex;
-    width: 50%;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    margin-bottom: 20px;
-    background-color: rgba(255,255,255,0.1);
-    backdrop-filter: blur(15px);
-    color: white;
-    border: 1px solid white;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-.publicar{
-    width: 70%;
-    height: 30px;
-    cursor: pointer;
-    
-}
-
-/*efecto de ventana emergente*/
-.overlay {
-    display: flex;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
-    transition: opacity 500ms;
-    visibility: hidden;
-    opacity: 0;
-   
-
-}
-.overlay:target {
-    visibility: visible;
-    opacity: 1;
-    display: flex;
-    justify-content: center;
-	align-items: center;
-
-}
-
-
-
-/*caja padre*/
-#popupBody{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    min-width: 270px;
-    width: 40%;
-    height: 80%;
-    border-radius: 15px;
-    background: #FFF;
-    transition: all 500ms ease;
-    box-shadow: 1px 7px 25px rgba(0,0,0,0.6);
-    border: 1px solid #fcfcfc;
-    background-color: rgba(255,255,255,0.2);
-    backdrop-filter: blur(15px);
-    border-radius: 3px;
-    color: white;
-    font-weight: lighter; 
-}
-
-#popupBody div{
-    width: 70%;
-    margin: 5px;
-}
-/*caja 1*/
-#popupBody .caja1{
-    display: flex;
-    height: 20%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-
-}
-.caja1 img{
-    width: 30%;
-}
-
-
-/*caja 2*/
-#popupBody .caja2{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-content: center;
-    align-items: center;
-    height: 40%;
-    width: 90%;
-}
-#popupBody .caja2 input{
-    background-color: rgba(255,255,255,0.2);
-    backdrop-filter: blur(15px);
-    border-radius: 3px;
-    color: white;
-    width: 70%;
-    font-weight: lighter; 
-    font-size: 110%;
-}
-#popupBody .caja2 #NP{
-    text-align: center;
-}
-#popupBody .caja2 .Dess{
-    background-color: rgba(255,255,255,0.2);
-    backdrop-filter: blur(15px);
-    border-radius: 3px;
-    color: white;
-    width: 90%;
-    padding-bottom: 17%;
-    font-weight: lighter; 
-}
-#popupBody .caja2 input::placeholder{
-    color: white;
-}
-
-
-/*caja 3*/
-#popupBody .caja3{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-#popupBody .caja3 input{
-    cursor: pointer;
-    outline: none;
-	border: none;
-    border: 1px solid #fcfcfc;
-    background-color: rgba(255,255,255,0.2);
-    backdrop-filter: blur(15px);
-    border-radius: 3px;
-    color: white;
-    font-weight: lighter;
-    font-size: 1em; 
-    padding: 10px;
-}
-#popupBody .caja3 input:hover{
-	background-color:#aaaa;
-}
-
-
-/*boton de cerrar popup*/
-#cerrar{
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    transition: all 200ms;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-}
-
-
-/* botones de agregar*/
-.bottonImage{
-    text-decoration: none;
-    margin-bottom: 10px;
-    padding: 10px;
-    font-weight: 500;
-    font-size: 13px;
-    background-color: rgba(255,255,255,0.1);
-    backdrop-filter: blur(15px);
-    color: white;
-    border: 1px solid white;
-
-    border-radius: 6px;
-
-  }
-  .bottonImage:hover{
-    color: black;
-    background-color: #ffffff;
-  }
-
-  
 /*Media query's para responsividad*/
 /*Para tablets*/
 @media only screen and (min-width: 981px) and (max-width: 1200px){
     .containerKing{
         width: 100%;
-        margin: 30% auto;
+        margin: 25% auto;
     }
     .header{
         display: flex;
@@ -556,31 +333,16 @@ body{
         transform: translateY(-50px) scale(0);
         transition: 0.5s;
     }
-    .contInfoTitulo a{
-        text-decoration: none;
-    }
-    .bottonImage{
-        width: 250px;
-    }
-    .submitFoto{
-        font-size: 1.3em;
-    }
 }
 @media only screen and (min-width: 701px) and (max-width: 980px){
     .containerKing{
         width: 100%;
-        margin: 25% auto;
+        margin: 15% auto;
     }
     .header{
         display: flex;
         justify-content: flex-end;
         margin: 0px 10px;
-    }
-    .header2{
-        display: none;
-    }
-    .endSesion2{
-        display: none;
     }
     .navigationBar{
         height: auto;
@@ -621,22 +383,6 @@ body{
         transform: translateY(-50px) scale(0);
         transition: 0.5s;
     }
-    .contProfile{
-        align-content: center;
-    }
-    .contInfoTitulo a{
-        text-decoration: none;
-    }
-    .fotoPerfil{
-        margin: 0 auto;
-    }
-    .bottonImage{
-        width: 87%;
-    }
-    .submitFoto{
-        margin: 0 25%;
-        font-size: 1.2em;
-    }
 }
 /*Para telefonos*/
 @media only screen and (min-width: 280px) and (max-width: 700px){
@@ -648,9 +394,6 @@ body{
         margin: 0 auto;
     }
     .header{
-        display: none;
-    }
-    .header2{
         display: flex;
         justify-content: flex-end;
         margin: 0px 10px;
@@ -658,7 +401,7 @@ body{
     /*Nombre de Usuario*/
     .nombreUsuario{
         margin-right: auto;
-        margin-top: 65px;
+        margin-top: 15px;
         text-align: left;
         color: white;
         background-color: transparent;
@@ -691,95 +434,6 @@ body{
         margin: 0px 10px;
         padding: 0px 10px 0px;
         border-radius: 3px;
-    }
-    .nav-toggle{
-        overflow: hidden;
-        display: block;
-        width: 50px;
-        height: 50px;
-        font-size: 30px;
-        border: none;
-        background-color: rgba(255,255,255,0.1);
-        backdrop-filter: blur(15px);
-        padding: 0 20px;
-        line-height: 60px;
-        float: left;
-        color: white;
-        padding-right: 100%;
-        padding-left: 10px;
-    }
-    .navButtons{
-        overflow: hidden;
-        flex-direction: column;
-        margin-top: 48px;
-        background-color: rgba(255,255,255,0.1);
-        backdrop-filter: blur(15px);
-        align-items: center;
-        position: fixed;
-        left: 100%;
-        top: 0px;
-        width: 100%;
-        padding: 20px 0;
-        height: calc(100% - 0px);
-        transition: left 0.2s;
-        overflow-y: auto;
-    }
-    .buttons{
-        color: #fcfcfc;
-    }
-    .nav-menu_visible {
-        left: 0;
-    }
-    .navigationBar{
-        height: auto;
-        width: auto;
-        background-color: rgba(255,255,255,0.1);
-        /*backdrop-filter: blur(15px);*/
-        height: 50px;
-        margin: 0px;
-        padding: 0px;
-        border-radius: 3px;
-        width: 100%;
-        overflow: hidden;
-        position: absolute;
-        z-index: 1;
-        position: fixed;
-    }
-    .endSesion{
-        height: 50px;
-        width: 150px;
-        margin-top: 60px;
-        margin-bottom: 10px;
-        background-color: rgba(255,255,255,0.1);
-        backdrop-filter: blur(15px);
-        color: white;
-        font-size: 18px;
-        border-color: white;
-        border-radius: 3px;
-        outline: none;
-        cursor: pointer;
-        display: none;
-    }
-    .endSesion2{
-        height: 50px;
-        width: 100%;
-        margin: 20px auto;
-        margin-bottom: 0;
-        background-color: rgba(255,255,255,0.1);
-        backdrop-filter: blur(15px);
-        color: white;
-        font-size: 18px;
-        border: 1px solid #fcfcfc;
-        border-radius: 3px;
-        outline: none;
-        cursor: pointer;
-        display: block;
-    }
-    .endSesion2 a{
-        color: white;
-        text-decoration: none;
-        font-weight: lighter;
-        font-size: 1.2em;
     }
     .container{
         margin: 0px 10px;
@@ -816,13 +470,12 @@ body{
         width: 100%;
         flex-direction: column;
         flex-wrap: wrap;
-        align-content: center;
+        align-items: center;
     }
     .contenidoProfile{
-        margin: 50px auto;
+        margin: 0 auto;
         width: min-content;
         justify-content: space-evenly;
-        margin-bottom: 0;
     }
     .contFormProfile{
         margin: 0 auto;
@@ -831,20 +484,23 @@ body{
         flex-direction: column;
         justify-content: flex-end;
     }
-    .contProfile{
-        align-content: center;
-    }
-    .contInfoTitulo a{
-        text-decoration: none;
-    }
     .fotoPerfil{
+        width: 130px;
+        height: 130px;
         margin: 0 auto;
-    }
-    .bottonImage{
-        width: 250px;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-top: 0;
+        margin-left: 10px;
+        border-radius: 50%;
     }
     .submitFoto{
-        font-size: 1.3em;
+        position: relative;
+        border: 1px solid white;
+        width: 86px;
+        margin: 0px auto;
+        margin-top: 10px;
     }
     .contProfTit{
         width: 100%;
@@ -900,7 +556,7 @@ body{
     }
     /*Contenedor con la informacion de contacto (correo, nombre, apellido, etc...)*/
     .contInfo{
-        margin: 20px auto;
+        margin: 0px auto;
         padding: 20px;
         width: 87%;
         height: 100%;

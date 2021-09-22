@@ -1,3 +1,7 @@
+<?php 
+session_start(); 
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,19 +19,27 @@
         require_once('../modelo/class.fotoCliente.php');
         require_once('../modelo/class.userSession.php');
         require_once('../modelo/class.administrador.php');
+        require_once('../modelo/class.profecional.php');
+        
+
+        
          $resultadoFoto = new clienteFoto();
         $adm = new Administrador();
         $userSession = new userSession();
-        error_reporting(0);
-		$id = $_GET['id'];
+   
+		$idC = $_GET['id'];
+
         if(isset($_SESSION['cliente']) && !isset($id)){
         	$clnt = new Cliente();
             $userV = false;
             $clnt->setCliente($userSession->getCurrentCliente());	
-        }elseif(isset($_SESSION['profesional']) && isset($id) || isset($_SESSION['cliente']) && isset($id)){
+        }elseif(isset($_SESSION['profesional']) && isset($idC) || isset($_SESSION['cliente']) && isset($idC)){
 			$clnt = new Cliente();
-			$clnt->mostrarPerfil($id);
+            $prof = new Profesional();
+			$clnt->mostrarPerfil($idC);
 			$userV = true;
+            $prof->setId($userSession->getCurrentProfesional());
+            $idP = $prof->getId();
 		}else{
             header("location: ../vistas/vis.inicioSesion.php");
         }
@@ -47,12 +59,12 @@
                         if($userV != false){
                             echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
                              <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
-                             <a href="vis.perfilProfesional" class="links"><li class="buttonActive">Perfil</li></a>';
+                             <a href="vis.perfilProfesional.php" class="links"><li class="buttonActive">Perfil</li></a>';
                         }else{
                             echo '<a href="vis.publicaciones.php" class="links"><li class="buttons">Inicio</li></a>
                             <a href="vis.Mispublicaciones.php" class="links"><li class="buttons">Mis publicaciones</li></a>
                              <a href="vis.listadoChats.php" class="links"><li class="buttons">Chats</li></a>
-                             <a href="vis.perfilCliente" class="links"><li class="buttonActive">Perfil</li></a>';
+                             <a href="vis.perfilCliente.php" class="links"><li class="buttonActive">Perfil</li></a>';
                              
                         } 
                         ?> 
@@ -76,9 +88,9 @@
                               echo "<img src='".$resultadoFoto->Foto($clnt->getId())."' width='300' heigth='100' class='fotoPerfil'>";
                               if($userV == false){
 
-                                echo '<form action="../controlador/ctrlfotoProfesional.php" method="POST" enctype="multipart/form-data">
+                                echo '<form action="../controlador/ctrlfotoCliente.php" method="POST" enctype="multipart/form-data">
                                     <br>
-                                    <input type="file" name="foto" id="foto" class="bottonImage">
+                                    <input type="file" name="foto" id="foto" accept=".jpg, .png" class="bottonImage">
                                     <br>
                                     <input type="submit" name="enviar" value="Enviar" class="submitFoto">
                                     </form>';
@@ -111,17 +123,20 @@
                         <h4>Fecha de Nacimiento:</h4>
 						<h3><?php echo $clnt->getFechaNac()?></h3>
                     </div>
-                    <div>
-                    <?php
+                        <div>
+                        <?php
                 if($userV != false){
-                    echo '<div class="containerHijo1">';
-                    echo '<button onclick="'."location.href='#popup'".'" class="publicar">Publicar</button>';
+                   echo '<div class="containerHijo1">';
+                    echo '<button onclick="'."location.href='#popup'".'" class="publicar">Reportar</button>';
                     echo '</div>';
-        }?>    
+              }
+             ?>    
+                          </div>
+                    <div>
                     </div>
                 </div>          
             </div>
-        <form action="../controlador/ctrlReportes.php" method="post">
+            <form action="../controlador/ctrlReportes.php" method="post">
         <div id="popup" class="overlay">
        
        <div id="popupBody">
@@ -131,18 +146,19 @@
            <a id="cerrar" href="#">&times;</a>
           
            <div class="caja2">
-               <input type="text" placeholder="Tìtulo de peticiòn:" id="titulo" name="titulo">
-               <input type="text" placeholder="Descripciòn:" id="descripcion" name="descripcion" class="Dess">
-               <input type="hidden" name="idClient" value="<?php echo $id; ?>">   
+               <input type="text" placeholder="Título:" id="titulo" name="titulo" required>
+               <input type="text" placeholder="Descripción:" id="descripcion" name="descripcion" class="Dess" required>
+               <input type="hidden" name="idClient" value="<?php echo $idC; ?>">   
                <input type="hidden" name="idPro" value="<?php echo $idP; ?>">  
                <input type="hidden" name="tipo" value="Client">
            </div>
+           <h5>ATENCIÓN: Luego del Reporte sera trasferido a la pagina de chats</h5>
            <div class="caja3">
-           <input type="submit" value="Publicar" name="publicar">
+           <input type="submit" value="Reportar" name="publicar">
            </div>
            </div>
        </div>
-       </form>  
+       </form> 
             <button class="endSesion2"><a href="../controlador/cerrarSesion.php">Cerrar Sesión</a></button>
         </div> 
     </div>   

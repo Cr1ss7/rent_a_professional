@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,8 @@
 	require_once("../modelo/class.publicacion.php");
 	require_once("../modelo/class.userSession.php");
     require_once('../modelo/class.profecional.php');
+    
+    error_reporting(0);
 
 	$clnt = new Cliente();
 	$userSession = new userSession();
@@ -118,7 +121,7 @@
     
  <!-- seccion de ventana emergete -->
     <div>
-    <form action="../Controlador/publicaciones.php" method="post">
+    <form action="../controlador/publicaciones.php" method="post">
             <div id="popup" class="overlay">
            
            <div id="popupBody">

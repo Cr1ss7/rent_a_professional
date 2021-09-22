@@ -16,6 +16,18 @@ body{
     background-position: center;
 }
 
+.flechita{
+    text-decoration: none;
+    color: black;
+    margin-right: 90%;
+    font-size: 20px;
+}
+
+.flechita:hover{
+    color: white;
+    cursor: pointer;
+}
+
 section{
 	display: flex;
 	justify-content: center;

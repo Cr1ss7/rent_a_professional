@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 require_once ('../modelo/class.conexion.php');
 require_once("../modelo/class.cliente.php");
@@ -20,15 +21,12 @@ if(isset($_REQUEST['enviar'])){
                 $picture->setDato($ruta,$id);
                 $picture->InsertFoto();
                 $picture->updateFoto();
-            
-                echo "xd1";
-             header("Location:../vistas/vis.perfilCliente.php");
+             header("location:../vistas/vis.perfilCliente.php");
             }else{
-              header("Location:../vistas/vis.perfilCliente.php");
-              echo "xd2";
+              header("location:../vistas/vis.perfilCliente.php");
             }
         }catch(Exception $e){
-            echo $errorDatos = $e->getMessage();
+            $errorDatos = $e->getMessage();
         }
     }else{
         header("location: ../vistas/vis.inicioSesion.php");
